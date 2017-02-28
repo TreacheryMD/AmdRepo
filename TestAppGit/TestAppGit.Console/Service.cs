@@ -11,7 +11,7 @@ namespace TestAppGit.Console
         //Test change
 
         //new line in mybranch
-
+        int n;
         public static int[] revAr(int[] array)
         {
             int temp = 0;
