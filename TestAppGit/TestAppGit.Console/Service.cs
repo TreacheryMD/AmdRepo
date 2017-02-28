@@ -12,5 +12,18 @@ namespace TestAppGit.Console
 
         //new line in mybranch
 
+        public static int[] revAr(int[] array)
+        {
+            int temp = 0;
+
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                temp = array[i];
+                array[i] = array[array.Length - i - 1];
+                array[array.Length - i - 1] = temp;
+            }
+            return array;
+        }
+
     }
 }

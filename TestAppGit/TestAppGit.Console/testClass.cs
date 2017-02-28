@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestAppGit.Console
 {
-    class Program
+    class testClass
     {
-        static void Main(string[] args)
-        {
-            
-        }
     }
 }
