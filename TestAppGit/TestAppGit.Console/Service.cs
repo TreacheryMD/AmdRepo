@@ -10,5 +10,7 @@ namespace TestAppGit.Console
     {
         //Test change
 
+        //new line in mybranch
+
     }
 }
