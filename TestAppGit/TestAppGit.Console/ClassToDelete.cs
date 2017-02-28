@@ -8,5 +8,6 @@ namespace TestAppGit.Console
 {
     class ClassToDelete
     {
+        //here is new line
     }
 }
