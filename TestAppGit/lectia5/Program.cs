@@ -10,7 +10,31 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
-
+            Vehicle newVehicle = new Truck();
+            newVehicle.horn();
+            Console.ReadKey();
         }
     }
+
+    class Vehicle
+    {
+        public int _numberOfPassagers;
+        public virtual void horn() { }
+    }
+
+    class Car : Vehicle
+    {
+        public override void horn()
+        {
+            Console.Write("car sound horn");
+        }
+    }
+    class Truck : Vehicle
+    {
+        public override void horn()
+        {
+            Console.Write("truck sound horn");
+        }
+    }
+
 }
