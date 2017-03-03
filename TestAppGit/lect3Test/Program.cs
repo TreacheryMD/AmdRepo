@@ -10,7 +10,8 @@ namespace lect3Test
     class Program
     {
 
-         static int _totalPlanets; // not protected sharing resources
+        //[ThreadStatic]
+        static int _totalPlanets; // not protected sharing resources
 
         //static object _lock = new object();
 
@@ -77,7 +78,6 @@ namespace lect3Test
             T2.Join();
             T3.Join();
 
-
             Console.WriteLine($"Total planets: {_totalPlanets}");
         }
 
@@ -95,6 +95,8 @@ namespace lect3Test
                 //}
 
             }
+            Console.WriteLine(_totalPlanets);
+            
         }
     }
 
