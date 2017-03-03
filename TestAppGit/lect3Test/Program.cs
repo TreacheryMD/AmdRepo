@@ -13,7 +13,7 @@ namespace lect3Test
         //[ThreadStatic]
         static int _totalPlanets; // not protected sharing resources
 
-        //static object _lock = new object();
+        static object _lock = new object();
 
         static void Main(string[] args)
         {
@@ -60,7 +60,7 @@ namespace lect3Test
 
             Time.TimePassed(firstAlien, 200);
             Time.TimePassed(secondAlien, 500);
-
+            
             int wholeTime = 0;
             Time.GetAllTime(out wholeTime);
             Console.WriteLine($"Whole time is :{wholeTime}");
@@ -79,19 +79,19 @@ namespace lect3Test
             T3.Join();
 
             Console.WriteLine($"Total planets: {_totalPlanets}");
+            
         }
-
         public static void AddOneMilionPlanets()
         {
             for (int i = 0; i < 1000000; i++)
             {
-                _totalPlanets++; //not thread save
+                //_totalPlanets++; //not thread save
                 //Interlocked.Increment(ref _totalPlanets);
 
                 //sau locking (numai 1 thread)
                 //lock (_lock)
                 //{
-                //    _totalPlanets++;
+                //   _totalPlanets++;
                 //}
 
             }

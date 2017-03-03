@@ -19,17 +19,13 @@ namespace lect3Test
             Console.WriteLine($"Static constructor sets current year for humans and aliens to: {DateTime.Now.Year}");
         }
 
-        public static void TimePassed(Human human, int howMuchYearPassed)
+        public static void TimePassed(LifeSpecies human, int howMuchYearPassed)
         {
             human.Age += howMuchYearPassed;
             _humanTotalTime += howMuchYearPassed;
         }
 
-        public static void TimePassed(Alien alien, int howMuchYearPassed)
-        {
-            alien.Age += howMuchYearPassed;
-            _humanTotalTime += howMuchYearPassed;
-        }
+      
 
         public void ShowHumanTime()
         {
@@ -45,6 +41,8 @@ namespace lect3Test
         {
             i = _humanTotalTime+ _alienTotalTime;
         }
+
+        
     
     }
 }
