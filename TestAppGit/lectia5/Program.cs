@@ -10,31 +10,10 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
-            Vehicle newVehicle = new Truck();
-            newVehicle.horn();
-            Console.ReadKey();
+
+            CurrentAccount newCurrentAccount = new CurrentAccount();
+            newCurrentAccount.Owner = "Draganel";
+            newCurrentAccount.AccountNumber = "31235434534241";
         }
     }
-
-    class Vehicle
-    {
-        public int _numberOfPassagers;
-        public virtual void horn() { }
-    }
-
-    class Car : Vehicle
-    {
-        public override void horn()
-        {
-            Console.Write("car sound horn");
-        }
-    }
-    class Truck : Vehicle
-    {
-        public override void horn()
-        {
-            Console.Write("truck sound horn");
-        }
-    }
-
 }
