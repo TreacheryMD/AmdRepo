@@ -13,9 +13,16 @@ namespace lectia5
         decimal _balance;
         public virtual void ShowAccountInfo()
         {
-            Console.WriteLine($"Account Owner: {_owner}/n AccountNumber:{_accountNumber}");
+            Console.WriteLine($"\nAccount Owner: {_owner} \nAccountNumber:{_accountNumber}\nBalance:{_balance} \n****************************\n");
         }
-        public virtual string Owner
+        protected BankAccount(string owner, decimal balance, string accountNumber)
+        {
+            this.AccountNumber = accountNumber;
+            this.Balance = balance;
+            this.Owner = owner;
+        }
+
+        public string Owner
         {
             get
             {
@@ -27,7 +34,7 @@ namespace lectia5
             }
         }
 
-        public virtual string AccountNumber
+        public  string AccountNumber
         {
             get
             {
@@ -39,9 +46,16 @@ namespace lectia5
             }
         }
 
-        public virtual decimal Balance
+        public  decimal Balance
         {
-            get { }
+            get
+            {
+                return _balance;
+            }
+            set
+            {
+                _balance = value;
+            }
         }
 
     }

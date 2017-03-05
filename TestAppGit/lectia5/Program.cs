@@ -10,10 +10,20 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
+            CurrentAccount draganelAccount = new CurrentAccount("Dragnael", 5000, "12213123");
+            draganelAccount.ShowAccountInfo();
 
-            CurrentAccount newCurrentAccount = new CurrentAccount();
-            newCurrentAccount.Owner = "Draganel";
-            newCurrentAccount.AccountNumber = "31235434534241";
+            draganelAccount.CashIn(5000);
+            draganelAccount.CashOut(1000);
+
+            draganelAccount.ShowAccountInfo();
+
+            CreditAccount draganelCredit = new CreditAccount(draganelAccount, 200000, draganelAccount);
+            draganelCredit.ShowAccountInfo();
+
+
+
+
         }
     }
 }

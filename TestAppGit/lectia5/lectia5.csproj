@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankAccount.cs" />
+    <Compile Include="CreditAccount.cs" />
     <Compile Include="CurrentAccount.cs" />
+    <Compile Include="DepositAccount.cs" />
+    <Compile Include="InterestAccount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
