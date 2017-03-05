@@ -8,7 +8,8 @@ namespace lectia5
 {
     class CreditAccount : BankAccount
     {
-        public CreditAccount(CurrentAccount accOwner, decimal newCreditAmmout, CurrentAccount accNumb ) : base(accOwner.Owner, newCreditAmmout, accNumb.AccountNumber+"CRED")
+        public CreditAccount(CurrentAccount accOwner, decimal newCreditAmmout, CurrentAccount accNumb ) :
+            base(accOwner.Owner, newCreditAmmout, accNumb.AccountNumber.Substring(0, accNumb.AccountNumber.Length - 2) + "CRED")
         {
 
         }

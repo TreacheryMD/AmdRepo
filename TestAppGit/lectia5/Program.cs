@@ -13,7 +13,7 @@ namespace lectia5
             CurrentAccount draganelAccount = new CurrentAccount("Dragnael", 5000, "12213123");
             draganelAccount.ShowAccountInfo();
 
-            draganelAccount.CashIn(5000);
+            draganelAccount.CashIn(500000);
             draganelAccount.CashOut(1000);
 
             draganelAccount.ShowAccountInfo();
@@ -21,7 +21,14 @@ namespace lectia5
             CreditAccount draganelCredit = new CreditAccount(draganelAccount, 200000, draganelAccount);
             draganelCredit.ShowAccountInfo();
 
+            InterestAccount draganelInterest = new InterestAccount(draganelAccount, 0, draganelAccount, 13,5000);
+            draganelInterest.CalculateRateAfterMonths(7, draganelCredit, draganelAccount);
+            draganelInterest.ShowAccountInfo();
 
+            draganelAccount.ShowAccountInfo();
+            draganelCredit.ShowAccountInfo();
+
+            Console.ReadKey();
 
 
         }

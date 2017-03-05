@@ -8,15 +8,37 @@ namespace lectia5
 {
     class InterestAccount : BankAccount
     {
-        public InterestAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumber) : base(accOwner.Owner, balance, accNumber.AccountNumber)
+        double _intRate;
+        decimal _mPay;
+        public InterestAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumber,double interestRate, decimal monthlyPaymant) : 
+            base(accOwner.Owner, balance, accNumber.AccountNumber.Substring(0, accNumber.AccountNumber.Length-2) +"INT")
         {
-
+            _intRate = interestRate;
+            _mPay = monthlyPaymant;
         }
 
         public override void ShowAccountInfo()
         {
             Console.WriteLine("Interest Account:");
             base.ShowAccountInfo();
+        }
+
+        public void CalculateRateAfterMonths(int numberOfMonths,CreditAccount credAccBal,CurrentAccount curAccBal)
+        {
+            if (this.AccountNumber.Substring(0, AccountNumber.Length-3) == credAccBal.AccountNumber.Substring(0, credAccBal.AccountNumber.Length-4) 
+                && (this.AccountNumber.Substring(0, AccountNumber.Length - 3) == curAccBal.AccountNumber.Substring(0, curAccBal.AccountNumber.Length - 2)))
+            {
+                for (int i = 0; i < numberOfMonths; i++)
+                {
+                this.Balance = credAccBal.Balance * (decimal)_intRate / 12;
+                    credAccBal.Balance -= _mPay;
+                    curAccBal.Balance -= _mPay;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Wrong CreditAccount! This owener doesn't have Credit");
+            }
         }
     }
 }

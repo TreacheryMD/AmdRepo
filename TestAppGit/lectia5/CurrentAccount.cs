@@ -8,7 +8,7 @@ namespace lectia5
 {
     class CurrentAccount : BankAccount
     {
-        public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber)
+        public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber+"CR")
         {
         }
 

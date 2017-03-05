@@ -8,9 +8,11 @@ namespace lectia5
 {
     class DepositAccount : BankAccount
     {
-        public DepositAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumb) : base(accOwner.Owner, balance, accNumb.AccountNumber+"DEP")
+        double _depIntRate;
+        public DepositAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumb,double depositInterestRate) : 
+            base(accOwner.Owner, balance, accNumb.AccountNumber.Substring(0, accNumb.AccountNumber.Length - 2) + "DEP")
         {
-
+            _depIntRate = depositInterestRate;
         }
 
         public override void ShowAccountInfo()
