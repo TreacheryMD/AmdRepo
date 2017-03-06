@@ -28,6 +28,9 @@ namespace lectia5
             draganelAccount.ShowAccountInfo();
             draganelCredit.ShowAccountInfo();
 
+            DepositAccount draganelDepAcc = new DepositAccount(draganelAccount, 100, draganelAccount, 1.5d);
+            draganelDepAcc.CalcDepAftMonths(5);
+
             Console.ReadKey();
 
 
