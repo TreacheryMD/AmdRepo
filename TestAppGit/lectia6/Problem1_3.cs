@@ -38,11 +38,13 @@ namespace lectia6
                 }
             }
 
+            Console.WriteLine("*****Problema1.3*****");
             foreach (var item in result.ToArray())
             {
                 Console.Write($"{item} ");
             }
-            
+            Console.WriteLine("\n*********************");
+            Console.ReadLine();
         }
     }
 }
