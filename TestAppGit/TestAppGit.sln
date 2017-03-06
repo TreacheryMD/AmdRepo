@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lectia5", "lectia5\lectia5.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lect3Test", "lect3Test\lect3Test.csproj", "{3021B3E1-96CF-4C31-A3B1-E39AD122CB88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lectia6", "lectia6\lectia6.csproj", "{FDA26D83-3B7F-45F0-B3EE-D8E28F9F2234}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3021B3E1-96CF-4C31-A3B1-E39AD122CB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3021B3E1-96CF-4C31-A3B1-E39AD122CB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3021B3E1-96CF-4C31-A3B1-E39AD122CB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA26D83-3B7F-45F0-B3EE-D8E28F9F2234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA26D83-3B7F-45F0-B3EE-D8E28F9F2234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA26D83-3B7F-45F0-B3EE-D8E28F9F2234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA26D83-3B7F-45F0-B3EE-D8E28F9F2234}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
