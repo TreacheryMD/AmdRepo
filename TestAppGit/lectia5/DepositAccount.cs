@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class DepositAccount : BankAccount
+    class DepositAccount : BankAccount,ITransferable
     {
         double _depIntRate;
-        public DepositAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumb, double depositInterestRate) :
-            base(accOwner.Owner, balance, accNumb.AccountNumber.Substring(0, accNumb.AccountNumber.Length - 2) + "DEP")
+        public DepositAccount(CurrentAccount curentAcc, decimal balance, double depositInterestRate) :
+            base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length - 2) + "DEP")
         {
             _depIntRate = depositInterestRate;
         }
@@ -25,9 +25,14 @@ namespace lectia5
         {
             for (int i = 0; i < numbOfMonths; i++)
             {
-                this.Balance = this.Balance + (decimal)this._depIntRate * this.Balance / 12;
+                this.Balance += this.Balance * (decimal)this._depIntRate /100;
             }
             
+        }
+
+        public void Transfer(BankAccount targetAcc, decimal ammount)
+        {
+            throw new NotImplementedException();
         }
     }
 }

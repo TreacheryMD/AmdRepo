@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class CurrentAccount : BankAccount
+    class CurrentAccount : BankAccount,ITransferable
     {
         public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber+"CR")
         {
@@ -25,6 +25,20 @@ namespace lectia5
         public void CashOut(decimal cashOutAmmount)
         {
             this.Balance -= cashOutAmmount;
+        }
+
+        public void Transfer(BankAccount targetAcc,decimal ammount)
+        {
+            if (targetAcc is DepositAccount)
+            {
+                this.Balance -= ammount;
+                targetAcc.Balance += ammount;
+            }
+            else
+            {
+                this.Balance -= ammount;
+                targetAcc.Balance -= ammount;
+            }
         }
 
     }

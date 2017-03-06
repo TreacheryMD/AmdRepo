@@ -48,6 +48,7 @@
     <Compile Include="CurrentAccount.cs" />
     <Compile Include="DepositAccount.cs" />
     <Compile Include="InterestAccount.cs" />
+    <Compile Include="ITransferable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

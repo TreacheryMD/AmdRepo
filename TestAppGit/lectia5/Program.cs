@@ -10,26 +10,32 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
-            CurrentAccount draganelAccount = new CurrentAccount("Dragnael", 5000, "12213123");
-            draganelAccount.ShowAccountInfo();
+            CurrentAccount draganelCRacc = new CurrentAccount("Dragnael", 5000, "12213123");
+            draganelCRacc.ShowAccountInfo();
 
-            draganelAccount.CashIn(500000);
-            draganelAccount.CashOut(1000);
+            draganelCRacc.CashIn(500000);
+            draganelCRacc.CashOut(1000);
 
-            draganelAccount.ShowAccountInfo();
+            draganelCRacc.ShowAccountInfo();
 
-            CreditAccount draganelCredit = new CreditAccount(draganelAccount, 200000, draganelAccount);
+            CreditAccount draganelCredit = new CreditAccount(draganelCRacc, 200000);
             draganelCredit.ShowAccountInfo();
 
-            InterestAccount draganelInterest = new InterestAccount(draganelAccount, 0, draganelAccount, 13,5000);
-            draganelInterest.CalculateRateAfterMonths(7, draganelCredit, draganelAccount);
+            InterestAccount draganelInterest = new InterestAccount(draganelCRacc, 0, 13,5000);
+            draganelInterest.CalculateRateAfterMonths(7, draganelCredit, draganelCRacc);
             draganelInterest.ShowAccountInfo();
 
-            draganelAccount.ShowAccountInfo();
+            draganelCRacc.ShowAccountInfo();
             draganelCredit.ShowAccountInfo();
 
-            DepositAccount draganelDepAcc = new DepositAccount(draganelAccount, 100, draganelAccount, 1.5d);
-            draganelDepAcc.CalcDepAftMonths(5);
+            DepositAccount draganelDepAcc = new DepositAccount(draganelCRacc, 10000, 10);
+            draganelDepAcc.CalcDepAftMonths(10);
+
+            draganelDepAcc.ShowAccountInfo();
+
+            draganelCRacc.Transfer(draganelDepAcc, 3333);
+            draganelDepAcc.ShowAccountInfo();
+            draganelCRacc.ShowAccountInfo();
 
             Console.ReadKey();
 

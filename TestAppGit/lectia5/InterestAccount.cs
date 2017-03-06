@@ -10,8 +10,8 @@ namespace lectia5
     {
         double _intRate;
         decimal _mPay;
-        public InterestAccount(CurrentAccount accOwner, decimal balance, CurrentAccount accNumber,double interestRate, decimal monthlyPaymant) : 
-            base(accOwner.Owner, balance, accNumber.AccountNumber.Substring(0, accNumber.AccountNumber.Length-2) +"INT")
+        public InterestAccount(CurrentAccount curentAcc, decimal balance,double interestRate, decimal monthlyPaymant) : 
+            base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length-2) +"INT")
         {
             _intRate = interestRate;
             _mPay = monthlyPaymant;
