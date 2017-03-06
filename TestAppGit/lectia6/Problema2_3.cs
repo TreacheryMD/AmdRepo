@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace lectia6
 {
-    class Problema2_3
+    class Problema2_3 : Problem
     {
+       //Delete all lines, containing only even number elements
 
         public int[,] TwoDimArr { get; set; }
 

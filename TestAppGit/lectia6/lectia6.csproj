@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Problem.cs" />
     <Compile Include="Problem1_3.cs" />
     <Compile Include="Problema2_3.cs" />
     <Compile Include="Problema3_3.cs" />
+    <Compile Include="Problema4_3.cs" />
+    <Compile Include="Problema5_3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace lectia6
 {
-    class Problema3_3
+    class Problema3_3 : Problem
     {
+        //find, which of two indicated characters is occurred in the string more often; 
         string _myStr;
         char _firstChar;
         char _secondChar;

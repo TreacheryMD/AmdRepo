@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace lectia6
 {
-    class Problem1_3
+    class Problem1_3 : Problem
     {
+        //Delete from array all repeating elements except of their first occurrence. 
         public static int?[] Array { get; set; }
         public Problem1_3(int?[] array)
         {
