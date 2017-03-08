@@ -6,301 +6,121 @@ using System.Threading.Tasks;
 
 namespace lectiea7_8
 {
-    class Angle
+    class Angle : ICloneable
     {
-        #region constructors
-        /// <summary>
-        /// Blank constructor. Remember to manually set some data to the properties!
-        /// </summary>
+        #region property
+        public int Degrees { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
+        public bool IsNegative { get; set; }
+
+        #endregion
+
+        #region Constructors
+        //need manually to set some data to the properties
         public Angle()
         {
 
         }
-        /// <summary>
-        /// Construct an angle with either a degree or a radian value
-        /// </summary>
-        /// <param name="input">Angle value</param>
-        /// <param name="angleType">Specify whether input is in radians or degrees</param>
-        public Angle(double input, Type angleType = Angle.Type.Radians)
+        public Angle(int degrees, int minutes,int seconds)
         {
-            if (angleType == Type.Degrees)
-            {
-                Degrees = input;
-            }
-            else if (angleType == Type.Radians)
-            {
-                Radians = input;
-            }
+            this.Degrees = degrees;
+            this.Minutes = minutes;
+            this.Seconds = seconds;
         }
-        /// <summary>
-        /// Quickly construct a common angle
-        /// </summary>
-        /// <param name="preset">Choose angle</param>
-        public Angle(Angle.Preset preset)
+        #endregion 
+
+        #region Methods
+        // fromDouble
+        public static Angle MakeFromDouble(double num)
         {
-            if (preset == Angle.Preset.Deg0) { Degrees = 0; }
-            else if (preset == Preset.Deg180) { Degrees = 180; }
-            else if (preset == Preset.Deg360) { Degrees = 360; }
-            else if (preset == Preset.Rad2Pi) { Radians = twoPi; }
-            else if (preset == Preset.RadPi) { Radians = Pi; }
-            else Radians = 0;
-        }
-        #endregion constructors
+            int degree = (int)num;
+            double preM = Convert.ToDouble(num - degree) * 60;
+          
+            var minutes = (int)preM;
+            var s = num - degree;
+            var s2 = (double)minutes / 60;
+            var seconds = Math.Round((Math.Abs(s) - s2) * 3600);
 
-
-        #region properties
-        private double degrees;
-
-        /// <summary>
-        /// Angle in degrees
-        /// </summary>
-        public double Degrees
-        {
-            get { return degrees; }
-            set
-            {
-                degrees = value;
-                radians = ToRadians(value);
-                updateFixedangles();
-            }
+            return new Angle(degree, minutes, (int)seconds);
         }
 
-        private double radians;
-        /// <summary>
-        /// Angle in radians between -pi to pi
-        /// </summary>
-        public double Radians
+        public static double ConvertDegreeAngleToDouble(Angle a)
         {
-            get { return radians; }
-            set
-            {
-                radians = value;
-                degrees = ToDegrees(value);
-                updateFixedangles();
-            }
+            double degrees = a.Degrees;
+            double minutes = a.Minutes;
+            double seconds = a.Seconds;
+            var result = degrees + minutes / 60 + seconds / 3600;
+            return result;
         }
 
-        private double radians2pi;
-        /// <summary>
-        /// Angle in radians, modified to fall between 0 and 2pi. Read-only.
-        /// </summary>
-        public double Radians2pi
+        public object Clone()
         {
-            get { return radians2pi; }
+            return this.MemberwiseClone();
         }
+        #endregion
 
-        private double degrees360;
-        /// <summary>
-        /// Value in degrees between 0 and 360. Read-only. 
-        /// </summary>
-        public double Degrees360
-        {
-            get { return degrees360; }
-        }
-
-
-        #endregion properties
-
-
-        #region enums
-        public enum Type { Radians, Degrees }
-        /// <summary>
-        /// Presets for quick setup of Angle constructor
-        /// </summary>
-        public enum Preset { Deg0, Deg180, Deg360, RadPi, Rad2Pi }
-        #endregion enums
-
-
-        #region constants
-        private const double twoPi = 2 * Math.PI;
-        private const double Pi = Math.PI;
-        #endregion constants
-
-
-        #region methods
-        /// <summary>
-        /// Convert an input angle of degrees to radians. Does not affect any properties in this class - set properties instead.
-        /// </summary>
-        /// <param name="val">Input in degrees</param>
-        /// <returns>Value in radians</returns>
-        public static double ToRadians(double val)
-        {
-            return val / (180 / Pi);
-        }
-
-        /// <summary>
-        /// Convert an input angle of radians into degrees. Does not affect any properties in this class - set properties instead.
-        /// </summary>
-        /// <param name="val">Input in radians</param>
-        /// <returns>Value in degrees</returns>
-        public static double ToDegrees(double val)
-        {
-            return val * (180 / Pi);
-        }
-
-        /// <summary>
-        /// Fixes an angle to between 0 and 360 or 2pi.
-        /// </summary>
-        /// <param name="val">Input angle</param>
-        /// <param name="type">Specify whether the input angle is radians or degrees</param>
-        /// <returns>The angle, fixed to between 0 and 360 or 0 and 2pi</returns>
-        public static double FixAngle(double val, Type type)
-        {
-            if (type == Type.Radians)
-            {
-                //-2pi to 0 to between 0 and 2pi
-                if (val < 0)
-                {
-                    return 2 * Math.PI - (Math.Abs(val) % (2 * Math.PI));
-                }
-                //over 2pi to between 0 and 2pi
-                else if (val > 2 * Math.PI)
-                {
-                    return val % (2 * Math.PI);
-                }
-                //else it's fine, return it back
-                else
-                {
-                    return val;
-                }
-            }
-            else if (type == Type.Degrees)
-            {
-                //-360 to 0 to between 0 and 360
-                if (val < 0)
-                {
-                    return 360 - (Math.Abs(val) % 360);
-                }
-                //over 360 to between 0 and 360
-                else if (val > 360)
-                {
-                    return val % 360;
-                }
-                //else it's fine, return it back
-                else
-                {
-                    return val;
-                }
-            }
-            else return -1; //something's gone wrong
-        }
-
-        /// <summary>
-        /// Looks at the radians and degrees properties, and updates their respective fixed angles
-        /// </summary>
-        private void updateFixedangles()
-        {
-            radians2pi = FixAngle(radians, Type.Radians);
-            degrees360 = FixAngle(degrees, Type.Degrees);
-        }
-
-        /// <summary>
-        /// Copies Radians2pi to Radians, and Degrees360 to Degrees. (I.e. fixes radians to 0<2pi and degrees to 0<360)
-        /// </summary>
-        public void FixAngles()
-        {
-            updateFixedangles();
-            Radians = Radians2pi; //this also calls Degrees
-        }
-
-        #endregion methods
-
-
-        #region operators
-
-        /// <summary>
-        /// Returns the sum of two angles
-        /// </summary>
-        /// <param name="a1">First angle</param>
-        /// <param name="a2">Second angle</param>
-        /// <returns>An angle constructed from the radian sum of the input angles</returns>
+        #region Operators
         public static Angle operator +(Angle a1, Angle a2)
         {
-            return new Angle(a1.Radians + a2.Radians, Type.Radians);
+            double angle = ConvertDegreeAngleToDouble(a1) + ConvertDegreeAngleToDouble(a2);
+
+            while (angle < -180.0) angle += 360.0;
+            while (angle > 180.0) angle -= 360.0;
+
+            return MakeFromDouble(angle);
         }
 
-        /// <summary>
-        /// Returns the difference between two angles
-        /// </summary>
-        /// <param name="a1">First angle</param>
-        /// <param name="a2">Second angle</param>
-        /// <returns>An angle constructed from the value that is the first angle minus the second angle</returns>
         public static Angle operator -(Angle a1, Angle a2)
         {
-            return new Angle(a1.Radians - a2.Radians, Type.Radians);
+            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2));
         }
 
-        /// <summary>
-        /// Returns the exact division between two angles (i.e. how many times does the second angle fit into the first)
-        /// </summary>
-        /// <param name="a1">Numerator angle</param>
-        /// <param name="a2">Dedominator angle</param>
-        /// <returns>A new angle constructed from the value that is the first angle in radians divided by the second angle in radians</returns>
         public static Angle operator /(Angle a1, Angle a2)
         {
-            return new Angle(a1.Radians / a2.Radians, Type.Radians);
+            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) / ConvertDegreeAngleToDouble(a2));
         }
 
-        public static Angle operator *(Angle a, double d)
+        public static Angle operator *(Angle a1, Angle a2)
         {
-            return new Angle(a.Radians * d, Type.Radians);
-        }
-
-        public static Angle operator *(double d, Angle a)
-        {
-            return new Angle(a.Radians * d, Type.Radians);
-        }
-
-        public static Angle operator /(Angle a, double d)
-        {
-            return new Angle(a.Radians / d, Type.Radians);
+            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) * ConvertDegreeAngleToDouble(a2));
         }
 
         public static bool operator <(Angle a1, Angle a2)
         {
-            if (a1.Radians < a2.Radians) return true;
+            if (ConvertDegreeAngleToDouble(a1) < ConvertDegreeAngleToDouble(a2)) return true;
             else return false;
         }
-
         public static bool operator >(Angle a1, Angle a2)
         {
-            if (a1.Radians > a2.Radians) return true;
+            if (ConvertDegreeAngleToDouble(a1) > ConvertDegreeAngleToDouble(a2)) return true;
             else return false;
         }
 
         public static bool operator <=(Angle a1, Angle a2)
         {
-            if (a1.Radians <= a2.Radians) return true;
+            if (ConvertDegreeAngleToDouble(a1) <= ConvertDegreeAngleToDouble(a2)) return true;
             else return false;
         }
-
         public static bool operator >=(Angle a1, Angle a2)
         {
-            if (a1.Radians >= a2.Radians) return true;
+            if (ConvertDegreeAngleToDouble(a1) >= ConvertDegreeAngleToDouble(a2)) return true;
             else return false;
-        }
-
-        public static implicit operator double(Angle angleobj)
-        {
-            return angleobj.Radians;
         }
 
         public static implicit operator string(Angle a)
         {
             return a.ToString();
         }
+        #endregion
 
-        #endregion operators
-
-
-        #region overrides
-
+        #region Overrides
         public override string ToString()
         {
-            return Radians.ToString() + " radians";
+            var degrees = this.IsNegative ? -this.Degrees : this.Degrees;
+            return string.Format("{0}° {1:00}' {2:00}\"",degrees,this.Minutes,this.Seconds);
         }
 
-        #endregion overrides
+        #endregion
     }
 }
-
