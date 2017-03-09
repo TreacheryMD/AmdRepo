@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class CurrentAccount : BankAccount,ITransferable
+    class CurrentAccount : BankAccount
     {
         public bool Restricted { get; set; }
 
@@ -31,21 +31,19 @@ namespace lectia5
         }
         public void CashOut(decimal cashOutAmmount)
         {
-            if (Restricted == false)
-            {
+            if (Restricted ) throw new AccountIsRestrictedException();
+
                 if (cashOutAmmount <= 0)
                 {
                     throw new Exception("You can't Cash Out with negative ammount");
                 }
-                this.Balance -= cashOutAmmount;
-            }
-            else throw new AccountIsRestrictedException();
+            this.Balance -= cashOutAmmount;    
         }
 
         public void Transfer(BankAccount targetAcc,decimal ammount)
         {
-            if (Restricted == false)
-            {
+            if (Restricted) throw new AccountIsRestrictedException();
+
                 if (targetAcc is DepositAccount)
                 {
                     this.Balance -= ammount;
@@ -55,13 +53,7 @@ namespace lectia5
                 {
                     this.Balance -= ammount;
                     targetAcc.Balance -= ammount;
-                }
-            }
-            else
-            {
-                throw new AccountIsRestrictedException();
-            }
-           
+                }  
         }
 
     }

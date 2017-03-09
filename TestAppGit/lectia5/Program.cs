@@ -13,12 +13,12 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
-            CurrentAccount draganelCRacc = new CurrentAccount("Draganel", 5000, "12213123");
+            var draganelCRacc = new CurrentAccount("Draganel", 5000, "12213123");
             draganelCRacc.ShowAccountInfo();
             try
             {
                 draganelCRacc.CashIn(500000);
-                draganelCRacc.CashOut(-50);
+                draganelCRacc.CashOut(5000);
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace lectia5
 
 
             //custom example
-            draganelCRacc.Restricted = true;
+            //draganelCRacc.Restricted = true;
 #if !LIGHT
             try
             {
@@ -44,24 +44,24 @@ namespace lectia5
                 Console.WriteLine(ex.Message);
             }
 #endif
-            DebugClassTesting.Run();
+            //DebugClassTesting.Run();
 
             //draganelCRacc.ShowAccountInfo();
 
             //CreditAccount draganelCredit = new CreditAccount(draganelCRacc, 200000);
             //draganelCredit.ShowAccountInfo();
 
-            //InterestAccount draganelInterest = new InterestAccount(draganelCRacc, 0, 13,5000);
+            //InterestAccount draganelInterest = new InterestAccount(draganelCRacc, 0, 13, 5000);
             //draganelInterest.CalculateRateAfterMonths(7, draganelCredit, draganelCRacc);
             //draganelInterest.ShowAccountInfo();
 
             //draganelCRacc.ShowAccountInfo();
             //draganelCredit.ShowAccountInfo();
 
-            //DepositAccount draganelDepAcc = new DepositAccount(draganelCRacc, 10000, 10);
-            //draganelDepAcc.CalcDepAftMonths(10);
+            DepositAccount draganelDepAcc = new DepositAccount(draganelCRacc, 10000, 10);
+            draganelDepAcc.CalcDepAftMonths(1);
 
-            //draganelDepAcc.ShowAccountInfo();
+            draganelDepAcc.ShowAccountInfo();
 
             //draganelCRacc.Transfer(draganelDepAcc, 3333);
             //draganelDepAcc.ShowAccountInfo();

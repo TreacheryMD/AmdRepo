@@ -66,12 +66,11 @@ namespace lectia5
 
             #region Assert 
             //interrupts normal operation of the program but does not terminate the application
-            //int value = -1;
+            //var value = -1;
             // If value is ever -1, dialog will be shown.
             //Debug.Assert(value != -1, "Value must never be -1.");
 
             #endregion
-
         }
     }
 }

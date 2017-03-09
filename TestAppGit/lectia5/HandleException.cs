@@ -12,11 +12,9 @@ namespace lectia5
 
         public void test1()
         {
-
-            StreamReader reader = null;
             try
             {
-
+                StreamReader reader = null;
 
                 try
                 {

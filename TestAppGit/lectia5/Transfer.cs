@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    interface ITransferable
+   static class Transfer
     {
-        void Transfer(BankAccount obj,decimal ammount);
+        public static void TransferOp(BankAccount bankAccount, decimal ammount)
+        {
+            
+        }
     }
 }

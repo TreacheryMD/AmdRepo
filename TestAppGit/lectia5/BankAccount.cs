@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    abstract class BankAccount
+     abstract class BankAccount
     {
         string _owner;
-        string _accountNumber;
+        string _accountNumber; 
         decimal _balance;
         public virtual void ShowAccountInfo()
         {
