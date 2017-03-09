@@ -17,6 +17,12 @@ namespace lectia5
         }
         protected BankAccount(string owner, decimal balance, string accountNumber)
         {
+            while (string.IsNullOrWhiteSpace(owner))
+            {
+                Console.WriteLine("Owner format is incorect,enter new Owner:");
+                this.Owner = owner = Console.ReadLine();
+            }
+
             this.AccountNumber = accountNumber;
             this.Balance = balance;
             this.Owner = owner;

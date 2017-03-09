@@ -8,8 +8,11 @@ namespace lectia5
 {
     class CurrentAccount : BankAccount,ITransferable
     {
-        public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber+"CR")
+        public bool Restricted { get; set; }
+
+        public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber+"CR") 
         {
+
         }
 
         public override void ShowAccountInfo()
@@ -20,25 +23,45 @@ namespace lectia5
 
         public void CashIn(decimal cashInAmmout)
         {
+            if (cashInAmmout<=0)
+            {
+                throw new Exception("You can't Cash In nothing to your current account");
+            }
             this.Balance += cashInAmmout;
         }
         public void CashOut(decimal cashOutAmmount)
         {
-            this.Balance -= cashOutAmmount;
+            if (Restricted == false)
+            {
+                if (cashOutAmmount <= 0)
+                {
+                    throw new Exception("You can't Cash Out with negative ammount");
+                }
+                this.Balance -= cashOutAmmount;
+            }
+            else throw new AccountIsRestrictedException();
         }
 
         public void Transfer(BankAccount targetAcc,decimal ammount)
         {
-            if (targetAcc is DepositAccount)
+            if (Restricted == false)
             {
-                this.Balance -= ammount;
-                targetAcc.Balance += ammount;
+                if (targetAcc is DepositAccount)
+                {
+                    this.Balance -= ammount;
+                    targetAcc.Balance += ammount;
+                }
+                else
+                {
+                    this.Balance -= ammount;
+                    targetAcc.Balance -= ammount;
+                }
             }
             else
             {
-                this.Balance -= ammount;
-                targetAcc.Balance -= ammount;
+                throw new AccountIsRestrictedException();
             }
+           
         }
 
     }
