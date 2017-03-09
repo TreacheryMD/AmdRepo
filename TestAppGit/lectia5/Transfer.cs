@@ -6,11 +6,26 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-   static class Transfer
+    class TransferMoney
     {
-        public static void TransferOp(BankAccount bankAccount, decimal ammount)
+        public static void Transfer(CurrentAccount fromCurrentAcc,CreditAccount toCreditAcc, decimal ammount)
         {
-            
+            if (fromCurrentAcc.Restricted) throw new AccountIsRestrictedException();
+            fromCurrentAcc.Balance -= ammount;
+            toCreditAcc.Balance -= ammount;   
+        }
+        public static void Transfer(CurrentAccount fromCurrentAcc, DepositAccount toDepositAcc, decimal ammount)
+        {
+            if (fromCurrentAcc.Restricted) throw new AccountIsRestrictedException();
+            fromCurrentAcc.Balance -= ammount;
+            toDepositAcc.Balance += ammount;
+        }
+        public static void Transfer(CurrentAccount fromCurrentAcc, InterestAccount toInterestAcc, decimal ammount)
+        {
+            if (fromCurrentAcc.Restricted) throw new AccountIsRestrictedException();
+            fromCurrentAcc.Balance -= ammount;
+            toInterestAcc.Balance += ammount;
         }
     }
+
 }

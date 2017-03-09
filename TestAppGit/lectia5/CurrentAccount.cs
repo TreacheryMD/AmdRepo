@@ -40,21 +40,17 @@ namespace lectia5
             this.Balance -= cashOutAmmount;    
         }
 
-        public void Transfer(BankAccount targetAcc,decimal ammount)
+        public void Transfer(DepositAccount accTarget,decimal amount)
         {
-            if (Restricted) throw new AccountIsRestrictedException();
-
-                if (targetAcc is DepositAccount)
-                {
-                    this.Balance -= ammount;
-                    targetAcc.Balance += ammount;
-                }
-                else
-                {
-                    this.Balance -= ammount;
-                    targetAcc.Balance -= ammount;
-                }  
+            TransferMoney.Transfer(this, accTarget, amount);
         }
-
+        public void Transfer(CreditAccount accTarget, decimal amount)
+        {
+            TransferMoney.Transfer(this, accTarget, amount);
+        }
+        public void Transfer(InterestAccount accTarget, decimal amount)
+        {
+            TransferMoney.Transfer(this, accTarget, amount);
+        }
     }
 }

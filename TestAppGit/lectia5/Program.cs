@@ -13,12 +13,12 @@ namespace lectia5
     {
         static void Main(string[] args)
         {
-            var draganelCRacc = new CurrentAccount("Draganel", 5000, "12213123");
+            var draganelCRacc = new CurrentAccount("Draganel", 0, "12213123");
             draganelCRacc.ShowAccountInfo();
             try
             {
                 draganelCRacc.CashIn(500000);
-                draganelCRacc.CashOut(5000);
+               // draganelCRacc.CashOut(5000);
             }
             catch (Exception ex)
             {
@@ -26,7 +26,7 @@ namespace lectia5
                 //Console.WriteLine(ex.StackTrace);
             }
 
-
+           
 
             //custom example
             //draganelCRacc.Restricted = true;
@@ -59,9 +59,10 @@ namespace lectia5
             //draganelCredit.ShowAccountInfo();
 
             DepositAccount draganelDepAcc = new DepositAccount(draganelCRacc, 10000, 10);
-            draganelDepAcc.CalcDepAftMonths(1);
-
+            draganelDepAcc.CalcDepAftMonths(0);
+            draganelCRacc.Transfer(draganelDepAcc, 200000);
             draganelDepAcc.ShowAccountInfo();
+            draganelCRacc.ShowAccountInfo();
 
             //draganelCRacc.Transfer(draganelDepAcc, 3333);
             //draganelDepAcc.ShowAccountInfo();

@@ -27,12 +27,7 @@ namespace lectia5
             {
                 this.Balance += (this.Balance * (decimal)this._depIntRate /100)/12;
             }
-            
         }
-
-        public void Transfer(BankAccount targetAcc, decimal ammount)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
