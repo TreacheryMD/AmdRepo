@@ -66,15 +66,9 @@ namespace lectia5
 
             #region Assert 
             //interrupts normal operation of the program but does not terminate the application
-
-            int value = -1;
-            // A.
-            // If value is ever -1, then a dialog will be shown.
-            Debug.Assert(value != -1, "Value must never be -1.");
-
-            // B.
-            // If you want to only write a line, use WriteLineIf.
-            Debug.WriteLineIf(value == -1, "Value is -1.");
+            //int value = -1;
+            // If value is ever -1, dialog will be shown.
+            //Debug.Assert(value != -1, "Value must never be -1.");
 
             #endregion
 
