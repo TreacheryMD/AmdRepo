@@ -10,8 +10,8 @@ namespace lectiea7_8
     {
         static void Main(string[] args)
         {
-            var a = new AngleT(0, -60000, 0);
-            var b = new AngleT(0, 0, 0);
+            var a = new AngleT(0, 0, -10);
+            var b = new AngleT(359, 59, 50);
 
             //Console.WriteLine(AngleT.MakeFromDouble(30.2638888888889));
             //Console.WriteLine(AngleT.MakeFromDouble(4.4625));
