@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2DEA1877-CE23-47A3-85C6-AF324EA17267}</ProjectGuid>
+    <ProjectGuid>{25BEDA26-3FD8-43AB-8917-7CEBED7AC88D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>lectia5</RootNamespace>
-    <AssemblyName>lectia5</AssemblyName>
+    <RootNamespace>lectia9_exceptions</RootNamespace>
+    <AssemblyName>lectia9_exceptions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,16 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Lightweight|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Lightweight\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;LIGHT</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,19 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountIsRestrictedException.cs" />
-    <Compile Include="Bank.cs" />
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="Branch.cs" />
-    <Compile Include="CreditAccount.cs" />
-    <Compile Include="CurrentAccount.cs" />
-    <Compile Include="DepositAccount.cs" />
-    <Compile Include="InterestAccount.cs" />
-    <Compile Include="ITransferRecive.cs" />
+    <Compile Include="DebugClassTesting.cs" />
+    <Compile Include="HandleException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subsidiary.cs" />
-    <Compile Include="SubsidiaryEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class DepositAccount : BankAccount
+    class DepositAccount : BankAccount,ITransferRecive
     {
         double _depIntRate;
         public DepositAccount(CurrentAccount curentAcc, decimal balance, double depositInterestRate) :
@@ -28,6 +28,9 @@ namespace lectia5
                 this.Balance += (this.Balance * (decimal)this._depIntRate /100)/12;
             }
         }
-       
+        public void Recive(decimal ammount)
+        { 
+            this.Balance += ammount;
+        }
     }
 }

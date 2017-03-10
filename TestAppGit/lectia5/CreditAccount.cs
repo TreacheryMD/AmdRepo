@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class CreditAccount : BankAccount
+    class CreditAccount : BankAccount, ITransferRecive
     {
         public CreditAccount(CurrentAccount curentAcc, decimal newCreditAmmout) :
             base(curentAcc.Owner, newCreditAmmout, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length - 2) + "CRED")
@@ -14,10 +14,17 @@ namespace lectia5
 
         }
 
+        public void Recive(decimal ammount)
+        {
+            this.Balance -= ammount;
+        }
+
         public override void ShowAccountInfo()
         {
             Console.WriteLine("Credit account:");
             base.ShowAccountInfo();
         }
+
+
     }
 }

@@ -11,66 +11,88 @@ namespace lectia5
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
-            var draganelCRacc = new CurrentAccount("Draganel", 0, "12213123");
-            draganelCRacc.ShowAccountInfo();
-            try
+
+            #region BankAccountsMoovments
+            //var JohnCrAcc = new CurrentAccount("Draganel", 0, "12213123");
+            //var JohnDpAcc = new DepositAccount(JohnCrAcc, 1000, 10);
+            //var JohnCredAcc = new CreditAccount(JohnCrAcc, 100000);
+            //var JohnInterest = new InterestAccount(JohnCrAcc,3000,5,500);
+
+            //try{JohnCrAcc.CashIn(500000);}
+            //catch (Exception ex){ Console.WriteLine(ex.Message);}
+
+            //Console.WriteLine("Initial balance:");
+            //JohnCrAcc.ShowAccountInfo();
+
+            //JohnCrAcc.Transfer(JohnDpAcc, 100);
+
+            //try
+            //{
+            //    Console.WriteLine("Transfer to deposit:");
+            //    JohnCrAcc.ShowAccountInfo();
+            //    JohnDpAcc.ShowAccountInfo();
+
+            //    Console.WriteLine("Transfer to credit:");
+            //    JohnCrAcc.Transfer(JohnCredAcc, 5555);
+            //    JohnCrAcc.ShowAccountInfo();
+            //    JohnCredAcc.ShowAccountInfo();
+            //}
+            //catch (AccountIsRestrictedException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+            //#region testing
+            ////#if !LIGHT
+            ////            //custom example
+            ////            //draganelCRacc.Restricted = true;
+            ////            try
+            ////            {
+            ////                draganelCRacc.CashOut(500000);
+            ////            }
+            ////            catch (AccountIsRestrictedException)
+            ////            {
+            ////                Console.WriteLine("This account is restricted");
+            ////            }
+            ////            catch (Exception ex)
+            ////            {
+            ////                Console.WriteLine(ex.Message);
+            ////            }
+            ////#endif
+            //#endregion
+
+            //Console.ReadKey();
+            #endregion
+
+            Bank victoriaBank = new Bank("Victoria Bank S.A.", "31 august 1981 bl. 141", 3, Bank.Reg.Chisinau);
+            Subsidiary subCalarasi = new Subsidiary("VB Calarasi", "Cuza Voda 31/2", Bank.Reg.Calarasi, null);
+            Subsidiary subCahul = new Subsidiary("VB Cahul", "Alexandru cel Bun 2", Bank.Reg.Cahul, 10);
+
+            List<Bank> organisation = new List<Bank>();
+            organisation.Add(victoriaBank);
+            organisation.Add(subCalarasi);
+            organisation.Add(subCahul);
+
+            foreach (var part in organisation)
             {
-                draganelCRacc.CashIn(500000);
-               // draganelCRacc.CashOut(5000);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                //Console.WriteLine(ex.StackTrace);
+                part.ShowInfo();
             }
 
-           
+            SubsidiaryEqualityComparer comparer = new SubsidiaryEqualityComparer();
+            Console.WriteLine(comparer.Equals(subCalarasi, subCahul));
+            Console.WriteLine(comparer.GetHashCode(subCalarasi));
 
-            //custom example
-            //draganelCRacc.Restricted = true;
-#if !LIGHT
-            try
-            {
-                draganelCRacc.CashOut(500000);
-            }
-            catch (AccountIsRestrictedException)
-            {
-                Console.WriteLine("This account is restricted");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-#endif
-            //DebugClassTesting.Run();
+            Console.ReadLine();
 
-            //draganelCRacc.ShowAccountInfo();
-
-            //CreditAccount draganelCredit = new CreditAccount(draganelCRacc, 200000);
-            //draganelCredit.ShowAccountInfo();
-
-            //InterestAccount draganelInterest = new InterestAccount(draganelCRacc, 0, 13, 5000);
-            //draganelInterest.CalculateRateAfterMonths(7, draganelCredit, draganelCRacc);
-            //draganelInterest.ShowAccountInfo();
-
-            //draganelCRacc.ShowAccountInfo();
-            //draganelCredit.ShowAccountInfo();
-
-            DepositAccount draganelDepAcc = new DepositAccount(draganelCRacc, 10000, 10);
-            draganelDepAcc.CalcDepAftMonths(0);
-            draganelCRacc.Transfer(draganelDepAcc, 200000);
-            draganelDepAcc.ShowAccountInfo();
-            draganelCRacc.ShowAccountInfo();
-
-            //draganelCRacc.Transfer(draganelDepAcc, 3333);
-            //draganelDepAcc.ShowAccountInfo();
-            //draganelCRacc.ShowAccountInfo();
-
-            Console.ReadKey();
-
-
-        }
+        
+         }
     }
 }
+
+        
+   
+    
+

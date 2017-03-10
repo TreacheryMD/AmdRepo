@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-    class InterestAccount : BankAccount
+    class InterestAccount : BankAccount, ITransferRecive
     {
         double _intRate;
         decimal _mPay;
         public InterestAccount(CurrentAccount curentAcc, decimal balance,double interestRate, decimal monthlyPaymant) : 
-            base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length-2) +"INT")
+        base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length-2) +"INT")
         {
             _intRate = interestRate;
             _mPay = monthlyPaymant;
@@ -39,6 +39,11 @@ namespace lectia5
             {
                 Console.WriteLine("Wrong CreditAccount! This owener doesn't have Credit");
             }
+        }
+
+        public void Recive(decimal ammount)
+        {
+            this.Balance += ammount;
         }
     }
 }
