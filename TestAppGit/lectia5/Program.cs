@@ -15,57 +15,57 @@ namespace lectia5
         static void Main(string[] args)
         {
 
-            #region BankAccountsMoovments
-            //var JohnCrAcc = new CurrentAccount("Draganel", 0, "12213123");
-            //var JohnDpAcc = new DepositAccount(JohnCrAcc, 1000, 10);
-            //var JohnCredAcc = new CreditAccount(JohnCrAcc, 100000);
-            //var JohnInterest = new InterestAccount(JohnCrAcc,3000,5,500);
+           #region BankAccountsMoovments
+//            var JohnCrAcc = new CurrentAccount("Draganel", 0, "12213123");
+//            var JohnDpAcc = new DepositAccount(JohnCrAcc, 1000, 10);
+//            var JohnCredAcc = new CreditAccount(JohnCrAcc, 100000);
+//            var JohnInterest = new InterestAccount(JohnCrAcc, 3000, 5, 500);
 
-            //try{JohnCrAcc.CashIn(500000);}
-            //catch (Exception ex){ Console.WriteLine(ex.Message);}
+//            try { JohnCrAcc.CashIn(500000); }
+//            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
-            //Console.WriteLine("Initial balance:");
-            //JohnCrAcc.ShowAccountInfo();
+//            Console.WriteLine("Initial balance:");
+//            JohnCrAcc.ShowAccountInfo();
 
-            //JohnCrAcc.Transfer(JohnDpAcc, 100);
+//            JohnCrAcc.Transfer(JohnDpAcc, 100);
 
-            //try
-            //{
-            //    Console.WriteLine("Transfer to deposit:");
-            //    JohnCrAcc.ShowAccountInfo();
-            //    JohnDpAcc.ShowAccountInfo();
+//            try
+//            {
+//                Console.WriteLine("Transfer to deposit:");
+//                JohnCrAcc.ShowAccountInfo();
+//                JohnDpAcc.ShowAccountInfo();
 
-            //    Console.WriteLine("Transfer to credit:");
-            //    JohnCrAcc.Transfer(JohnCredAcc, 5555);
-            //    JohnCrAcc.ShowAccountInfo();
-            //    JohnCredAcc.ShowAccountInfo();
-            //}
-            //catch (AccountIsRestrictedException ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+//                Console.WriteLine("Transfer to credit:");
+//                JohnCrAcc.Transfer(JohnCredAcc, 5555);
+//                JohnCrAcc.ShowAccountInfo();
+//                JohnCredAcc.ShowAccountInfo();
+//            }
+//            catch (AccountIsRestrictedException ex)
+//            {
+//                Console.WriteLine(ex.Message);
+//            }
 
-            //#region testing
-            ////#if !LIGHT
-            ////            //custom example
-            ////            //draganelCRacc.Restricted = true;
-            ////            try
-            ////            {
-            ////                draganelCRacc.CashOut(500000);
-            ////            }
-            ////            catch (AccountIsRestrictedException)
-            ////            {
-            ////                Console.WriteLine("This account is restricted");
-            ////            }
-            ////            catch (Exception ex)
-            ////            {
-            ////                Console.WriteLine(ex.Message);
-            ////            }
-            ////#endif
-            //#endregion
+//            #region testing
+//#if !LIGHT
+//                        //custom example
+//                        //draganelCRacc.Restricted = true;
+//                        try
+//                        {
+//                            draganelCRacc.CashOut(500000);
+//                        }
+//                        catch (AccountIsRestrictedException)
+//                        {
+//                            Console.WriteLine("This account is restricted");
+//                        }
+//                        catch (Exception ex)
+//                        {
+//                            Console.WriteLine(ex.Message);
+//                        }
+//#endif
+//            #endregion
 
-            //Console.ReadKey();
-            #endregion
+//            Console.ReadKey();
+           #endregion
 
             Bank victoriaBank = new Bank("Victoria Bank S.A.", "31 august 1981 bl. 141", 3, Bank.Reg.Chisinau);
             Subsidiary subCalarasi = new Subsidiary("VB Calarasi", "Cuza Voda 31/2", Bank.Reg.Calarasi, null);

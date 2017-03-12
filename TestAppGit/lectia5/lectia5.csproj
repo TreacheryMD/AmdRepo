@@ -53,19 +53,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountIsRestrictedException.cs" />
-    <Compile Include="Bank.cs" />
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="Branch.cs" />
-    <Compile Include="CreditAccount.cs" />
-    <Compile Include="CurrentAccount.cs" />
-    <Compile Include="DepositAccount.cs" />
-    <Compile Include="InterestAccount.cs" />
-    <Compile Include="ITransferRecive.cs" />
+    <Compile Include="Helper\AccountIsRestrictedException.cs" />
+    <Compile Include="Company\Bank.cs" />
+    <Compile Include="Accounts\BankAccount.cs" />
+    <Compile Include="Company\Branch.cs" />
+    <Compile Include="Accounts\CreditAccount.cs" />
+    <Compile Include="Accounts\CurrentAccount.cs" />
+    <Compile Include="Accounts\DepositAccount.cs" />
+    <Compile Include="Accounts\InterestAccount.cs" />
+    <Compile Include="Interfaces\Irepository.cs" />
+    <Compile Include="Interfaces\ITransferRecive.cs" />
+    <Compile Include="Helper\Repository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subsidiary.cs" />
-    <Compile Include="SubsidiaryEqualityComparer.cs" />
+    <Compile Include="Company\Subsidiary.cs" />
+    <Compile Include="Helper\SubsidiaryEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
