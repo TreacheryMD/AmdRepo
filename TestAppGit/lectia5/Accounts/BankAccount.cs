@@ -8,61 +8,24 @@ namespace lectia5
 {
      abstract class BankAccount
     {
-        string _owner;
-        string _accountNumber; 
-        decimal _balance;
+        public string Client { get;  set; }
+        public string AccNum { get; set; }
+        public decimal Balance { get; set; }
         public virtual void ShowAccountInfo()
         {
-            Console.WriteLine($"\nAccount Owner: {_owner} \nAccountNumber:{_accountNumber}\nBalance:{_balance} \n****************************\n");
+            Console.WriteLine($"\nAccount Owner: {Client} \nAccountNumber:{AccNum}\nBalance:{Balance} \n****************************\n");
         }
         protected BankAccount(string owner, decimal balance, string accountNumber)
         {
             while (string.IsNullOrWhiteSpace(owner))
             {
                 Console.WriteLine("Owner format is incorect,enter new Owner:");
-                this.Owner = owner = Console.ReadLine();
+                this.Client = owner = Console.ReadLine();
             }
 
-            this.AccountNumber = accountNumber;
+            this.AccNum = accountNumber;
             this.Balance = balance;
-            this.Owner = owner;
+            this.Client = owner;
         }
-
-        public string Owner
-        {
-            get
-            {
-                return _owner;
-            }
-            set
-            {
-                _owner = value;
-            }
-        }
-
-        public  string AccountNumber
-        {
-            get
-            {
-                return _accountNumber;
-            }
-            set
-            {
-                _accountNumber = value;
-            }
-        }
-
-        public  decimal Balance
-        {
-            get
-            {
-                return _balance;
-            }
-            set
-            {
-                _balance = value;
-            }
-        }
-
     }
 }

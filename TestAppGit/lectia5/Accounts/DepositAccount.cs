@@ -10,7 +10,7 @@ namespace lectia5
     {
         double _depIntRate;
         public DepositAccount(CurrentAccount curentAcc, decimal balance, double depositInterestRate) :
-            base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length - 2) + "DEP")
+            base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "DEP")
         {
             _depIntRate = depositInterestRate;
         }

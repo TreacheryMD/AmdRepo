@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace lectia5.Helper
 {
-    class Repository : IRepository
+    class Repository : IRepository<BankAccount>
     {
-        public void Add()
+         List<BankAccount> storage = new List<BankAccount>();
+
+        public void Add(BankAccount acc)
         {
-            throw new NotImplementedException();
+            storage.Add(acc);
         }
 
         public void Find()

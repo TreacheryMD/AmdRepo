@@ -9,7 +9,7 @@ namespace lectia5
     class CreditAccount : BankAccount, ITransferRecive
     {
         public CreditAccount(CurrentAccount curentAcc, decimal newCreditAmmout) :
-            base(curentAcc.Owner, newCreditAmmout, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length - 2) + "CRED")
+            base(curentAcc.Client, newCreditAmmout, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "CRED")
         {
 
         }

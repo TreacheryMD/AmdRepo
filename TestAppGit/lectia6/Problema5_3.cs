@@ -10,45 +10,30 @@ namespace lectia6
     {
         //Write a program that uses a stack to determine whether a string is a palindrome (i.e., the string is spelled identically backward and forward). The program should ignore capitalization, spaces and punctuation.
         string _str;
+
+        Stack<char> _myStack = new Stack<char>();
+
         public Problema5_3(string str)
         {
-            _str = str.Replace(" ","").Replace(".","").ToLower();
-        }
-
-        public void Solve()
-        {
-            Stack<char> fStack = new Stack<char>();
-            Stack<char> sStack = new Stack<char>();
-
+            _str = (str.Replace(" ", "").Replace(".", "").ToLower());
             foreach (var ch in _str.ToCharArray())
             {
-                fStack.Push(ch);
+                _myStack.Push(ch);
             }
-
-            for (int i = 0; i < _str.Length/2; i++)
-            {
-                sStack.Push(fStack.Pop());
-            }
-
-            var nothing = fStack.Pop();
-
+        }
+        public void Solve()
+        {
+            string temp = string.Empty;
             Console.WriteLine("*****Problema5.3*****");
 
-            int k = 0;
-            while (fStack.ElementAt(k)==sStack.ElementAt(k))
-            {
-                k++;
-                if ((k > _str.Length / 2-1))
-                {
-                    Console.WriteLine("Is Polindrom");
-                    break;
-                    
-                }
-            }
+            while (_myStack.Any()) temp += _myStack.Pop();
+            if (_str == temp) Console.WriteLine("Is Polindrom");
+            else Console.WriteLine("Is not Polindrom");
 
             Console.WriteLine("\n*********************");
             Console.ReadLine();
-
         }
     }
 }
+
+

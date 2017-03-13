@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lectiea7_8
+namespace CarSortingTest
 {
     class Car 
     {
@@ -56,22 +56,22 @@ namespace lectiea7_8
             Speed -= speedDecrement;
         }
 
-        public  static Car[] Sort(Car[] thisArray)
-        {
-            int length = thisArray.Length;
-            for (int i = 0; i < length - 1; i++)
-            {
-                for (int j = 0; j < length - 1 - i; j++)
-                {
-                    if (thisArray[j].Speed < thisArray[j + 1].Speed)
-                    {
-                        var num = thisArray[j];
-                        thisArray[j] = thisArray[j + 1];
-                        thisArray[j + 1] = num;
-                    }
-                }
-            }
-            return thisArray;
-        }
+        //public  static Car[] Sort(Car[] thisArray)
+        //{
+        //    int length = thisArray.Length;
+        //    for (int i = 0; i < length - 1; i++)
+        //    {
+        //        for (int j = 0; j < length - 1 - i; j++)
+        //        {
+        //            if (thisArray[j].Speed < thisArray[j + 1].Speed)
+        //            {
+        //                var num = thisArray[j];
+        //                thisArray[j] = thisArray[j + 1];
+        //                thisArray[j + 1] = num;
+        //            }
+        //        }
+        //    }
+        //    return thisArray;
+        //}
     }
 }

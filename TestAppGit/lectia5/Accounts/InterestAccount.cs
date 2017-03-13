@@ -11,7 +11,7 @@ namespace lectia5
         double _intRate;
         decimal _mPay;
         public InterestAccount(CurrentAccount curentAcc, decimal balance,double interestRate, decimal monthlyPaymant) : 
-        base(curentAcc.Owner, balance, curentAcc.AccountNumber.Substring(0, curentAcc.AccountNumber.Length-2) +"INT")
+        base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length-2) +"INT")
         {
             _intRate = interestRate;
             _mPay = monthlyPaymant;
@@ -25,8 +25,8 @@ namespace lectia5
 
         public void CalculateRateAfterMonths(int numberOfMonths,CreditAccount credAccBal,CurrentAccount curAccBal)
         {
-            if (this.AccountNumber.Substring(0, AccountNumber.Length-3) == credAccBal.AccountNumber.Substring(0, credAccBal.AccountNumber.Length-4) 
-                && (this.AccountNumber.Substring(0, AccountNumber.Length - 3) == curAccBal.AccountNumber.Substring(0, curAccBal.AccountNumber.Length - 2)))
+            if (this.AccNum.Substring(0, AccNum.Length-3) == credAccBal.AccNum.Substring(0, credAccBal.AccNum.Length-4) 
+                && (this.AccNum.Substring(0, AccNum.Length - 3) == curAccBal.AccNum.Substring(0, curAccBal.AccNum.Length - 2)))
             {
                 for (int i = 0; i < numberOfMonths; i++)
                 {

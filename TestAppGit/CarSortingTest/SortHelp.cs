@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarSortingTest
+{
+    class SortCar : IComparer<Car>
+    {
+        public int Compare(Car x, Car y)
+        {
+            if (x.Speed > y.Speed) return 1;
+            if (x.Speed < y.Speed) return -1;
+            else return 0;
+        }
+    }
+}

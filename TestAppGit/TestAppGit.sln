@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lectia9_exceptions", "lecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson8Generics", "lesson8Generics\lesson8Generics.csproj", "{B812AD8E-2B3A-4153-8DC1-D39BF86D68A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSortingTest", "CarSortingTest\CarSortingTest.csproj", "{C0268A6B-06B4-4964-A675-C6299E1065E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,12 @@ Global
 		{B812AD8E-2B3A-4153-8DC1-D39BF86D68A9}.Lightweight|Any CPU.Build.0 = Release|Any CPU
 		{B812AD8E-2B3A-4153-8DC1-D39BF86D68A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B812AD8E-2B3A-4153-8DC1-D39BF86D68A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Lightweight|Any CPU.ActiveCfg = Release|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Lightweight|Any CPU.Build.0 = Release|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0268A6B-06B4-4964-A675-C6299E1065E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

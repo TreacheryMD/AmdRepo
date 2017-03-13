@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestAppGit.Console
+namespace Car
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Animal wolf = new Wolf();
 
-            //IEnumerator<Animal> animal = new IEnumerator<Wolf>();
+
         }
     }
 }

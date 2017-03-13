@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace lectia5.Interfaces
 {
-    interface IRepository
+    interface IRepository<T> where T: BankAccount
     {
-        void Add();
+        void Add(BankAccount account);
         void Remove();
         void Get(string id);
         void Find();

@@ -8,14 +8,11 @@ namespace lectia5
 {
     class CurrentAccount : BankAccount
     {
-         
         public bool Restricted { get; set; }
-
         public CurrentAccount(string owner, decimal balance, string accountNumber) : base(owner, balance, accountNumber+"CR") 
         {
 
         }
-
         public override void ShowAccountInfo()
         {
             Console.WriteLine("Curent account:");
@@ -28,7 +25,7 @@ namespace lectia5
             {
                 throw new Exception("You can't Cash In nothing to your current account");
             }
-            this.Balance += cashInAmmout;
+            Balance += cashInAmmout;
         }
         public void CashOut(decimal cashOutAmmount)
         {
@@ -40,7 +37,6 @@ namespace lectia5
                 }
             this.Balance -= cashOutAmmount;    
         }
-
         public void Transfer(ITransferRecive source,decimal ammount)
         {
             if (this.Restricted) throw new AccountIsRestrictedException("Account is restricted");

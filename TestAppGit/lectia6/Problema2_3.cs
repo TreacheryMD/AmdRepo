@@ -37,10 +37,11 @@ namespace lectia6
                     {
                         evenCount++;
                     }
-                    if (evenCount == colLength)
-                    {
-                        tempList.Add(i);
-                    }
+                }
+
+                if (evenCount == colLength)
+                {
+                    tempList.Add(i);
                 }
             }
 
