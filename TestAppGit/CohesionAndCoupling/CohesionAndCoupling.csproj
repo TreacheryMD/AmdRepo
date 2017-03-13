@@ -50,6 +50,10 @@
     <Compile Include="Cohesion\Procedural.cs" />
     <Compile Include="Cohesion\Squential.cs" />
     <Compile Include="Cohesion\Temporal.cs" />
+    <Compile Include="Coupling\Car.cs" />
+    <Compile Include="Coupling\Employee.cs" />
+    <Compile Include="Coupling\PrintBill.cs" />
+    <Compile Include="Coupling\Sedan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
