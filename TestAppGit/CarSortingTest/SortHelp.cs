@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace CarSortingTest
 {
-    class SortCar : IComparer<Car>
+    class SortCarAsc : IComparer<Car>
     {
         public int Compare(Car x, Car y)
         {
             if (x.Speed > y.Speed) return 1;
             if (x.Speed < y.Speed) return -1;
+            else return 0;
+        }
+    }
+    class SortCarDesc : IComparer<Car>
+    {
+        public int Compare(Car x, Car y)
+        {
+            if (x.Speed > y.Speed) return -1;
+            if (x.Speed < y.Speed) return 1;
             else return 0;
         }
     }

@@ -56,22 +56,19 @@ namespace CarSortingTest
             Speed -= speedDecrement;
         }
 
-        //public  static Car[] Sort(Car[] thisArray)
-        //{
-        //    int length = thisArray.Length;
-        //    for (int i = 0; i < length - 1; i++)
-        //    {
-        //        for (int j = 0; j < length - 1 - i; j++)
-        //        {
-        //            if (thisArray[j].Speed < thisArray[j + 1].Speed)
-        //            {
-        //                var num = thisArray[j];
-        //                thisArray[j] = thisArray[j + 1];
-        //                thisArray[j + 1] = num;
-        //            }
-        //        }
-        //    }
-        //    return thisArray;
-        //}
+        public override string ToString()
+        {
+            return ($"Model:{this.Model}, speed:{this.Speed}, year: {this.Year}");
+        }
+
+        public static void ShowFromEnum(IEnumerable<Car> cars)
+        {
+            foreach (var item in cars)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+            Console.WriteLine("_________________________________");
+        }
     }
 }

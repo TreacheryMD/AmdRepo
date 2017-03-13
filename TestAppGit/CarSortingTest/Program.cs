@@ -18,8 +18,17 @@ namespace CarSortingTest
 
             List<Car> cars = new List<Car> { ford, bmw, mercedes, reno, tayota };
 
-            cars.Sort(new SortCar());
-           
+            Console.WriteLine("Unsorted:");
+            Car.ShowFromEnum(cars);
+
+            Console.WriteLine("Ascending:");
+            cars.Sort(new SortCarAsc());
+            Car.ShowFromEnum(cars);
+
+            Console.WriteLine("Descending:");
+            cars.Sort(new SortCarDesc());
+            Car.ShowFromEnum(cars);
+
             Console.ReadLine();
         }
     }

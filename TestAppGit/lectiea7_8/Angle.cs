@@ -40,7 +40,7 @@ namespace lectiea7_8
             var minutes = (int)preM;
             var s = num - degree;
             var s2 = (double)minutes / 60;
-            var seconds = Math.Round((Math.Abs(s) - s2) * 3600);
+            var seconds = Math.Round((Math.Abs(s) - Math.Abs(s2)) * 3600);
 
             return new Angle(degree, minutes, (int)seconds);
         }
@@ -73,6 +73,11 @@ namespace lectiea7_8
 
         public static Angle operator -(Angle a1, Angle a2)
         {
+            //return MakeFromDouble(ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2));
+
+            var test = ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2);
+            var test2 = MakeFromDouble(test);
+
             return MakeFromDouble(ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2));
         }
 
