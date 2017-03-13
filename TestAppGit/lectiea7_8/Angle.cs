@@ -13,6 +13,7 @@ namespace lectiea7_8
         public int Minutes { get; set; }
         public int Seconds { get; set; }
         public bool IsNegative { get; set; }
+        public double InDouble { get; set; }
 
         #endregion
 
@@ -27,6 +28,8 @@ namespace lectiea7_8
             this.Degrees = degrees;
             this.Minutes = minutes;
             this.Seconds = seconds;
+
+            this.InDouble = ConvertDegreeAngleToDouble(this);
         }
         #endregion 
 
@@ -63,7 +66,7 @@ namespace lectiea7_8
         #region Operators
         public static Angle operator +(Angle a1, Angle a2)
         {
-            double angle = ConvertDegreeAngleToDouble(a1) + ConvertDegreeAngleToDouble(a2);
+            double angle = a1.InDouble + a2.InDouble;
 
             while (angle < -180.0) angle += 360.0;
             while (angle > 180.0) angle -= 360.0;
@@ -73,43 +76,38 @@ namespace lectiea7_8
 
         public static Angle operator -(Angle a1, Angle a2)
         {
-            //return MakeFromDouble(ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2));
-
-            var test = ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2);
-            var test2 = MakeFromDouble(test);
-
-            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) - ConvertDegreeAngleToDouble(a2));
+            return MakeFromDouble(a1.InDouble - a2.InDouble);  
         }
 
         public static Angle operator /(Angle a1, Angle a2)
         {
-            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) / ConvertDegreeAngleToDouble(a2));
+            return MakeFromDouble(a1.InDouble / a2.InDouble);
         }
 
         public static Angle operator *(Angle a1, Angle a2)
         {
-            return MakeFromDouble(ConvertDegreeAngleToDouble(a1) * ConvertDegreeAngleToDouble(a2));
+            return MakeFromDouble(a1.InDouble * a2.InDouble);
         }
 
         public static bool operator <(Angle a1, Angle a2)
         {
-            if (ConvertDegreeAngleToDouble(a1) < ConvertDegreeAngleToDouble(a2)) return true;
+            if (a1.InDouble < a2.InDouble) return true;
             else return false;
         }
         public static bool operator >(Angle a1, Angle a2)
         {
-            if (ConvertDegreeAngleToDouble(a1) > ConvertDegreeAngleToDouble(a2)) return true;
+            if (a1.InDouble > a2.InDouble) return true;
             else return false;
         }
 
         public static bool operator <=(Angle a1, Angle a2)
         {
-            if (ConvertDegreeAngleToDouble(a1) <= ConvertDegreeAngleToDouble(a2)) return true;
+            if (a1.InDouble <= a2.InDouble) return true;
             else return false;
         }
         public static bool operator >=(Angle a1, Angle a2)
         {
-            if (ConvertDegreeAngleToDouble(a1) >= ConvertDegreeAngleToDouble(a2)) return true;
+            if (a1.InDouble >= a2.InDouble) return true;
             else return false;
         }
 
