@@ -6,26 +6,41 @@ using System.Threading.Tasks;
 
 namespace lectia5
 {
-     abstract class BankAccount
+    public abstract class BankAccount
     {
-        public string Client { get;  set; }
+        public string Client { get; set; }
         public string AccNum { get; set; }
         public decimal Balance { get; set; }
+        public DateTime OpenDate { get; set; }
+        public string Currency { get; set; }
+
+        public BankAccount() { }
+
         public virtual void ShowAccountInfo()
         {
-            Console.WriteLine($"\nAccount Owner: {Client} \nAccountNumber:{AccNum}\nBalance:{Balance} \n****************************\n");
+            Console.Write($"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}");
         }
-        protected BankAccount(string owner, decimal balance, string accountNumber)
+
+        public static void ShowAccountInfo(IEnumerable<BankAccount> yourEnum)
+        {
+            foreach (var item in yourEnum)
+            {
+                item.ShowAccountInfo();
+            }
+        }
+        public BankAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency)
         {
             while (string.IsNullOrWhiteSpace(owner))
             {
-                Console.WriteLine("Owner format is incorect,enter new Owner:");
-                this.Client = owner = Console.ReadLine();
+                Console.WriteLine("Client format is incorect,enter new Client:");
+                Client = owner = Console.ReadLine();
             }
 
-            this.AccNum = accountNumber;
-            this.Balance = balance;
-            this.Client = owner;
+            AccNum = accountNumber;
+            Balance = balance;
+            Client = owner;
+            OpenDate = openDate;
+            Currency = currency;
         }
     }
 }

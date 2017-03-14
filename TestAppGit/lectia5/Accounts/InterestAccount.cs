@@ -10,8 +10,8 @@ namespace lectia5
     {
         double _intRate;
         decimal _mPay;
-        public InterestAccount(CurrentAccount curentAcc, decimal balance,double interestRate, decimal monthlyPaymant) : 
-        base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length-2) +"INT")
+        public InterestAccount(CurrentAccount curentAcc, decimal balance, double interestRate, decimal monthlyPaymant, DateTime openDate, string currency) :
+        base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "INT", openDate, currency)
         {
             _intRate = interestRate;
             _mPay = monthlyPaymant;
@@ -23,14 +23,14 @@ namespace lectia5
             base.ShowAccountInfo();
         }
 
-        public void CalculateRateAfterMonths(int numberOfMonths,CreditAccount credAccBal,CurrentAccount curAccBal)
+        public void CalculateRateAfterMonths(int numberOfMonths, CreditAccount credAccBal, CurrentAccount curAccBal)
         {
-            if (this.AccNum.Substring(0, AccNum.Length-3) == credAccBal.AccNum.Substring(0, credAccBal.AccNum.Length-4) 
+            if (this.AccNum.Substring(0, AccNum.Length - 3) == credAccBal.AccNum.Substring(0, credAccBal.AccNum.Length - 4)
                 && (this.AccNum.Substring(0, AccNum.Length - 3) == curAccBal.AccNum.Substring(0, curAccBal.AccNum.Length - 2)))
             {
                 for (int i = 0; i < numberOfMonths; i++)
                 {
-                this.Balance = credAccBal.Balance * (decimal)_intRate / 12;
+                    this.Balance = credAccBal.Balance * (decimal)_intRate / 12;
                     credAccBal.Balance -= _mPay;
                     curAccBal.Balance -= _mPay;
                 }

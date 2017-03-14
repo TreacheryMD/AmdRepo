@@ -13,7 +13,7 @@ namespace lectia5
         private string _address;
         private int? _depots;
         private string _branchId;
-        private Reg _region; 
+        private Reg _region;
 
         public Bank(string name, string address, int? depots, Reg region)
         {

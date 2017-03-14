@@ -61,6 +61,8 @@
     <Compile Include="Accounts\CurrentAccount.cs" />
     <Compile Include="Accounts\DepositAccount.cs" />
     <Compile Include="Accounts\InterestAccount.cs" />
+    <Compile Include="Helper\Extension.cs" />
+    <Compile Include="Helper\Task10.cs" />
     <Compile Include="Interfaces\Irepository.cs" />
     <Compile Include="Interfaces\ITransferRecive.cs" />
     <Compile Include="Repository.cs" />

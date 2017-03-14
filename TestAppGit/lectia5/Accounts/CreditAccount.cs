@@ -8,8 +8,8 @@ namespace lectia5
 {
     class CreditAccount : BankAccount, ITransferRecive
     {
-        public CreditAccount(CurrentAccount curentAcc, decimal newCreditAmmout) :
-            base(curentAcc.Client, newCreditAmmout, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "CRED")
+        public CreditAccount(CurrentAccount curentAcc, decimal newCreditAmmout, DateTime openDate, string currency) :
+            base(curentAcc.Client, newCreditAmmout, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "CRED", openDate, currency)
         {
 
         }
