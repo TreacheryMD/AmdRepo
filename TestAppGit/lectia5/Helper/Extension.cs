@@ -54,10 +54,9 @@ namespace lectia5.Helper
             return table;
         }
 
-        //public static List<T> FilterNegativeBankAccounts<T>(this IEnumerable<T> data, IList<BankAccount> test) where T:BankAccount
-        //{
-        //    //data.Select(s => s.Balance);
-        //    //return new List<BankAccount>();
-        //}
+        public static List<T> FilterNegativeBankAccounts<T>(this IEnumerable<T> data) where T : BankAccount
+        {
+            return data.Where(w => w.Balance > 0).ToList<T>();
+        }
     }
 }

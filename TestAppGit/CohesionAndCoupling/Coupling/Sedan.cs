@@ -8,9 +8,10 @@ namespace CohesionAndCoupling.Coupling
 {
     class Sedan : Car
     {
-        public Sedan(double engineVolum) : base(engineVolum)
+        public string SecondCollor; 
+        public Sedan(Car car,double engineVolum) : base(engineVolum)
         {
-
+            SecondCollor = car.Colour;
         }
 
     }

@@ -23,7 +23,7 @@ namespace lectia5
             var acc4 = new CurrentAccount("Olaru Daniel", 900000, "157632541233", new DateTime(2015, 11, 14), "EUR");
             var acc5 = new CurrentAccount("Hasdeu Petru ", 400000, "157632541234", new DateTime(2014, 09, 13), "MDL");
             var acc6 = new CurrentAccount("Gavrilita Alexandru", 400500, "157632541235", new DateTime(2017, 07, 05), "MDL");
-            var acc7 = new CurrentAccount("Bradu Vladimir", 685000, "157632541236", new DateTime(2011, 11, 04), "USD");
+            var acc7 = new CurrentAccount("Bradu Vladimir", -685000, "157632541236", new DateTime(2011, 11, 04), "USD");
             var acc8 = new CurrentAccount("Rau Viorel", 98500, "157632541237", new DateTime(2012, 05, 09), "MDL");
             var acc9 = new CurrentAccount("Semion Radu", 65000, "157632541238", new DateTime(2016, 06, 21), "USD");
             var acc10 = new CurrentAccount("Popov Ilie", 64800, "157632541239", new DateTime(2015, 04, 22), "MDL");
@@ -82,7 +82,15 @@ namespace lectia5
             #region Extension
 
             DataTable records = allAcc.ListToDataTable("All Records");
+            //var test = allAcc.FilterNegativeBankAccounts();
+            // BankAccount.ShowAccountInfo(test);
 
+            var newType = allAcc.Where(w => w.OpenDate > new DateTime(2014, 06, 10))
+                  .Select(s => new
+                  {
+                      clientRef = s.Client,
+                      balance = s.Balance,
+                  }).OrderByDescending(o=>o.balance);
 
             #endregion
 
