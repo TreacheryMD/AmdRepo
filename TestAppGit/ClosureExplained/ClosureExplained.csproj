@@ -4,14 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2DEA1877-CE23-47A3-85C6-AF324EA17267}</ProjectGuid>
+    <ProjectGuid>{34D2460E-018F-4797-BD54-3E9D3A877966}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>lectia5</RootNamespace>
-    <AssemblyName>lectia5</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ClosureExplained</RootNamespace>
+    <AssemblyName>ClosureExplained</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,16 +33,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Lightweight|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Lightweight\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;LIGHT</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,26 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\AccountIsRestrictedException.cs" />
-    <Compile Include="Company\Bank.cs" />
-    <Compile Include="Accounts\BankAccount.cs" />
-    <Compile Include="Company\Branch.cs" />
-    <Compile Include="Accounts\CreditAccount.cs" />
-    <Compile Include="Accounts\CurrentAccount.cs" />
-    <Compile Include="Accounts\DepositAccount.cs" />
-    <Compile Include="Accounts\InterestAccount.cs" />
-    <Compile Include="Helper\Extension.cs" />
-    <Compile Include="Helper\Task10.cs" />
-    <Compile Include="Interfaces\Irepository.cs" />
-    <Compile Include="Interfaces\ITransferRecive.cs" />
-    <Compile Include="Repository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Company\Subsidiary.cs" />
-    <Compile Include="Helper\SubsidiaryEqualityComparer.cs" />
-    <Compile Include="TemporarExamples\Customer.cs" />
-    <Compile Include="TemporarExamples\Order.cs" />
-    <Compile Include="TemporarExamples\Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
