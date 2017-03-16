@@ -15,12 +15,10 @@ namespace CohesionAndCoupling.Cohesion
         {
             //close file
         }
-
         public static void CreateErrorLog()
         {
             //save errorLog.txt somewhere in Debug folder
         }
-
         public static void NotifyUser()
         {
             //some notification

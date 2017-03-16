@@ -8,13 +8,13 @@ namespace CohesionAndCoupling.Cohesion
 {
     class Squential
     {
-        public string UseClothes() {return "dirt clothes";}
+        private string UseClothes(string clothes) {return "dirt clothes";}
 
-        public string WashClothes() { return "wet clothes"; }
+        private string WashClothes(string dirtClothes) { return "wet clothes"; }
 
-        public string DryClothes() { return "dried clothes"; }
+        private string DryClothes(string wetClothes) { return "dried clothes"; }
 
-        public string IroningClothes() { return "readyToUseClothes"; }
+        public string IroningClothes(string driedClothes) { return "readyToUseClothes"; }
 
     }
 }

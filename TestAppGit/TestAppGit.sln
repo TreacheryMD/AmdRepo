@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyModel", "MyModel\MyModel.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosureExplained", "ClosureExplained\ClosureExplained.csproj", "{34D2460E-018F-4797-BD54-3E9D3A877966}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventTesting", "EventTesting\EventTesting.csproj", "{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,12 @@ Global
 		{34D2460E-018F-4797-BD54-3E9D3A877966}.Lightweight|Any CPU.Build.0 = Release|Any CPU
 		{34D2460E-018F-4797-BD54-3E9D3A877966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34D2460E-018F-4797-BD54-3E9D3A877966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Lightweight|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Lightweight|Any CPU.Build.0 = Release|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28025496-4DFA-46F7-9CBA-E10471A6488A}</ProjectGuid>
+    <ProjectGuid>{D4E227F1-E5F5-4AA7-8B81-18E2176EE848}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CohesionAndCoupling</RootNamespace>
-    <AssemblyName>CohesionAndCoupling</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>EventTesting</RootNamespace>
+    <AssemblyName>EventTesting</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -43,20 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cohesion\Coincidental.cs" />
-    <Compile Include="Cohesion\Communicational.cs" />
-    <Compile Include="Cohesion\Functional.cs" />
-    <Compile Include="Cohesion\Logical.cs" />
-    <Compile Include="Cohesion\Procedural.cs" />
-    <Compile Include="Cohesion\Squential.cs" />
-    <Compile Include="Cohesion\Temporal.cs" />
-    <Compile Include="Coupling\Car.cs" />
-    <Compile Include="Coupling\Employee.cs" />
-    <Compile Include="Coupling\Poluation.cs" />
-    <Compile Include="Coupling\PrintBill.cs" />
-    <Compile Include="Coupling\Sedan.cs" />
-    <Compile Include="Coupling\SortHelp.cs" />
-    <Compile Include="Coupling\Statistic.cs" />
+    <Compile Include="Listener.cs" />
+    <Compile Include="Metronome.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
