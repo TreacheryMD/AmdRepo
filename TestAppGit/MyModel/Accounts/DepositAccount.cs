@@ -18,20 +18,24 @@ namespace MyModel.Accounts
 
         public override void ShowAccountInfo()
         {
-            Console.WriteLine("Deposit Account:");
-            base.ShowAccountInfo();
+            Console.WriteLine(this.ToString());
         }
 
         public void CalcDepAftMonths(int numbOfMonths)
         {
             for (int i = 0; i < numbOfMonths; i++)
             {
-                this.Balance += (this.Balance * (decimal)this._depIntRate / 100) / 12;
+                this.InBalance((this.Balance * (decimal)this._depIntRate / 100) / 12);
             }
         }
         public void Recive(decimal ammount)
         {
-            this.Balance += ammount;
+            this.InBalance(ammount);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $" | Interest Rate: {_depIntRate}";
         }
     }
 }

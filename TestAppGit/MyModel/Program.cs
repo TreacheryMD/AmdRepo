@@ -30,7 +30,14 @@ namespace MyModel
             var acc11 = new CurrentAccount("Rotaru Vasile", 98700, "157632541240", new DateTime(2014, 02, 24), "EUR");
             var acc12 = new CurrentAccount("Ciobanu Anatol", 354000, "157632541241", new DateTime(2017, 01, 17), "EUR");
 
-            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12 };
+            var acc13 = new CreditAccount(acc1,6000000,new DateTime(2017,01,01),"MDL");
+            var acc14 = new DepositAccount(acc1,5500000,4.50,new DateTime(2017,02,02),"MDL");
+            var acc15 = new InterestAccount(acc1,500000,6.33,5000,new DateTime(2017,03,03),"MDL" );
+
+            //acc1.ShowAccountInfo();
+            //acc14.ShowAccountInfo();
+
+            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12, acc13 ,acc14, acc15 };
 
             Repository newRep = new Repository();
             newRep.Add(allAcc);

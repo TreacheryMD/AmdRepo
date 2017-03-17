@@ -8,11 +8,15 @@ namespace MyModel.Accounts
 {
     public abstract class BankAccount
     {
-        public string Client { get; set; }
-        public string AccNum { get; set; }
-        public decimal Balance { get; set; }
-        public DateTime OpenDate { get; set; }
-        public string Currency { get; set; }
+        private decimal _balance;
+
+        public string Client { get;  }
+        public string AccNum { get;  }
+        public decimal Balance {
+            get { return _balance; } 
+        }
+        public DateTime OpenDate { get;  }
+        public string Currency { get; }
 
         public BankAccount() { }
         public virtual void ShowAccountInfo()
@@ -35,7 +39,7 @@ namespace MyModel.Accounts
             }
 
             AccNum = accountNumber;
-            Balance = balance;
+            this.InBalance(balance);
             Client = owner;
             OpenDate = openDate;
             Currency = currency;
@@ -44,6 +48,16 @@ namespace MyModel.Accounts
         public override string ToString()
         {
             return $"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}";
+        }
+
+        public void InBalance(decimal bal)
+        {
+            _balance += bal;
+        }
+
+        public void OutBalance(decimal bal)
+        {
+            _balance -= bal;
         }
     }
 }

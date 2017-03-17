@@ -30,7 +30,8 @@ namespace MyModel.Accounts
             {
                 throw new Exception("You can't Cash In nothing to your current account");
             }
-            Balance += cashInAmmout;
+            this.InBalance(cashInAmmout);
+           
         }
         public void CashOut(decimal cashOutAmmount)
         {
@@ -40,13 +41,13 @@ namespace MyModel.Accounts
             {
                 throw new Exception("You can't Cash Out with negative ammount");
             }
-            this.Balance -= cashOutAmmount;
+            this.OutBalance(cashOutAmmount); 
         }
         public void Transfer(ITransferRecive source, decimal ammount)
         {
             if (this.Restricted) throw new AccountIsRestrictedException("Account is restricted");
             source.Recive(ammount);
-            this.Balance -= ammount;
+            this.OutBalance(ammount);
         }
 
         public override string ToString()

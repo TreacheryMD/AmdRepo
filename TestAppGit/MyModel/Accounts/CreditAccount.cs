@@ -17,7 +17,7 @@ namespace MyModel.Accounts
 
         public void Recive(decimal ammount)
         {
-            this.Balance -= ammount;
+            this.OutBalance(ammount);
         }
 
         public override void ShowAccountInfo()
