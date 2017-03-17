@@ -6,13 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Repo;
 
 namespace MyModel
 {
     class Program
     {
         public delegate void ShowFunctionDelegate(IEnumerable<BankAccount> yourEnum);
-        private static Func<BankAccount, BankAccount, int> sortasda = (c1, c2) => { return c1.OpenDate.CompareTo(c2.OpenDate); };
+        //private static Func<BankAccount, BankAccount, int> sortasda = (c1, c2) => { return c1.OpenDate.CompareTo(c2.OpenDate); };
 
         static void Main(string[] args)
         {
@@ -31,75 +32,11 @@ namespace MyModel
 
             List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12 };
 
-            //allAcc.FilterNegativeBankAccounts();
-
-            #region Task10 
-
-            ////delegate > type safe function pointer (signature of delegate must match the signature of the function)
-
-            ////just for example (basics) 
-            //ShowFunctionDelegate del = new ShowFunctionDelegate(BankAccount.ShowAccountInfo);
-            //del(allAcc);
-
-            ////delegate usage example
-            //// i have an method in Taks10 class that restrict accounts from List of currentAccounts 
-            //// that will restrict based on balance property only (if (acc.Balance>600000))
-
-            //List<CurrentAccount> allCRAcc = new List<CurrentAccount>() { acc1, acc2, acc3 };
-
-            //Task10.RestrictAccountHardCoded(allCRAcc);
-            //Console.WriteLine("***");
-            //del(allCRAcc);
-
-            //// we want REUSABLE METHOD code (not hard coded) (method Fix) in Task10 class
-            //// declaring new in IsRestrictable delegate and pars in as parammeter
-
-            ////first: declare Delegate and parse (function that have boolean return type and //user function
-            ////wich take currentAccount object as parammeter)
-
-            //IsRestrictable isRestrictable = new IsRestrictable(Task10.Restrict);
-
-            //Task10.FixRestrictAccount(allCRAcc, isRestrictable);
-            //Console.WriteLine("***");
-            //del(allCRAcc);
-
-            //// our method FirstFix is not hard coded any more
-
-            ////second fix: using Lambda Expression (anonymous functions)
-
-            //Task10.FixRestrictAccount(allCRAcc, acc=>acc.Balance > 7000000); // and we dont need more Restrict Method
-
-            //// new 3.5 delegate Func
-
-            //Task10.SecondFixUnrestrict(allCRAcc, acc => acc.Restricted == true);
-            //Console.WriteLine("***");
-            //del(allCRAcc);
-
-            #endregion
-
-
-            #region Extension
-
-            DataTable records = allAcc.ListToDataTable("All Records");
-            //var test = allAcc.FilterNegativeBankAccounts();
-            // BankAccount.ShowAccountInfo(test);
-
-            var newType = allAcc.Where(w => w.OpenDate > new DateTime(2014, 06, 10))
-                  .Select(s => new
-                  {
-                      clientRef = s.Client,
-                      balance = s.Balance,
-                  }).OrderByDescending(o => o.balance);
-
-            #endregion
-
-            // allAcc.Where
-
-            //allAcc.Sort((BankAccount c1, BankAccount c2) => { return c1.OpenDate.CompareTo(c2.OpenDate); });
-            //BankAccount.ShowAccountInfo(allAcc);
-            //Console.WriteLine("*****");
-            //allAcc.Sort(delegate (BankAccount c1, BankAccount c2) { return c2.OpenDate.CompareTo(c1.OpenDate); });
-            //BankAccount.ShowAccountInfo(allAcc);
+            Repository newRep = new Repository();
+            newRep.Add(allAcc);
+ 
+            TxtReadWrite.WriteToTxt(newRep.Get());
+            var newList = TxtReadWrite.ReadFromTxt();
 
 
             #region BankAccountsMoovments

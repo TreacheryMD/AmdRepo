@@ -17,7 +17,7 @@ namespace MyModel.Accounts
         public BankAccount() { }
         public virtual void ShowAccountInfo()
         {
-            Console.Write($"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}");
+            Console.Write(this.ToString());
         }
         public static void ShowAccountInfo(IEnumerable<BankAccount> yourEnum)
         {
@@ -39,6 +39,11 @@ namespace MyModel.Accounts
             Client = owner;
             OpenDate = openDate;
             Currency = currency;
+        }
+
+        public override string ToString()
+        {
+            return $"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}";
         }
     }
 }

@@ -14,6 +14,7 @@ namespace EventTesting
         }
         private void HeardIt(Metronome m, EventArgs e)
         {
+            //ckeck e 
             Console.WriteLine("HEARD IT");
         }
     }

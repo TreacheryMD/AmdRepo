@@ -18,9 +18,10 @@ namespace MyModel.Accounts
         public override void ShowAccountInfo()
         {
             //Console.WriteLine("Curent account:");
-            base.ShowAccountInfo();
-            Console.Write($" | Restricted:{Restricted}");
-            Console.WriteLine();
+            Console.WriteLine(this.ToString());
+            //base.ShowAccountInfo();
+            //Console.Write($" | Restricted:{Restricted}");
+            //Console.WriteLine();
         }
 
         public void CashIn(decimal cashInAmmout)
@@ -46,6 +47,11 @@ namespace MyModel.Accounts
             if (this.Restricted) throw new AccountIsRestrictedException("Account is restricted");
             source.Recive(ammount);
             this.Balance -= ammount;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString()+ $" | Restricted:{Restricted}";
         }
     }
 }

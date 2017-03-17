@@ -10,11 +10,18 @@ namespace MyModel.Repo
 {
     class Repository : IRepository<BankAccount>
     {
-        List<BankAccount> storage = new List<BankAccount>();
+        List<BankAccount> _storage = new List<BankAccount>();
 
         public void Add(BankAccount acc)
         {
-            storage.Add(acc);
+            _storage.Add(acc);
+        }
+        public void Add(List<BankAccount> accList)
+        {
+            foreach (var acc in accList)
+            {
+                _storage.Add(acc);
+            }
         }
 
         public void Find()
@@ -25,6 +32,11 @@ namespace MyModel.Repo
         public void Get(string id)
         {
             throw new NotImplementedException();
+        }
+
+        public List<BankAccount> Get()
+        {
+            return _storage;
         }
 
         public void Remove()
