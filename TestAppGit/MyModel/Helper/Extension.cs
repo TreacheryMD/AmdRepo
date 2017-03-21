@@ -16,7 +16,7 @@ namespace MyModel.Extension
             DataTable table = new DataTable(tableName);
 
             //special handling for value types and string
-            if (typeof(T).IsValueType || typeof(T).Equals(typeof(string)))
+            if (typeof(T).IsValueType || typeof(T) == typeof(string))
             {
                 DataColumn dc = new DataColumn("Value");
                 table.Columns.Add(dc);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Helper;
 
 namespace MyModel.Accounts
 {
@@ -12,19 +13,23 @@ namespace MyModel.Accounts
 
         public string Client { get;  }
         public string AccNum { get;  }
-        public decimal Balance {
-            get { return _balance; } 
-        }
+        public decimal Balance => _balance;
+
         public DateTime OpenDate { get;  }
         public string Currency { get; }
 
         public BankAccount() { }
         public virtual void ShowAccountInfo()
         {
-            Console.Write(this.ToString());
+            Console.Write(ToString());
         }
-        public static void ShowAccountInfo(IEnumerable<BankAccount> yourEnum)
+        public static void ShowAccountInfo(IEnumerable<BankAccount> yourEnum, bool showSorted = false,bool ascending = false)
         {
+            if (showSorted)
+            {
+                yourEnum = ascending ? yourEnum.OrderBy(o => o.Balance) : yourEnum.OrderByDescending(o => o.Balance);
+            }
+
             foreach (var item in yourEnum)
             {
                 item.ShowAccountInfo();
@@ -32,6 +37,11 @@ namespace MyModel.Accounts
         }
         public BankAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency)
         {
+            if (string.IsNullOrEmpty(owner))
+            {
+                throw new ArgumentNullException(nameof(owner));
+            }
+
             while (string.IsNullOrWhiteSpace(owner))
             {
                 Console.WriteLine("Client format is incorect,enter new Client:");

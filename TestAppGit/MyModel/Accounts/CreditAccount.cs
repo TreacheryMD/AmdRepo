@@ -22,8 +22,9 @@ namespace MyModel.Accounts
 
         public override void ShowAccountInfo()
         {
-            Console.WriteLine("Credit account:");
+            
             base.ShowAccountInfo();
+            Console.WriteLine();
         }
 
 

@@ -14,8 +14,6 @@ namespace MyModel.Repo
 {
     class TxtReadWrite
     {
-        
-
         public  static void WriteToTxt(List<BankAccount> list)
         {
             using (StreamWriter writer = new StreamWriter(Path.GetFullPath(@"Storage\storage.txt")))

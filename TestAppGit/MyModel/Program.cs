@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IronPython.Hosting;
 using MyModel.Repo;
 
 namespace MyModel
@@ -37,14 +38,76 @@ namespace MyModel
             //acc1.ShowAccountInfo();
             //acc14.ShowAccountInfo();
 
-            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12, acc13 ,acc14, acc15 };
+            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12, acc13,acc14,acc15 };
 
-            Repository newRep = new Repository();
-            newRep.Add(allAcc);
- 
-            TxtReadWrite.WriteToTxt(newRep.Get());
-            var newList = TxtReadWrite.ReadFromTxt();
+            #region WriteReadTxt
+            //Repository newRep = new Repository();
+            //newRep.Add(allAcc);
 
+            //TxtReadWrite.WriteToTxt(newRep.Get());
+            //var newList = TxtReadWrite.ReadFromTxt();
+            #endregion
+
+            #region EvolutionTaks
+
+            BankAccount.ShowAccountInfo(allAcc, true, true); // Method with optional parameters
+            Console.WriteLine(string.Concat(Enumerable.Repeat("*", 140)));
+            BankAccount.ShowAccountInfo(yourEnum:allAcc,showSorted:true); // using Named Arguments
+
+
+
+
+            #region dynamicSomeTesting
+            //Dynamic tests
+            //var testAcc = acc1;
+            //testAcc = acc14; //can t convert 
+
+            //dynamic testAccDynamic = acc1;
+            //testAccDynamic = acc14; // on runtime (but allow dynamic changes)
+
+            //scriptin runtime
+
+            //var PythonRuntime = Python.CreateRuntime();
+            //dynamic pythonFile = PythonRuntime.UseFile("Test.py");
+            ////dynamic will allow me to bypass compile checking
+            //pythonFile.SayHelloToPython();
+            #endregion
+
+            #region exceptionFilters
+            try
+            {
+                acc1.CashIn(500);
+            }
+            catch (Exception ex) when (ex.Message.Equals("You can't Cash In nothing to your current account"))
+            {
+                Console.Write("First case");
+            }
+            catch (Exception ex) when (ex.Message.Equals("Integral constant is too large"))
+            {
+                Console.Write("Second Case");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            #endregion
+
+            #region preconditionNameOf
+            //try
+            //{
+            //    var acc122 = new CurrentAccount("", 500000, "157632541230", new DateTime(2017, 03, 10), "MDL");
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
+            #endregion
+
+
+            #endregion
+
+            //acc1.ShowAccountInfo();
 
             #region BankAccountsMoovments
 
@@ -118,14 +181,10 @@ namespace MyModel
             //    part.ShowInfo();
             //}
 
-            //SubsidiaryEqualityComparer comparer = new SubsidiaryEqualityComparer();
+            //SubsidiaryEqualityComparer comWparer = new SubsidiaryEqualityComparer();
             //Console.WriteLine(comparer.Equals(subCalarasi, subCahul));
             //Console.WriteLine(comparer.GetHashCode(subCalarasi));
             #endregion
-
-
-
-
 
 
             Console.ReadLine();

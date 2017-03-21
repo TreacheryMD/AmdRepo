@@ -20,8 +20,9 @@ namespace MyModel.Accounts
 
         public override void ShowAccountInfo()
         {
-            Console.WriteLine("Interest Account:");
+            
             base.ShowAccountInfo();
+            Console.WriteLine();
         }
 
         //public void CalculateRateAfterMonths(int numberOfMonths, CreditAccount credAccBal, CurrentAccount curAccBal)
