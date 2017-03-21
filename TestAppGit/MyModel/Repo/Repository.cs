@@ -10,7 +10,7 @@ namespace MyModel.Repo
 {
     class Repository : IRepository<BankAccount>
     {
-        List<BankAccount> _storage = new List<BankAccount>();
+        private readonly List<BankAccount> _storage = new List<BankAccount>();
 
         public void Add(BankAccount acc)
         {
@@ -42,6 +42,12 @@ namespace MyModel.Repo
         public void Remove()
         {
             throw new NotImplementedException();
+        }
+
+        public void Renew(List<BankAccount> accountsList )
+        {
+            this._storage.Clear();
+            Add(accountsList);
         }
     }
 }
