@@ -9,16 +9,14 @@ namespace MyModel.Accounts
 {
     public abstract class BankAccount
     {
-        private decimal _balance;
-
         public string Client { get;  }
         public string AccNum { get;  }
-        public decimal Balance => _balance;
+        public decimal Balance { get; private set;}
 
         public DateTime OpenDate { get;  }
         public string Currency { get; }
 
-        public BankAccount() { }
+        protected BankAccount() { }
         public virtual void ShowAccountInfo()
         {
             Console.Write(ToString());
@@ -35,7 +33,8 @@ namespace MyModel.Accounts
                 item.ShowAccountInfo();
             }
         }
-        public BankAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency)
+
+        protected BankAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency)
         {
             if (string.IsNullOrEmpty(owner))
             {
@@ -55,6 +54,16 @@ namespace MyModel.Accounts
             Currency = currency;
         }
 
+        protected BankAccount(string line)
+        {
+            var l = line.Replace($"Type:{line.Split(new string[] { "Type:" }, StringSplitOptions.None).Last()}", "").Split('|');
+            Client = l[0].Replace("Client:", "");
+            AccNum = l[1].Replace(" AccountNumber:", "");
+            Balance = Convert.ToDecimal(l[2].Replace(" Balance:", ""));
+            OpenDate = DateTime.Parse(l[3].Replace("Open:", "").Replace(" ", ""));
+            Currency = l[4].Replace(" Currency: ", "");
+        }
+
         public override string ToString()
         {
             return $"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}";
@@ -62,12 +71,12 @@ namespace MyModel.Accounts
 
         public void InBalance(decimal bal)
         {
-            _balance += bal;
+            Balance += bal;
         }
 
         public void OutBalance(decimal bal)
         {
-            _balance -= bal;
+            Balance -= bal;
         }
     }
 }

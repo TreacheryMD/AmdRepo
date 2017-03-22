@@ -9,13 +9,20 @@ namespace MyModel.Accounts
 {
     class InterestAccount : BankAccount, ITransferRecive
     {
-        double _intRate;
-        decimal _mPay;
-        public InterestAccount(CurrentAccount curentAcc, decimal balance, double interestRate, decimal monthlyPaymant, DateTime openDate, string currency) :
-        base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "INT", openDate, currency)
+        private readonly double _intRate;
+        private readonly decimal _mPay;
+        public InterestAccount(string client,string accNum, decimal balance, double interestRate, decimal monthlyPaymant, DateTime openDate, string currency) :
+        base(client, balance, accNum.Substring(0, accNum.Length - 2) + "INT", openDate, currency)
         {
             _intRate = interestRate;
             _mPay = monthlyPaymant;
+        }
+
+        public InterestAccount(string line) : base(line)
+        {
+            var l = line.Split('|');
+            _intRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
+            _mPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace("Type: InterestAccount","").Replace(" ", ""));
         }
 
         public override void ShowAccountInfo()

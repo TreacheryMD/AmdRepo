@@ -15,6 +15,12 @@ namespace MyModel.Accounts
         {
             Restricted = restricted;
         }
+
+        public CurrentAccount(string line) : base(line)
+        {
+            Restricted = line.Contains("Restricted:True");
+        }
+
         public override void ShowAccountInfo()
         {
             //Console.WriteLine("Curent account:");

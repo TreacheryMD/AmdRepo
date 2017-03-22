@@ -9,8 +9,13 @@ namespace MyModel.Accounts
 {
     class CreditAccount : BankAccount, ITransferRecive
     {
-        public CreditAccount(CurrentAccount curentAcc, decimal newCreditAmmout, DateTime openDate, string currency) :
-            base(curentAcc.Client, newCreditAmmout, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "CRED", openDate, currency)
+        public CreditAccount(string client,string accNum, decimal newCreditAmmout, DateTime openDate, string currency) :
+            base(client, newCreditAmmout, accNum.Substring(0, accNum.Length - 2) + "CRED", openDate, currency)
+        {
+
+        }
+
+        public CreditAccount(string line) : base(line)
         {
 
         }

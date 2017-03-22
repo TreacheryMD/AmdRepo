@@ -264,18 +264,25 @@ namespace Lesson15
 
             MyResources res = new MyResources(@"NewFile.txt");
 
-            try
+
+
+            //try
+            //{
+            //    res.ShowData();
+            //}
+            //finally
+            //{
+            //    res.Dispose();
+            //}
+            Console.WriteLine(new string('*', r));
+
+            using (null)
             {
-                res.ShowData();
-            }
-            finally
-            {
-                res.Dispose();
+                MyResources res2 = new MyResources(@"NewFile.txt");
             }
 
-           
+
             #endregion
-
 
             Console.ReadLine();
         }

@@ -9,11 +9,17 @@ namespace MyModel.Accounts
 {
     class DepositAccount : BankAccount, ITransferRecive
     {
-        double _depIntRate;
-        public DepositAccount(CurrentAccount curentAcc, decimal balance, double depositInterestRate, DateTime openDate, string currency) :
-            base(curentAcc.Client, balance, curentAcc.AccNum.Substring(0, curentAcc.AccNum.Length - 2) + "DEP", openDate, currency)
+        private readonly double _depIntRate;
+        public DepositAccount(string client,string accNum, decimal balance, double depositInterestRate, DateTime openDate, string currency) :
+            base(client, balance, accNum.Substring(0, accNum.Length - 2) + "DEP", openDate, currency)
         {
             _depIntRate = depositInterestRate;
+        }
+
+        public DepositAccount(string line) : base(line)
+        {
+            var test = line.Split('|').Where(w => w.Contains("Interest Rate:")).Select(s => s.Replace("Interest Rate:", "").Replace("Type: DepositAccount","").Replace(" ","")).FirstOrDefault();
+            _depIntRate = Convert.ToDouble(test);
         }
 
         public override void ShowAccountInfo()

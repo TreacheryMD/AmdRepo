@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\BankAccount.cs" />
+    <Compile Include="Accounts\BankAccountFactory.cs" />
+    <Compile Include="Accounts\ConcreteBankAccountFactory.cs" />
     <Compile Include="Accounts\CreditAccount.cs" />
     <Compile Include="Accounts\CurrentAccount.cs" />
     <Compile Include="Accounts\DepositAccount.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Helper\AccountIsRestrictedException.cs" />
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\SubsidiaryEqualityComparer.cs" />
+    <Compile Include="Interfaces\IBankAccountFactory.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ITransferRecive.cs" />
     <Compile Include="Program.cs" />

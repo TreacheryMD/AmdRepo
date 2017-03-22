@@ -36,34 +36,22 @@ namespace MyModel.Repo
                 {
 
                     var type = line.Split(new string[] {"Type:"}, StringSplitOptions.None).Last();
-                    var l = line.Replace($"Type:{type}", "").Split('|');
-                    var client = l[0].Replace("Client:", "");
-                    var accountNum = l[1].Replace(" AccountNumber:", "");
-                    var balance = Convert.ToDecimal(l[2].Replace(" Balance:", ""));
-                    var date = DateTime.Parse(l[3].Replace("Open:", "").Replace(" ", ""));
-                    var currency = l[4].Replace(" Currency: ", "");
 
-                    if (type.Replace(" ","") == "CurrentAccount")
+                    if (type.Contains("CurrentAccount"))
                     {
-                        var restricted = l[5].Contains("True");
-                        list.Add(new CurrentAccount(client,balance,accountNum.Replace("CR",""), date, currency, restricted));
+                        list.Add(new CurrentAccount(line));
                     }
-                    else if (type.Replace(" ", "") == "CreditAccount")
+                    else if (type.Contains("CreditAccount"))
                     {
-                        list.Add(new CreditAccount(new CurrentAccount(client, balance, accountNum.Replace("CRED",""), date, currency), balance, date,
-                            currency));
+                        list.Add(new CreditAccount(line));
                     }
-                    else if (type.Replace(" ", "") == "DepositAccount")
+                    else if (type.Contains("DepositAccount"))
                     {
-                        var interestRate = Convert.ToDouble(l.Last().Replace("Interest Rate:","").Replace(" ",""));
-                        list.Add(new DepositAccount(new CurrentAccount(client,balance,accountNum.Replace("DEP", ""), date,currency),balance, interestRate,date,currency));
+                      list.Add(new DepositAccount(line));
                     }
-                    else if (type.Replace(" ", "") == "InterestAccount")
+                    else if (type.Contains("InterestAccount"))
                     {
-                        var interestRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
-                        var mPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace(" ", ""));
-
-                        list.Add(new InterestAccount(new CurrentAccount(client, balance, accountNum.Replace("INT", ""), date, currency),balance,interestRate,mPay,date,currency));
+                      list.Add(new InterestAccount(line));
                     }
                     else
                     {
