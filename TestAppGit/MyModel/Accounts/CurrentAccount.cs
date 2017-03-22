@@ -21,6 +21,11 @@ namespace MyModel.Accounts
             Restricted = line.Contains("Restricted:True");
         }
 
+        public CurrentAccount():base()
+        {
+            AccNum+="CR";
+        }
+
         public override void ShowAccountInfo()
         {
             //Console.WriteLine("Curent account:");
@@ -58,7 +63,7 @@ namespace MyModel.Accounts
 
         public override string ToString()
         {
-            return base.ToString()+ $" | Restricted:{Restricted}";
+            return base.ToString()+ $" ; Restricted:{Restricted}";
         }
     }
 }

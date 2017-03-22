@@ -76,8 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accounts\BankAccount.cs" />
-    <Compile Include="Accounts\BankAccountFactory.cs" />
-    <Compile Include="Accounts\ConcreteBankAccountFactory.cs" />
     <Compile Include="Accounts\CreditAccount.cs" />
     <Compile Include="Accounts\CurrentAccount.cs" />
     <Compile Include="Accounts\DepositAccount.cs" />
@@ -88,7 +86,6 @@
     <Compile Include="Helper\AccountIsRestrictedException.cs" />
     <Compile Include="Helper\Extension.cs" />
     <Compile Include="Helper\SubsidiaryEqualityComparer.cs" />
-    <Compile Include="Interfaces\IBankAccountFactory.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\ITransferRecive.cs" />
     <Compile Include="Program.cs" />
@@ -102,6 +99,9 @@
     <Content Include="Test.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BAFactory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

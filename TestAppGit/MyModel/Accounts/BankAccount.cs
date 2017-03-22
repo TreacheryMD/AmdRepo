@@ -10,13 +10,11 @@ namespace MyModel.Accounts
     public abstract class BankAccount
     {
         public string Client { get;  }
-        public string AccNum { get;  }
+        public string AccNum { get; protected set; }
         public decimal Balance { get; private set;}
-
         public DateTime OpenDate { get;  }
         public string Currency { get; }
 
-        protected BankAccount() { }
         public virtual void ShowAccountInfo()
         {
             Console.Write(ToString());
@@ -33,7 +31,12 @@ namespace MyModel.Accounts
                 item.ShowAccountInfo();
             }
         }
-
+        protected BankAccount()
+        {
+            Client = "NoClientName";
+            AccNum = "000000000000";
+            Currency = "NoCurrency";
+        }
         protected BankAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency)
         {
             if (string.IsNullOrEmpty(owner))
@@ -56,7 +59,7 @@ namespace MyModel.Accounts
 
         protected BankAccount(string line)
         {
-            var l = line.Replace($"Type:{line.Split(new string[] { "Type:" }, StringSplitOptions.None).Last()}", "").Split('|');
+            var l = line.Replace($"Type:{line.Split(new string[] { "Type:" }, StringSplitOptions.None).Last()}", "").Split(';');
             Client = l[0].Replace("Client:", "");
             AccNum = l[1].Replace(" AccountNumber:", "");
             Balance = Convert.ToDecimal(l[2].Replace(" Balance:", ""));
@@ -66,7 +69,7 @@ namespace MyModel.Accounts
 
         public override string ToString()
         {
-            return $"Client: {Client} | AccountNumber:{AccNum} | Balance:{Balance} | Open: {OpenDate.ToShortDateString()} | Currency: {Currency}";
+            return $"Client: {Client} ; AccountNumber:{AccNum} ; Balance:{Balance} ; Open: {OpenDate.ToShortDateString()} ; Currency: {Currency}";
         }
 
         public void InBalance(decimal bal)

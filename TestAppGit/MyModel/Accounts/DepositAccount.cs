@@ -18,10 +18,13 @@ namespace MyModel.Accounts
 
         public DepositAccount(string line) : base(line)
         {
-            var test = line.Split('|').Where(w => w.Contains("Interest Rate:")).Select(s => s.Replace("Interest Rate:", "").Replace("Type: DepositAccount","").Replace(" ","")).FirstOrDefault();
+            var test = line.Split(';').Where(w => w.Contains("Interest Rate:")).Select(s => s.Replace("Interest Rate:", "").Replace("Type: DepositAccount","").Replace(" ","")).FirstOrDefault();
             _depIntRate = Convert.ToDouble(test);
         }
 
+        public DepositAccount() : base()
+        {
+        }
         public override void ShowAccountInfo()
         {
             Console.WriteLine(this.ToString());
@@ -41,7 +44,7 @@ namespace MyModel.Accounts
 
         public override string ToString()
         {
-            return base.ToString() + $" | Interest Rate: {_depIntRate}";
+            return base.ToString() + $" ; Interest Rate: {_depIntRate}";
         }
     }
 }

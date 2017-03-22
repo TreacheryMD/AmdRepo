@@ -20,9 +20,13 @@ namespace MyModel.Accounts
 
         public InterestAccount(string line) : base(line)
         {
-            var l = line.Split('|');
+            var l = line.Split(';');
             _intRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
             _mPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace("Type: InterestAccount","").Replace(" ", ""));
+        }
+
+        public InterestAccount():base()
+        {
         }
 
         public override void ShowAccountInfo()
@@ -57,7 +61,7 @@ namespace MyModel.Accounts
 
         public override string ToString()
         {
-            return base.ToString() + $" | Interest Rate:{_intRate} | MonthlyPay: {_mPay}";
+            return base.ToString() + $" ; Interest Rate:{_intRate} ; MonthlyPay: {_mPay}";
         }
     }
 }

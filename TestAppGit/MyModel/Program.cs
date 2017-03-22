@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IronPython.Hosting;
+//using IronPython.Hosting;
 using MyModel.Repo;
 
 namespace MyModel
@@ -31,7 +31,7 @@ namespace MyModel
             var acc11 = new CurrentAccount("Rotaru Vasile", 98700, "157632541240", new DateTime(2014, 02, 24), "EUR");
             var acc12 = new CurrentAccount("Ciobanu Anatol", 354000, "157632541241", new DateTime(2017, 01, 17), "EUR");
 
-            var acc13 = new CreditAccount(acc1.Client,acc1.AccNum,6000000,new DateTime(2017,01,01),"MDL");
+            var acc13 = new CreditAccount(acc1.Client,acc1.AccNum,6000000,new DateTime(2017,01,01),"MDL",new DateTime(2030,01,01));
             var acc14 = new DepositAccount(acc1.Client,acc1.AccNum,5500000,4.50,new DateTime(2017,02,02),"MDL");
             var acc15 = new InterestAccount(acc1.Client, acc1.AccNum, 500000,6.33,5000,new DateTime(2017,03,03),"MDL" );
 
@@ -40,9 +40,7 @@ namespace MyModel
 
             List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10, acc11, acc12, acc13,acc14,acc15 };
 
-            CreditAccount creditAccount = new CreditAccount("Client: Draganel Ion | AccountNumber:157632541230CRED | Balance:6000000 | Open: 1/1/2017 | Currency: MDL Type: CreditAccount");
-            DepositAccount depositAccount = new DepositAccount("Client: Draganel Ion | AccountNumber:157632541230DEP | Balance:5500000 | Open: 2/2/2017 | Currency: MDL | Interest Rate: 4.5 Type: DepositAccount");
-            InterestAccount interestAccount = new InterestAccount("Client: Draganel Ion | AccountNumber:157632541230INT | Balance:500000 | Open: 3/3/2017 | Currency: MDL | Interest Rate:6.33 | MonthlyPay: 5000 Type: InterestAccount");
+            CurrentAccount test = new CurrentAccount();
 
             #region WriteReadTxt
             Repository repository = new Repository();
