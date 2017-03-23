@@ -4,34 +4,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
     class InterestAccount : BankAccount, ITransferRecive
     {
-        private readonly double _intRate;
-        private readonly decimal _mPay;
-        public InterestAccount(string client,string accNum, decimal balance, double interestRate, decimal monthlyPaymant, DateTime openDate, string currency) :
-        base(client, balance, accNum.Substring(0, accNum.Length - 2) + "INT", openDate, currency)
+        public double IntRate { get; }
+        public decimal MPay { get; }
+        public InterestAccount(string fiscalCode,string accNum, decimal balance, double interestRate, decimal monthlyPaymant, DateTime openDate, CurrencyTypes currency) :
+        base(fiscalCode, balance, accNum + "INT", openDate, currency)
         {
-            _intRate = interestRate;
-            _mPay = monthlyPaymant;
-        }
+            if (interestRate <= 0) throw new Exception($"Invalid field:{nameof(interestRate)}<=0");
+            if (monthlyPaymant <= 0) throw new Exception($"Invalid field:{nameof(monthlyPaymant)}<=0");
 
+            IntRate = interestRate;
+            MPay = monthlyPaymant;
+        }
         public InterestAccount(string line) : base(line)
         {
-            var l = line.Split(';');
-            _intRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
-            _mPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace("Type: InterestAccount","").Replace(" ", ""));
+            //var l = line.Split(';');
+            //IntRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
+            //MPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace("Type: InterestAccount","").Replace(" ", ""));
         }
-
-        public InterestAccount():base()
+        public InterestAccount()
         {
         }
 
         public override void ShowAccountInfo()
         {
-            
             base.ShowAccountInfo();
             Console.WriteLine();
         }
@@ -54,14 +55,7 @@ namespace MyModel.Accounts
         //    }
         //}
 
-        public void Recive(decimal ammount)
-        {
-            this.InBalance(ammount);
-        }
-
-        public override string ToString()
-        {
-            return base.ToString() + $" ; Interest Rate:{_intRate} ; MonthlyPay: {_mPay}";
-        }
+        public void Recive(decimal ammount) => InBalance(ammount);
+        public override string ToString() => base.ToString() + $";{IntRate};{MPay}";
     }
 }

@@ -4,40 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
     class CreditAccount : BankAccount, ITransferRecive
     {
-        DateTime _reimbursement;
+        public DateTime Reimbursement { get; }
 
-        public CreditAccount(string client,string accNum, decimal newCreditAmmout, DateTime openDate, string currency, DateTime reimbursementDate) :
-            base(client, newCreditAmmout, accNum.Substring(0, accNum.Length - 2) + "CRED", openDate, currency)
+        public CreditAccount(string fiscalCode,string accNum, decimal newCreditAmmout, DateTime openDate, CurrencyTypes currency, DateTime reimbursementDate) :
+            base(fiscalCode, newCreditAmmout, accNum + "CRED", openDate, currency)
         {
-            _reimbursement = reimbursementDate;
+            if (reimbursementDate < DateTime.Now) throw new Exception($"Invalid field:{nameof(reimbursementDate)}<{DateTime.Now.ToShortDateString()}");
+            Reimbursement = reimbursementDate;
         }
-
         public CreditAccount(string line) : base(line)
         {
-            var l = line.Split(';');
-            var test = DateTime.Parse(l.Last().Replace("Reimbursement:", "").Replace("Type: CreditAccount", "").Replace(" ", ""));
+            //var l = line.Split(';');
+            //var test = DateTime.Parse(l.Last().Replace("Reimbursement:", "").Replace("Type: CreditAccount", "").Replace(" ", ""));
         }
-
-        public void Recive(decimal ammount)
-        {
-            this.OutBalance(ammount);
-        }
-
+        public void Recive(decimal ammount) => OutBalance(ammount);
         public override void ShowAccountInfo()
         {
-            
             base.ShowAccountInfo();
             Console.WriteLine();
         }
-        public override string ToString()
-        {
-            return base.ToString() + $" ; Reimbursement:{_reimbursement.ToShortDateString()}";
-        }
-
+        public override string ToString() => base.ToString() + $";{Reimbursement.ToShortDateString()}";
     }
 }

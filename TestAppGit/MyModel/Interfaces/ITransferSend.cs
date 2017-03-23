@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyModel.Interfaces
 {
-    public interface ITransferRecive
+    public interface ITransferSend
     {
-        void Recive(decimal ammount);
+        void Send(decimal ammount);
     }
 }

@@ -5,54 +5,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
     class CurrentAccount : BankAccount
     {
         public bool Restricted { get; set; }
-        public CurrentAccount(string owner, decimal balance, string accountNumber, DateTime openDate, string currency, bool restricted = false) : base(owner, balance, accountNumber + "CR", openDate, currency)
+        public CurrentAccount(string fiscalCode, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency, bool restricted = false) 
+            : base(fiscalCode, balance, accNum + "CR", openDate, currency)
         {
             Restricted = restricted;
         }
+        
 
         public CurrentAccount(string line) : base(line)
         {
-            Restricted = line.Contains("Restricted:True");
+           // Restricted = line.Contains("Restricted:True");
         }
-
-        public CurrentAccount():base()
+        public CurrentAccount()
         {
             AccNum+="CR";
         }
-
-        public override void ShowAccountInfo()
-        {
-            //Console.WriteLine("Curent account:");
-            Console.WriteLine(this.ToString());
-            //base.ShowAccountInfo();
-            //Console.Write($" | Restricted:{Restricted}");
-            //Console.WriteLine();
-        }
-
+        public override void ShowAccountInfo() => Console.WriteLine(ToString());
         public void CashIn(decimal cashInAmmout)
         {
-            if (cashInAmmout <= 0)
-            {
-                throw new Exception("You can't Cash In nothing to your current account");
-            }
-            this.InBalance(cashInAmmout);
-           
+            if (cashInAmmout <= 0) throw new Exception("You can't Cash In nothing to your current account");
+            InBalance(cashInAmmout);
         }
         public void CashOut(decimal cashOutAmmount)
         {
             if (Restricted) throw new AccountIsRestrictedException();
+            if (cashOutAmmount <= 0) throw new Exception("You can't Cash Out with negative ammount");
 
-            if (cashOutAmmount <= 0)
-            {
-                throw new Exception("You can't Cash Out with negative ammount");
-            }
-            this.OutBalance(cashOutAmmount); 
+            OutBalance(cashOutAmmount); 
         }
         public void Transfer(ITransferRecive source, decimal ammount)
         {
@@ -60,10 +46,6 @@ namespace MyModel.Accounts
             source.Recive(ammount);
             this.OutBalance(ammount);
         }
-
-        public override string ToString()
-        {
-            return base.ToString()+ $" ; Restricted:{Restricted}";
-        }
+        public override string ToString() => base.ToString()+ $";{Restricted}";
     }
 }
