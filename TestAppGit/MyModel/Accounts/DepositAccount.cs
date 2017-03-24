@@ -8,7 +8,7 @@ using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
-    class DepositAccount : BankAccount, ITransferRecive
+    class DepositAccount : BankAccount
     {
         private readonly double _depIntRate;
         public DepositAccount(string fiscalCode,string accNum, decimal balance, double depositInterestRate, DateTime openDate, CurrencyTypes currency) :
@@ -19,8 +19,8 @@ namespace MyModel.Accounts
         }
         public DepositAccount(string line) : base(line)
         {
-            //var test = line.Split(';').Where(w => w.Contains("Interest Rate:")).Select(s => s.Replace("Interest Rate:", "").Replace("Type: DepositAccount","").Replace(" ","")).FirstOrDefault();
-            //_depIntRate = Convert.ToDouble(test);
+            var l = line.Split(';');
+            _depIntRate = Convert.ToDouble(l[5]);
         }
         public DepositAccount(){}
         public override void ShowAccountInfo() => Console.WriteLine(ToString());
@@ -29,8 +29,7 @@ namespace MyModel.Accounts
         {
             for (int i = 0; i < numbOfMonths; i++) InBalance(Balance * (decimal) _depIntRate / 100 / 12);
         }
-        public void Recive(decimal ammount) => InBalance(ammount);
-
+       
         public override string ToString() => base.ToString() + $";{_depIntRate}";
     }
 }

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyModel.Interfaces
 {
-    interface IRepository<T> where T : BankAccount
+    public interface IRepository<T> 
     {
-        void Add(BankAccount account);
-        void Remove();
-        void Get(string id);
-        void Find();
-
+        void Add(T entity);
+        void Add(List<T> lentity );
+        void Delete(T entity);
+        void Update(T entity);
+        T FindById(int id);
+        List<T> GetAll();
     }
 }

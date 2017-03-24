@@ -8,7 +8,7 @@ using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
-    class InterestAccount : BankAccount, ITransferRecive
+    class InterestAccount : BankAccount
     {
         public double IntRate { get; }
         public decimal MPay { get; }
@@ -23,9 +23,9 @@ namespace MyModel.Accounts
         }
         public InterestAccount(string line) : base(line)
         {
-            //var l = line.Split(';');
-            //IntRate = Convert.ToDouble(l[5].Replace("Interest Rate:", "").Replace(" ", ""));
-            //MPay = Convert.ToDecimal(l[6].Replace("MonthlyPay:", "").Replace("Type: InterestAccount","").Replace(" ", ""));
+            var l = line.Split(';');
+            IntRate = Convert.ToDouble(l[5]);
+            MPay = Convert.ToDecimal(l[6]);
         }
         public InterestAccount()
         {
@@ -55,7 +55,7 @@ namespace MyModel.Accounts
         //    }
         //}
 
-        public void Recive(decimal ammount) => InBalance(ammount);
+       
         public override string ToString() => base.ToString() + $";{IntRate};{MPay}";
     }
 }

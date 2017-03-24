@@ -42,9 +42,16 @@ namespace MyModel.Accounts
             //var l = line.Replace($"Type:{line.Split(new string[] { "Type:" }, StringSplitOptions.None).Last()}", "").Split(';');
             ////_client = l[0].Replace("Client:", "");
             //AccNum = l[1].Replace(" AccountNumber:", "");
-            //Balance = Convert.ToDecimal(l[2].Replace(" Balance:", ""));
+            //Balance = CurrencyConvert.ToDecimal(l[2].Replace(" Balance:", ""));
             //OpenDate = DateTime.Parse(l[3].Replace("Open:", "").Replace(" ", ""));
             //Currency = l[4].Replace(" Currency: ", "");
+
+            var l = line.Split(';');
+            FiscalCode = l[0];
+            AccNum = l[1];
+            Balance = Convert.ToDecimal(l[2]);
+            OpenDate = DateTime.Parse(l[3]);
+            Currency = (CurrencyTypes) Enum.Parse(typeof(CurrencyTypes), l[4]); 
         }
 
         public virtual void ShowAccountInfo() => Console.Write(ToString());

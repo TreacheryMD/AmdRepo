@@ -17,11 +17,10 @@ namespace MyModel.Accounts
         {
             Restricted = restricted;
         }
-        
-
         public CurrentAccount(string line) : base(line)
         {
-           // Restricted = line.Contains("Restricted:True");
+           var l = line.Split(';');
+           Restricted = l[5].Contains("True");
         }
         public CurrentAccount()
         {
@@ -40,12 +39,7 @@ namespace MyModel.Accounts
 
             OutBalance(cashOutAmmount); 
         }
-        public void Transfer(ITransferRecive source, decimal ammount)
-        {
-            if (this.Restricted) throw new AccountIsRestrictedException("Account is restricted");
-            source.Recive(ammount);
-            this.OutBalance(ammount);
-        }
+        
         public override string ToString() => base.ToString()+ $";{Restricted}";
     }
 }

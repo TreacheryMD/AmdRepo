@@ -8,7 +8,7 @@ using MyModel.Clients;
 
 namespace MyModel.Accounts
 {
-    class CreditAccount : BankAccount, ITransferRecive
+    class CreditAccount : BankAccount
     {
         public DateTime Reimbursement { get; }
 
@@ -20,10 +20,9 @@ namespace MyModel.Accounts
         }
         public CreditAccount(string line) : base(line)
         {
-            //var l = line.Split(';');
-            //var test = DateTime.Parse(l.Last().Replace("Reimbursement:", "").Replace("Type: CreditAccount", "").Replace(" ", ""));
+            var l = line.Split(';');
+            Reimbursement = DateTime.Parse(l[5]);
         }
-        public void Recive(decimal ammount) => OutBalance(ammount);
         public override void ShowAccountInfo()
         {
             base.ShowAccountInfo();

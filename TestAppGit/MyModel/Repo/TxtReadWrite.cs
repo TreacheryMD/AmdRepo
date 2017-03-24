@@ -20,11 +20,10 @@ namespace MyModel.Repo
             {
                 foreach (BankAccount account in list)
                 {
-                    writer.WriteLine(account + $" Type: {account.GetType().ToString().Split('.').Last()}");
+                    writer.WriteLine(account + $";{account.GetType().ToString().Split('.').Last()}");
                 }
             }
         }
-
         public static List<BankAccount> ReadFromTxt()
         {
             List<BankAccount> list = new List<BankAccount>();
@@ -34,9 +33,7 @@ namespace MyModel.Repo
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-
-                    var type = line.Split(new string[] {"Type:"}, StringSplitOptions.None).Last();
-
+                    var type = line.Split(';').Last();
                     if (type.Contains("CurrentAccount"))
                     {
                         list.Add(new CurrentAccount(line));
