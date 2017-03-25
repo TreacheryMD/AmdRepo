@@ -12,7 +12,7 @@ using MyModel.Interfaces;
 
 namespace MyModel
 {
-    public class Exchange : ICursManager
+    public class Exchange 
     {
         public static readonly Dictionary<string, decimal> ExchangeToMDL = new Dictionary<string, decimal>() { { "MDL", 1 } };
         static Exchange()
@@ -55,14 +55,6 @@ namespace MyModel
                     }
                 }
             }
-        }
-
-        public decimal CurrencyConvert(CurrencyTypes currency1, CurrencyTypes currency2, decimal ammount)
-        {
-            if (!ExchangeToMDL.Any()) throw new Exception("Exchange rate was not loaded");
-            if (currency1 == currency2) return ammount;
-
-            return ExchangeToMDL[currency1.ToString()] * ammount / ExchangeToMDL[currency2.ToString()];
         }
     }
 }

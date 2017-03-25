@@ -39,7 +39,12 @@ namespace MyModel.Accounts
 
             OutBalance(cashOutAmmount); 
         }
-        
+        public override void Freeze()
+        {
+            Restricted = true;
+        }
+
+
         public override string ToString() => base.ToString()+ $";{Restricted}";
     }
 }

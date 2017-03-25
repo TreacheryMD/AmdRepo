@@ -11,6 +11,8 @@ using MyModel.Clients;
 using MyModel.Interfaces;
 //using IronPython.Hosting;
 using MyModel.Repo;
+using MyModel.Testing_proxy;
+using MyModel.Decorator;
 
 namespace MyModel
 {
@@ -22,16 +24,25 @@ namespace MyModel
             Person person2 = new Person();
 
             BankAccount acc1 = new CurrentAccount(person1.FiscalCode,1000,"454654646545",DateTime.Now, CurrencyTypes.MDL);
-            BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",800,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
-            BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",39999,2.4,DateTime.Now, CurrencyTypes.MDL);     
+            BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",0,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
+            BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",40000,2.4,DateTime.Now, CurrencyTypes.MDL);
 
-            Exchange exchangeHandler = new Exchange();
+            ProxyConvertor proxy = new ProxyConvertor();
             
             ListRepository<Transaction> listRepository = new ListRepository<Transaction>();
 
-            TransferManager transferHandler = new TransferManager(exchangeHandler, listRepository);
+            TransferManager transferHandler = new TransferManager(proxy, listRepository);
 
-            transferHandler.ExecuteTransfer(acc1, acc2,400);
+            CurrentAccountDecorator decorator = new CurrentAccountDecorator(acc1);
+            decorator.Freeze();//altfel de freeze
+
+            Console.WriteLine(acc1);
+            Console.WriteLine(acc3);
+
+            transferHandler.ExecuteTransfer(acc1, acc3, 400);
+
+            Console.WriteLine(acc1);
+            Console.WriteLine(acc3);
 
             #region WriteReadTxt
 

@@ -35,5 +35,10 @@ namespace MyModel.Accounts
         }
 
         public override string ToString() => base.ToString() + $";{Reimbursement.ToShortDateString()}";
+
+        public override void Freeze()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

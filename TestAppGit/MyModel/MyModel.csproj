@@ -84,6 +84,8 @@
     <Compile Include="Company\Bank.cs" />
     <Compile Include="Company\Branch.cs" />
     <Compile Include="Company\Subsidiary.cs" />
+    <Compile Include="Decorator\AccountDecorator.cs" />
+    <Compile Include="Decorator\CurrentAccountDecorator.cs" />
     <Compile Include="Exchange.cs" />
     <Compile Include="Helper\AccountIsRestrictedException.cs" />
     <Compile Include="Helper\Extension.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Repo\ListRepository.cs" />
     <Compile Include="Repo\TxtReadWrite.cs" />
     <Compile Include="Repo\TxTBankAccRepository.cs" />
+    <Compile Include="Testing proxy\ProxyConvertor.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="TransferManager.cs" />
   </ItemGroup>

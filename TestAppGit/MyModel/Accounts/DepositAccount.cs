@@ -31,5 +31,10 @@ namespace MyModel.Accounts
         }
        
         public override string ToString() => base.ToString() + $";{_depIntRate}";
+
+        public override void Freeze()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

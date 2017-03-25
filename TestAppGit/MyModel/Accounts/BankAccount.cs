@@ -46,13 +46,15 @@ namespace MyModel.Accounts
             OpenDate = DateTime.Parse(l[3]);
             Currency = (CurrencyTypes) Enum.Parse(typeof(CurrencyTypes), l[4]); 
         }
-
         public virtual void ShowAccountInfo() => Console.Write(ToString());
         public static void ShowAccountInfo(IEnumerable<BankAccount> yourEnum, bool showSorted = false, bool ascending = false)
         {
             if (showSorted) yourEnum = ascending ? yourEnum.OrderBy(o => o.Balance) : yourEnum.OrderByDescending(o => o.Balance);
             foreach (var item in yourEnum) item.ShowAccountInfo();
         }
+
+        public abstract void Freeze();
+
         public virtual void InBalance(decimal bal) => Balance += bal;
         public virtual void OutBalance(decimal bal) => Balance -= bal;
         public override string ToString() => $"{FiscalCode};{AccNum};{Balance};{OpenDate.ToShortDateString()};{Currency}";
