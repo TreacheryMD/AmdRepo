@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyModel.Accounts;
 using MyModel.Interfaces;
+using MyModel.BAFactory;
 
 namespace MyModel.Repo
 {
@@ -34,26 +35,9 @@ namespace MyModel.Repo
                 while ((line = reader.ReadLine()) != null)
                 {
                     var type = line.Split(';').Last();
-                    if (type.Contains("CurrentAccount"))
-                    {
-                        list.Add(new CurrentAccount(line));
-                    }
-                    else if (type.Contains("CreditAccount"))
-                    {
-                        list.Add(new CreditAccount(line));
-                    }
-                    else if (type.Contains("DepositAccount"))
-                    {
-                      list.Add(new DepositAccount(line));
-                    }
-                    else if (type.Contains("InterestAccount"))
-                    {
-                      list.Add(new InterestAccount(line));
-                    }
-                    else
-                    {
-                        throw new Exception("There is no type, something gone wrong");
-                    }
+                    GenericCreatorBA factory = new GenericCreatorBA();
+                    try{list.Add(factory.CreateBankAccount(type, line));}
+                    catch (Exception) { throw new Exception("There is no type, something gone wrong"); }
                 }
             }
             return list;

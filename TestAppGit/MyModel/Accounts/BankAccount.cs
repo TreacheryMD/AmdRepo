@@ -13,7 +13,7 @@ namespace MyModel.Accounts
     public abstract class BankAccount
     {
         public string AccNum { get; protected set; }
-        public decimal Balance { get; private set;}
+        public decimal Balance { get; protected set;}
         public DateTime OpenDate { get;  }
         public CurrencyTypes Currency { get; }
         public string FiscalCode { get; }
@@ -32,20 +32,13 @@ namespace MyModel.Accounts
 
             FiscalCode = fiscalCode;
             AccNum = accNum;
-            InBalance(balance);
+            Balance = balance;
             OpenDate = openDate;
             Currency = currency;
         }
 
         protected BankAccount(string line)
         {
-            //var l = line.Replace($"Type:{line.Split(new string[] { "Type:" }, StringSplitOptions.None).Last()}", "").Split(';');
-            ////_client = l[0].Replace("Client:", "");
-            //AccNum = l[1].Replace(" AccountNumber:", "");
-            //Balance = CurrencyConvert.ToDecimal(l[2].Replace(" Balance:", ""));
-            //OpenDate = DateTime.Parse(l[3].Replace("Open:", "").Replace(" ", ""));
-            //Currency = l[4].Replace(" Currency: ", "");
-
             var l = line.Split(';');
             FiscalCode = l[0];
             AccNum = l[1];
@@ -60,8 +53,8 @@ namespace MyModel.Accounts
             if (showSorted) yourEnum = ascending ? yourEnum.OrderBy(o => o.Balance) : yourEnum.OrderByDescending(o => o.Balance);
             foreach (var item in yourEnum) item.ShowAccountInfo();
         }
-        public void InBalance(decimal bal) => Balance += bal;
-        public void OutBalance(decimal bal) => Balance -= bal;
+        public virtual void InBalance(decimal bal) => Balance += bal;
+        public virtual void OutBalance(decimal bal) => Balance -= bal;
         public override string ToString() => $"{FiscalCode};{AccNum};{Balance};{OpenDate.ToShortDateString()};{Currency}";
     }
 }

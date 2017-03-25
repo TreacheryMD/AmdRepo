@@ -14,9 +14,8 @@ namespace MyModel
 {
     public class Exchange : ICursManager
     {
-        public static readonly Dictionary<string, decimal> ExchangeToMDL = new Dictionary<string, decimal>();
-
-        private void LoadRate()
+        public static readonly Dictionary<string, decimal> ExchangeToMDL = new Dictionary<string, decimal>() { { "MDL", 1 } };
+        static Exchange()
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(@"http://www.bnm.org/ro/official_exchange_rates?get_xml=1&date=" + $"{DateTime.Now:dd.MM.yyyy}");
 
@@ -60,9 +59,6 @@ namespace MyModel
 
         public decimal CurrencyConvert(CurrencyTypes currency1, CurrencyTypes currency2, decimal ammount)
         {
-            LoadRate();
-            ExchangeToMDL.Add("MDL",1);
-
             if (!ExchangeToMDL.Any()) throw new Exception("Exchange rate was not loaded");
             if (currency1 == currency2) return ammount;
 

@@ -22,10 +22,8 @@ namespace MyModel
             Person person2 = new Person();
 
             BankAccount acc1 = new CurrentAccount(person1.FiscalCode,1000,"454654646545",DateTime.Now, CurrencyTypes.MDL);
-            BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",800,DateTime.Now, CurrencyTypes.EUR, new DateTime(2018, 01, 01));
-            BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",39999,2.4,DateTime.Now, CurrencyTypes.MDL);
-            BankAccount acc4 = new InterestAccount();
-
+            BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",800,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
+            BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",39999,2.4,DateTime.Now, CurrencyTypes.MDL);     
 
             Exchange exchangeHandler = new Exchange();
             
@@ -33,25 +31,14 @@ namespace MyModel
 
             TransferManager transferHandler = new TransferManager(exchangeHandler, listRepository);
 
-            Console.WriteLine(acc1);
-            Console.WriteLine(acc2);
-
-            transferHandler.ExecuteTransfer(acc1, acc2,200);
-
-            //Console.WriteLine(person1);
-            Console.WriteLine(acc1);
-            Console.WriteLine(acc2);
-            //Console.WriteLine(acc3);
-
-
+            transferHandler.ExecuteTransfer(acc1, acc2,400);
 
             #region WriteReadTxt
 
-            //List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2,acc3,acc4 };
-
-            //IRepository<BankAccount> txtRep = new TxTBankAccRepository();
-            //txtRep.Add(allAcc);
-            //var test = txtRep.GetAll();
+            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2,acc3 };
+            IRepository<BankAccount> txtRep = new TxTBankAccRepository();
+            txtRep.Add(allAcc);
+            var test = txtRep.GetAll();
 
             #endregion
 

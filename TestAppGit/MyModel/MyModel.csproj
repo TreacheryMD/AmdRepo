@@ -79,7 +79,8 @@
     <Compile Include="Accounts\CreditAccount.cs" />
     <Compile Include="Accounts\CurrentAccount.cs" />
     <Compile Include="Accounts\DepositAccount.cs" />
-    <Compile Include="Accounts\InterestAccount.cs" />
+    <Compile Include="BAFactory\GenericCreatorBA.cs" />
+    <Compile Include="BAFactory\CreatorBA.cs" />
     <Compile Include="Company\Bank.cs" />
     <Compile Include="Company\Branch.cs" />
     <Compile Include="Company\Subsidiary.cs" />
@@ -106,9 +107,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BAFactory\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

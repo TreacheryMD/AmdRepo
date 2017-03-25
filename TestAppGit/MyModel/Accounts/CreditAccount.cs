@@ -28,6 +28,12 @@ namespace MyModel.Accounts
             base.ShowAccountInfo();
             Console.WriteLine();
         }
+        public override void InBalance(decimal bal)
+        {
+            if (Balance - bal < 0) throw new Exception($"You transfer too much in Credit account: {Balance - bal}");
+            Balance -= bal;
+        }
+
         public override string ToString() => base.ToString() + $";{Reimbursement.ToShortDateString()}";
     }
 }
