@@ -7,7 +7,7 @@ using MyModel.Accounts;
 
 namespace MyModel.BAFactory
 {
-    public class GenericCreatorBA : CreatorBA
+    public class GenericCreatorBa : CreatorBA
     {
         public override BankAccount CreateBankAccount(string bankAccountType,string line)
         {

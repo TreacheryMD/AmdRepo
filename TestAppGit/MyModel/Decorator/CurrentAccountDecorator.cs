@@ -11,6 +11,7 @@ namespace MyModel.Decorator
     {
         public CurrentAccountDecorator(BankAccount currentAccount) : base(currentAccount)
         {
+
         }
 
         public override void Freeze()

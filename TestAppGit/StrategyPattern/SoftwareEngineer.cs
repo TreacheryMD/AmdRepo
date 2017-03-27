@@ -8,6 +8,7 @@ namespace StrategyPattern
 {
     class SoftwareEngineer : ICompanyStrategy
     {
+        
         public string EmployeeStrategies()
         {
             return "Policies for Software Sngineer";

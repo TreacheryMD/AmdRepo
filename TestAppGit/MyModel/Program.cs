@@ -27,8 +27,11 @@ namespace MyModel
             BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",0,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
             BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",40000,2.4,DateTime.Now, CurrencyTypes.MDL);
 
+            //IServiceLocator locator = new ServiceLocator();
+            //IServiceA myServiceA = locator.GetService<IServiceA>();
+
+
             ProxyConvertor proxy = new ProxyConvertor();
-            
             ListRepository<Transaction> listRepository = new ListRepository<Transaction>();
 
             TransferManager transferHandler = new TransferManager(proxy, listRepository);

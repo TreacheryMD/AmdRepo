@@ -15,7 +15,6 @@ namespace StrategyPattern
             Console.WriteLine("***Strategy for Software Engineer");
             hireEmployee.DefineStrategies();
 
-            
             hireEmployee = new HiringStrategyContext(new SeniorSoftwareEngineer());
 
             Console.WriteLine("\n***Strategy for Senior Software Engineer");
@@ -27,6 +26,8 @@ namespace StrategyPattern
             Console.WriteLine("\n***Strategy for TeamLead");
             hireEmployee.DefineStrategies();
 
+            //DataAccessObject newAccessObject = new Categories();
+            //newAccessObject.Run();
 
             Console.ReadLine();
 

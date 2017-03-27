@@ -15,7 +15,7 @@ namespace ObserverPattern
         }
         public void Update()
         {
-            Console.WriteLine("{0}: A new product has arrived at the store", ObserverName);
+            Console.WriteLine($"{ObserverName}: A new product has arrived at the store");
         }
     }
 
