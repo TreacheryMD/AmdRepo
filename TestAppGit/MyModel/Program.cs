@@ -23,7 +23,7 @@ namespace MyModel
             Person person1 = new Person("Ion", "Draganel", new DateTime(1991, 06, 10), "20050013346680", GenderType.Male);
             Person person2 = new Person();
 
-            BankAccount acc1 = new CurrentAccount(person1.FiscalCode,1000,"454654646545",DateTime.Now, CurrencyTypes.MDL);
+            BankAccount acc1 = new CurrentAccount(person1.FiscalCode,1100,"454654646545",DateTime.Now, CurrencyTypes.MDL);
             BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",0,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
             BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",40000,2.4,DateTime.Now, CurrencyTypes.MDL);
 
@@ -40,12 +40,12 @@ namespace MyModel
             decorator.Freeze();//altfel de freeze
 
             Console.WriteLine(acc1);
-            Console.WriteLine(acc3);
+           // Console.WriteLine(acc3);
 
-            transferHandler.ExecuteTransfer(acc1, acc3, 400);
+           // transferHandler.ExecuteTransfer(acc1, acc3, 400);
 
-            Console.WriteLine(acc1);
-            Console.WriteLine(acc3);
+           // Console.WriteLine(acc1);
+            //Console.WriteLine(acc3);
 
             #region WriteReadTxt
 

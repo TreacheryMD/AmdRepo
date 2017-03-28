@@ -11,7 +11,7 @@ namespace StrategyPattern
         
         public string EmployeeStrategies()
         {
-            return "Policies for Software Sngineer";
+            return "Contract for Software Sngineer";
         }
     }
 }

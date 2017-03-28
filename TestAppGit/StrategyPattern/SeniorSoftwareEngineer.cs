@@ -10,7 +10,7 @@ namespace StrategyPattern
     {
         public string EmployeeStrategies()
         {
-            return "Policies for Senior software Engineer";
+            return "Contract for Senior software Engineer";
         }
     }
 }

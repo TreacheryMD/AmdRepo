@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyModel.Accounts;
+using NUnitTesting.Accounts;
 
-namespace MyModel.Decorator
+namespace NUnitTesting.Decorator
 {
     public class CurrentAccountDecorator : AccountDecorator
     {
@@ -16,10 +16,8 @@ namespace MyModel.Decorator
 
         public override void Freeze()
         {
-            _bankAccount.OutMaxBalance();
             base.Freeze();
-            OutMaxBalance();
-            Console.WriteLine("All your money has been removed from your account.");
+            Console.WriteLine("Another type of freeze aplied // from decorator");
         }
     }
 }

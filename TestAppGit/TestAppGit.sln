@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "Observer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{2EF70D5A-547A-46B3-A211-0C1D33340CB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTesting", "NUnitTesting\NUnitTesting.csproj", "{10A98190-0A75-4A2D-A04A-FA7456AEECD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +148,12 @@ Global
 		{2EF70D5A-547A-46B3-A211-0C1D33340CB1}.Lightweight|Any CPU.Build.0 = Release|Any CPU
 		{2EF70D5A-547A-46B3-A211-0C1D33340CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF70D5A-547A-46B3-A211-0C1D33340CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Lightweight|Any CPU.ActiveCfg = Release|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Lightweight|Any CPU.Build.0 = Release|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

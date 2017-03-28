@@ -16,7 +16,7 @@ namespace StrategyPattern
             _IcompanyStrategies = IcompanyStrategies;
         }
 
-        public void DefineStrategies()
+        public void GetContractDetails()
         {
            
             Console.WriteLine(this._IcompanyStrategies.EmployeeStrategies());

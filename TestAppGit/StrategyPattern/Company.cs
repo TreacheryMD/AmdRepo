@@ -16,7 +16,7 @@ namespace StrategyPattern
         public void TemplateMethod(IHiringStrategyContext hiringStrategyContext)
         {
             _hiringStrategyContext = hiringStrategyContext;
-            _hiringStrategyContext.DefineStrategies();
+            _hiringStrategyContext.GetContractDetails();
 
             PrimitiveOperation1();
             PrimitiveOperation2();

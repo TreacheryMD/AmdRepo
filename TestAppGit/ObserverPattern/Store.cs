@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    public class Subject : ISubject
+    public class Store : IStore
     {
-        private List<Observer> observers = new List<Observer>();
+        private readonly List<Observer> _obeservers = new List<Observer>();
         private int _int;
         public int Inventory
         {
@@ -22,17 +22,17 @@ namespace ObserverPattern
         }
         public void Subscribe(Observer observer)
         {
-            observers.Add(observer);
+            _obeservers.Add(observer);
         }
 
         public void Unsubscribe(Observer observer)
         {
-            observers.Remove(observer);
+            _obeservers.Remove(observer);
         }
 
         public void Notify()
         {
-            observers.ForEach(x => x.Update());
+            _obeservers.ForEach(x => x.Update());
         }
     }
 

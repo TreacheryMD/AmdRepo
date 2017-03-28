@@ -1,11 +1,11 @@
-﻿using MyModel.Accounts;
+﻿using NUnitTesting.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyModel.Decorator
+namespace NUnitTesting.Decorator
 {
     public class AccountDecorator : BankAccount
     {
@@ -22,5 +22,11 @@ namespace MyModel.Decorator
                 _bankAccount.Freeze();
             }    
         }
+
+        //protected override void Freeze()
+        //{
+        //    if (this == null) throw new Exception("Invalid operration");
+        //    base.Freeze();
+        //}
     }
 }

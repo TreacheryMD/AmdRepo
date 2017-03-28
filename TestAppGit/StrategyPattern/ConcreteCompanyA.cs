@@ -10,11 +10,11 @@ namespace StrategyPattern
     {
         public override void PrimitiveOperation1()
         {
-            Console.WriteLine("ConcreteCompanyA.PrimitiveOperation1()");
+            Console.WriteLine("ConcreteCompanyA.SomeOperationOne()");
         }
         public override void PrimitiveOperation2()
         {
-            Console.WriteLine("ConcreteCompanyA.PrimitiveOperation2()");
+            Console.WriteLine("ConcreteCompanyA.SomeOperationTwo()");
         }
     }
 }

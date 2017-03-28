@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StrategyPattern
+namespace NUnitTesting
 {
-    class TeamLead : ICompanyStrategy
+    class Program
     {
-        public string EmployeeStrategies()
+        static void Main(string[] args)
         {
-            return "Contract for Team Lead";
+
         }
     }
 }

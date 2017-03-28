@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    interface ISubject
+    interface IStore
     {
         void Subscribe(Observer observer);
         void Unsubscribe(Observer observer);

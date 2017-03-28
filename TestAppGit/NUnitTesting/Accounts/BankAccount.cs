@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyModel.Clients;
-using MyModel.Helper;
 
-namespace MyModel.Accounts
+namespace NUnitTesting.Accounts
 {
     public enum CurrencyTypes { USD, EUR, RUB, RON, MDL }
 
@@ -23,6 +19,8 @@ namespace MyModel.Accounts
             FiscalCode = "00000000000";
             AccNum = "000000000000";
             Currency = CurrencyTypes.MDL;
+            Balance = 0;
+            OpenDate = DateTime.Now;
         }
         protected BankAccount(string fiscalCode, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency)
         {
@@ -57,8 +55,6 @@ namespace MyModel.Accounts
 
         public virtual void InBalance(decimal bal) => Balance += bal;
         public virtual void OutBalance(decimal bal) => Balance -= bal;
-
-        public virtual void OutMaxBalance() => Balance -= Balance;
         public override string ToString() => $"{FiscalCode};{AccNum};{Balance};{OpenDate.ToShortDateString()};{Currency}";
     }
 }

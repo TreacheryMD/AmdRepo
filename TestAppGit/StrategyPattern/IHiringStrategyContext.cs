@@ -2,6 +2,6 @@
 {
     interface IHiringStrategyContext
     {
-        void DefineStrategies();
+        void GetContractDetails();
     }
 }
