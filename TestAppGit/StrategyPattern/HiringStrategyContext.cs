@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StrategyPattern
 {
-    class HiringStrategyContext
+    class HiringStrategyContext : IHiringStrategyContext
     {
         ICompanyStrategy _IcompanyStrategies;
 

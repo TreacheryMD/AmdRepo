@@ -26,8 +26,13 @@ namespace StrategyPattern
             Console.WriteLine("\n***Strategy for TeamLead");
             hireEmployee.DefineStrategies();
 
-            //DataAccessObject newAccessObject = new Categories();
-            //newAccessObject.Run();
+            //
+            Console.WriteLine("*****************");
+
+            Company aA = new ConcreteCompanyA();
+            aA.TemplateMethod(new HiringStrategyContext(new SoftwareEngineer()));
+
+
 
             Console.ReadLine();
 
