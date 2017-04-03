@@ -2,25 +2,25 @@
 
 namespace MyModel.Clients
 {
-    public enum GenderType { Male, Female }
+    public enum GenderType { Male=1, Female, Unckown }
     public class Person
     {
         public string FirstName { get; protected internal set; }
         public string LastName { get; protected internal set; }
-        public DateTime BirthDateTime { get; protected internal set; }
+        public DateTime BirthDate { get; protected internal set; }
         public string FiscalCode { get; protected internal set; }
         public GenderType Gender { get; protected internal set; }
 
-        public Person(string firstName, string lastName, DateTime birthDateTime, string fiscalCode, GenderType gender)
+        public Person(string firstName, string lastName, DateTime birthDate, string fiscalCode, GenderType gender)
         {
             if (string.IsNullOrWhiteSpace(firstName)) throw new ArgumentNullException(nameof(firstName));
             if (string.IsNullOrWhiteSpace(lastName)) throw new ArgumentNullException(nameof(lastName));
             if (string.IsNullOrWhiteSpace(fiscalCode))  throw new ArgumentNullException(nameof(fiscalCode)); 
-            if (birthDateTime < DateTime.Now.AddYears(-125))throw new Exception($"Invalid field:{nameof(birthDateTime)}");
+            if (birthDate < DateTime.Now.AddYears(-125))throw new Exception($"Invalid field:{nameof(birthDate)}");
 
             FirstName = firstName;
             LastName = lastName;
-            BirthDateTime = birthDateTime;
+            BirthDate = birthDate;
             FiscalCode = fiscalCode;
             Gender = gender;
         }
@@ -29,14 +29,14 @@ namespace MyModel.Clients
         {
             FirstName = "NoFirstName";
             LastName = "NoLastName";
-            BirthDateTime = DateTime.Now;
+            BirthDate = DateTime.Now;
             FiscalCode = "0000000000000";
             Gender = GenderType.Male;
         }
 
         public override string ToString()
         {
-            return $"{FirstName};{LastName};{BirthDateTime.ToShortDateString()};{FiscalCode};{Gender}";
+            return $"{FirstName};{LastName};{BirthDate.ToShortDateString()};{FiscalCode};{Gender}";
         }
     }
 }
