@@ -12,7 +12,6 @@ using MyModel.Interfaces;
 //using IronPython.Hosting;
 using MyModel.Repo;
 using MyModel.Testing_proxy;
-using MyModel.Decorator;
 
 namespace MyModel
 {
@@ -27,20 +26,15 @@ namespace MyModel
             BankAccount acc2 = new CreditAccount(person1.FiscalCode, "454444454666",0,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
             BankAccount acc3 = new DepositAccount(person2.FiscalCode, "3495782094785",40000,2.4,DateTime.Now, CurrencyTypes.MDL);
 
-            //IServiceLocator locator = new ServiceLocator();
-            //IServiceA myServiceA = locator.GetService<IServiceA>();
+            IServiceLocator locator = new ServiceLocator();
+            var myservice = locator.GetService<IRepository<Transaction>>();
 
+            //IRepository<Transaction> listRepository = new ListRepository<Transaction>();
 
-            ProxyConvertor proxy = new ProxyConvertor();
-            ListRepository<Transaction> listRepository = new ListRepository<Transaction>();
-
-            TransferManager transferHandler = new TransferManager(proxy, listRepository);
-
-            CurrentAccountDecorator decorator = new CurrentAccountDecorator(acc1);
-            decorator.Freeze();//altfel de freeze
-
+            TransferManager transferHandler = new TransferManager(myservice);
+            transferHandler.ExecuteTransfer(acc1, acc3,1000);
             Console.WriteLine(acc1);
-           // Console.WriteLine(acc3);
+            Console.WriteLine(acc3);
 
            // transferHandler.ExecuteTransfer(acc1, acc3, 400);
 
@@ -49,10 +43,10 @@ namespace MyModel
 
             #region WriteReadTxt
 
-            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2,acc3 };
-            IRepository<BankAccount> txtRep = new TxTBankAccRepository();
-            txtRep.Add(allAcc);
-            var test = txtRep.GetAll();
+            //List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2,acc3 };
+            //IRepository<BankAccount> txtRep = new TxTBankAccRepository();
+            //txtRep.Add(allAcc);
+            //var test = txtRep.GetAll();
 
             #endregion
 
