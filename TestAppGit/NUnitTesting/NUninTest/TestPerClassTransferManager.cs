@@ -25,8 +25,8 @@ namespace NUnitTesting.NUninTest
             _cursManagerMock = new Mock<ICursManager>();
             _cursManagerMock.Setup(m => m.CurrencyConvert(CurrencyTypes.MDL, CurrencyTypes.MDL,500)).Returns(500);
             _transactionMock = new Mock<IRepository<Transaction>>();
-            _transactionMock.Setup(s => s.Add(new Transaction(new CurrentAccount(), new CurrentAccount(), 0)));
-           // _transferManager = new TransferManager(_cursManagerMock.Object, _transactionMock.Object);
+            _transactionMock.Setup(s=>s.Add(new Transaction(new CurrentAccount(), new CurrentAccount(), 500)));
+            _transferManager = new TransferManager(_cursManagerMock.Object, _transactionMock.Object);
         }
 
         [Test]

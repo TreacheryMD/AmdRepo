@@ -24,7 +24,7 @@ namespace NUnitTesting.Helper
             {
                 sourceBankAccount.OutBalance(ammount);
                 targetBankAccount.InBalance(convertAmount);
-                //_transactionRepository.Add(new Transaction(sourceBankAccount, targetBankAccount, ammount));
+                _transactionRepository.Add(new Transaction(sourceBankAccount, targetBankAccount, ammount));
             }
             else
             {

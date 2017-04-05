@@ -8,7 +8,7 @@ using MyModel.Helper;
 
 namespace MyModel.Accounts
 {
-    public enum CurrencyTypes { USD, EUR, RUB, RON, MDL }
+    public enum CurrencyTypes { USD = 840, EUR = 978, RUB = 643, RON = 946, MDL = 487 }
 
     public abstract class BankAccount
     {
