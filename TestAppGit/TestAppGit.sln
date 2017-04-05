@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrategyPattern", "Strategy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTesting", "NUnitTesting\NUnitTesting.csproj", "{10A98190-0A75-4A2D-A04A-FA7456AEECD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizATest", "QuizATest\QuizATest.csproj", "{266EA18D-2AB4-4311-A5D2-96A53E757053}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,12 @@ Global
 		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Lightweight|Any CPU.Build.0 = Release|Any CPU
 		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A98190-0A75-4A2D-A04A-FA7456AEECD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Lightweight|Any CPU.ActiveCfg = Release|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Lightweight|Any CPU.Build.0 = Release|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266EA18D-2AB4-4311-A5D2-96A53E757053}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
