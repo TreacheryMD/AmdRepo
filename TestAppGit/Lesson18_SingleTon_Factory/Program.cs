@@ -32,15 +32,15 @@ namespace Lesson18_SingleTon_Factory
             }
 
             // Wait for user
-            Console.ReadKey();
+            //Console.ReadKey();
 
 
-            VehicleFactory factory = new ConcreteVehicleFactory();
-            IFactory scooter = factory.GetVehicle("Scooter");
-            scooter.Drive(40);
+            //VehicleFactory factory = new ConcreteVehicleFactory();
+            //IFactory scooter = factory.GetVehicle("Scooter");
+            //scooter.Drive(40);
 
-            IFactory bike = factory.GetVehicle("Bike");
-            bike.Drive(80);
+            //IFactory bike = factory.GetVehicle("Bike");
+            //bike.Drive(80);
 
             Console.ReadKey();
 

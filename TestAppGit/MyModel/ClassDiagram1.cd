@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyModel.Company.Subsidiary">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Company\Subsidiary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Accounts.BankAccount">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAgAAAAAAGAAgAAAAAiQAAAIAAABAAAAAAAAI=</HashCode>
+      <FileName>Accounts\BankAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Accounts.CreditAccount">
+    <Position X="8" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAEAAAAAAAAoAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Accounts\CreditAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Accounts.CurrentAccount">
+    <Position X="4.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAEAAAAAAAAAAAAgAAAAAAAAASAAAI=</HashCode>
+      <FileName>Accounts\CurrentAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Accounts.DepositAccount">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAgABAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Accounts\DepositAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Company.Branch">
+    <Position X="1.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Company\Branch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyModel.Company.Bank">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MyModel.Company.Bank.Reg" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Company\Bank.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAABAABAARAAAAAAAACAAAAAAAAgAA=</HashCode>
+      <FileName>Company\Bank.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="BankAccounts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MyModel.Clients.Person">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACEAAAAAAQAAQAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Clients\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MyModel.Accounts.CurrencyTypes" Collapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAggAAAAAAAAAAQCAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Accounts\BankAccount.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MyModel.Clients.GenderType">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Clients\Person.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

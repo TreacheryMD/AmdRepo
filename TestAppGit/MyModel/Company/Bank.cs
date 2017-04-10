@@ -3,59 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyModel.Accounts;
 
 namespace MyModel.Company
 {
     class Bank
     {
         public enum Reg { Chisinau, AneniiNoi, Basarabeasca, Briceni, Cahul, Cantemir, Calarasi };
-        private string _name;
-        private string _address;
-        private int? _depots;
-        private string _branchId;
-        private Reg _region;
+
+        public List<BankAccount> BankAccounts { get; }
+        public int? Depots { get; set; }
+
+        public string Name { get; set; }
+
+        public string Address { get; set; }
+
+        public string BranchId { get; set; }
+
+        public Reg Region { get; set; }
+        
+
+        public Bank(string name, string address, int? depots, Reg region, List<BankAccount> bankAccounts)
+        {
+            Name = name;
+            Address = address;
+            Depots = depots;
+            BranchId = Branch.regDict[region];
+            Region = region;
+            BankAccounts = bankAccounts;
+        }
 
         public Bank(string name, string address, int? depots, Reg region)
         {
-            _name = name;
-            _address = address;
-            _depots = depots;
-            _branchId = Branch.regDict[region];
-            _region = region;
+            Name = name;
+            Address = address;
+            Depots = depots;
+            Region = region;
         }
 
-        public int? Depots
+        public void AddNewBankAccounts(BankAccount account)
         {
-            get { return _depots; }
-            set { _depots = value; }
+            BankAccounts.Add(account);
         }
 
-        public string Name
+        public void AddNewBankAccounts(List<BankAccount> accounts)
         {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public string Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        public string BranchId
-        {
-            get { return _branchId; }
-            set { _branchId = value; }
-        }
-        public Reg Region
-        {
-            get { return _region; }
-            set { _region = value; }
+            BankAccounts.Concat(accounts);
         }
 
         public virtual void ShowInfo()
         {
-            Console.WriteLine($"Bank name: {_name}, address: {_address}, depots: {_depots}, branch: {_branchId}, region: {_region}");
+            Console.WriteLine($"Bank name: {Name}, address: {Address}, depots: {Depots}, branch: {BranchId}, region: {Region}");
         }
     }
 }

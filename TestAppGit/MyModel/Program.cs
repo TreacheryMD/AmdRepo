@@ -29,24 +29,17 @@ namespace MyModel
             IServiceLocator locator = new ServiceLocator();
             var myservice = locator.GetService<IRepository<Transaction>>();
 
-            //IRepository<Transaction> listRepository = new ListRepository<Transaction>();
-
             TransferManager transferHandler = new TransferManager(myservice);
             transferHandler.ExecuteTransfer(acc1, acc3,1000);
             Console.WriteLine(acc1);
             Console.WriteLine(acc3);
 
-           // transferHandler.ExecuteTransfer(acc1, acc3, 400);
-
-           // Console.WriteLine(acc1);
-            //Console.WriteLine(acc3);
-
             #region WriteReadTxt
 
-            //List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2,acc3 };
-            //IRepository<BankAccount> txtRep = new TxTBankAccRepository();
-            //txtRep.Add(allAcc);
-            //var test = txtRep.GetAll();
+            List<BankAccount> allAcc = new List<BankAccount>() { acc1, acc2, acc3 };
+            IRepository<BankAccount> txtRep = new TxTBankAccRepository();
+            txtRep.Add(allAcc);
+            var test = txtRep.GetAll();
 
             #endregion
 
