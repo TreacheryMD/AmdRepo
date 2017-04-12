@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyModel.Clients;
-using MyModel.Helper;
-using MyModel.Interfaces;
 
 // ReSharper disable VirtualMemberCallInConstructor
 
-namespace MyModel.Accounts
+namespace BankAccounts.Accounts
 {
     public enum CurrencyTypes { USD = 840, EUR = 978, RUB = 643, RON = 946, MDL = 487 }
 
@@ -20,21 +15,21 @@ namespace MyModel.Accounts
         public virtual decimal Balance { get; protected set;}
         public virtual DateTime OpenDate { get;  }
         public virtual CurrencyTypes Currency { get; }
-        public virtual Person Person { get; set; }
+        public virtual string FiscalCode { get; }
 
         protected BankAccount()
         {
-           // FiscalCode = "00000000000";
+            FiscalCode = "00000000000";
             AccNum = "000000000000";
             Currency = CurrencyTypes.MDL;
         }
-        protected BankAccount(Person person, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency)
+        protected BankAccount(string fiscalCode, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency)
         {
             if (balance <0 ) throw new Exception($"{nameof(balance)} can't be less than 0");
             if (string.IsNullOrWhiteSpace(accNum)) throw new ArgumentNullException(nameof(accNum));
             if (openDate < DateTime.Now.AddYears(-125)) throw new Exception($"Invalid field:{nameof(openDate)} < {DateTime.Now.AddYears(-125).ToShortDateString()}");
 
-            Person = person;
+            FiscalCode = fiscalCode;
             AccNum = accNum;
             Balance = balance;
             OpenDate = openDate;
@@ -44,7 +39,7 @@ namespace MyModel.Accounts
         protected BankAccount(string line)
         {
             var l = line.Split(';');
-            Person.FiscalCode = l[0];
+            FiscalCode = l[0];
             AccNum = l[1];
             Balance = Convert.ToDecimal(l[2]);
             OpenDate = DateTime.Parse(l[3]);
@@ -63,6 +58,6 @@ namespace MyModel.Accounts
         public virtual void OutBalance(decimal bal) => Balance -= bal;
 
         public virtual void OutMaxBalance() => Balance -= Balance;
-        public override string ToString() => $"{Person.FiscalCode};{AccNum};{Balance};{OpenDate.ToShortDateString()};{Currency}";
+        public override string ToString() => $"{FiscalCode};{AccNum};{Balance};{OpenDate.ToShortDateString()};{Currency}";
     }
 }

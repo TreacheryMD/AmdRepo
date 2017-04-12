@@ -1,20 +1,14 @@
-﻿using MyModel.Helper;
-using MyModel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyModel.Clients;
+﻿using System;
+
 // ReSharper disable VirtualMemberCallInConstructor
 
-namespace MyModel.Accounts
+namespace BankAccounts.Accounts
 {
     class CurrentAccount : BankAccount
     {
         public virtual bool Restricted { get; set; }
-        public CurrentAccount(Person person, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency, bool restricted = false) 
-            : base(person, balance, accNum + "CR", openDate, currency)
+        public CurrentAccount(string fiscalCode, decimal balance, string accNum, DateTime openDate, CurrencyTypes currency, bool restricted = false) 
+            : base(fiscalCode, balance, accNum + "CR", openDate, currency)
         {
             Restricted = restricted;
         }

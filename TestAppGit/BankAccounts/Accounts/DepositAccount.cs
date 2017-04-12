@@ -1,18 +1,12 @@
-﻿using MyModel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyModel.Clients;
+﻿using System;
 
-namespace MyModel.Accounts
+namespace BankAccounts.Accounts
 {
     class DepositAccount : BankAccount
     {
         private readonly double _depIntRate;
-        public DepositAccount(Person person,string accNum, decimal balance, double depositInterestRate, DateTime openDate, CurrencyTypes currency) :
-            base(person, balance, accNum + "DEP", openDate, currency)
+        public DepositAccount(string fiscalCode,string accNum, decimal balance, double depositInterestRate, DateTime openDate, CurrencyTypes currency) :
+            base(fiscalCode, balance, accNum + "DEP", openDate, currency)
         {
             if (depositInterestRate <= 0) throw new Exception($"Invalid field:{nameof(depositInterestRate)}<=0");
             _depIntRate = depositInterestRate;

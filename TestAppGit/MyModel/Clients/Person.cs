@@ -1,15 +1,19 @@
 ﻿using System;
+using MyModel.Interfaces;
+
+// ReSharper disable VirtualMemberCallInConstructor
 
 namespace MyModel.Clients
 {
     public enum GenderType { Male=1, Female, Unckown }
-    public class Person
+    public class Person 
     {
-        public string FirstName { get; protected internal set; }
-        public string LastName { get; protected internal set; }
-        public DateTime BirthDate { get; protected internal set; }
-        public string FiscalCode { get; protected internal set; }
-        public GenderType Gender { get; protected internal set; }
+        public virtual int Id { get; set; }
+        public virtual string FirstName { get; protected internal set; }
+        public virtual string LastName { get; protected internal set; }
+        public virtual DateTime BirthDate { get; protected internal set; }
+        public virtual string FiscalCode { get; protected internal set; }
+        public virtual GenderType Gender { get; protected internal set; }
 
         public Person(string firstName, string lastName, DateTime birthDate, string fiscalCode, GenderType gender)
         {
@@ -37,6 +41,11 @@ namespace MyModel.Clients
         public override string ToString()
         {
             return $"{FirstName};{LastName};{BirthDate.ToShortDateString()};{FiscalCode};{Gender}";
+        }
+
+        public string GetPersonFiscalCode()
+        {
+           return FiscalCode;
         }
     }
 }

@@ -1,19 +1,13 @@
-﻿using MyModel.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyModel.Clients;
+﻿using System;
 
-namespace MyModel.Accounts
+namespace BankAccounts.Accounts
 {
     class CreditAccount : BankAccount
     {
         public DateTime Reimbursement { get; }
 
-        public CreditAccount(Person person,string accNum, decimal newCreditAmmout, DateTime openDate, CurrencyTypes currency, DateTime reimbursementDate) :
-            base(person, newCreditAmmout, accNum + "CRED", openDate, currency)
+        public CreditAccount(string fiscalCode,string accNum, decimal newCreditAmmout, DateTime openDate, CurrencyTypes currency, DateTime reimbursementDate) :
+            base(fiscalCode, newCreditAmmout, accNum + "CRED", openDate, currency)
         {
             if (reimbursementDate < DateTime.Now) throw new Exception($"Invalid field:{nameof(reimbursementDate)}<{DateTime.Now.ToShortDateString()}");
             Reimbursement = reimbursementDate;

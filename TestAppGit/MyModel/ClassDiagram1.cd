@@ -10,26 +10,29 @@
   <Class Name="MyModel.Accounts.BankAccount">
     <Position X="8" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAgAAAAAAGAAgAAAAAiQAAAIAAABAAAAAAAAI=</HashCode>
+      <HashCode>AIICAAAAgAAAAAAGAAgAAAAAiAAAAIAAABAAAAAAAAI=</HashCode>
       <FileName>Accounts\BankAccount.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Person" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="MyModel.Accounts.CreditAccount">
-    <Position X="8" Y="6" Width="1.5" />
+    <Position X="8" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAEAAAAAAAAoAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Accounts\CreditAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MyModel.Accounts.CurrentAccount">
-    <Position X="4.75" Y="5.75" Width="1.75" />
+    <Position X="6" Y="5.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAEAAAAAAAAAAAAgAAAAAAAAASAAAI=</HashCode>
       <FileName>Accounts\CurrentAccount.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MyModel.Accounts.DepositAccount">
-    <Position X="10.5" Y="6" Width="1.5" />
+    <Position X="9.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAgABAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Accounts\DepositAccount.cs</FileName>
@@ -62,7 +65,7 @@
   <Class Name="MyModel.Clients.Person">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAACEAAAAAAQAAQAAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAACAEgAAAAAAACEAAAAAAQAAQAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Clients\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
