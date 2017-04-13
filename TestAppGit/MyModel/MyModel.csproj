@@ -113,6 +113,7 @@
     <Compile Include="Interfaces\ITransferSend.cs" />
     <Compile Include="Interfaces\IServiceLocator.cs" />
     <Compile Include="NhibernateTry\CurrentAccountMap.cs" />
+    <Compile Include="NhibernateTry\NHibernateProvider.cs" />
     <Compile Include="NhibernateTry\PersonMap.cs" />
     <Compile Include="NhibernateTry\SessionFactoryInit.cs" />
     <Compile Include="Program.cs" />

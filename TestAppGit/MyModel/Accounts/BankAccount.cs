@@ -22,6 +22,8 @@ namespace MyModel.Accounts
         public virtual CurrencyTypes Currency { get; }
         public virtual Person Person { get; set; }
 
+        
+
         protected BankAccount()
         {
            // FiscalCode = "00000000000";
@@ -44,7 +46,7 @@ namespace MyModel.Accounts
         protected BankAccount(string line)
         {
             var l = line.Split(';');
-            Person.FiscalCode = l[0];
+            //Person.FiscalCode = l[0];
             AccNum = l[1];
             Balance = Convert.ToDecimal(l[2]);
             OpenDate = DateTime.Parse(l[3]);

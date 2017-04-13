@@ -28,12 +28,12 @@ namespace MyModel.Accounts
             AccNum+="CR";
         }
         public override void ShowAccountInfo() => Console.WriteLine(ToString());
-        public void CashIn(decimal cashInAmmout)
+        public virtual void CashIn(decimal cashInAmmout)
         {
             if (cashInAmmout <= 0) throw new Exception("You can't Cash In nothing to your current account");
             InBalance(cashInAmmout);
         }
-        public void CashOut(decimal cashOutAmmount)
+        public virtual void CashOut(decimal cashOutAmmount)
         {
             if (Restricted) throw new AccountIsRestrictedException();
             if (cashOutAmmount <= 0) throw new Exception("You can't Cash Out with negative ammount");
@@ -44,7 +44,6 @@ namespace MyModel.Accounts
         {
             Restricted = true;
         }
-
 
         public override string ToString() => base.ToString()+ $";{Restricted}";
     }

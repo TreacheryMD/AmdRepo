@@ -43,7 +43,7 @@ namespace MyModel.Clients
             return $"{FirstName};{LastName};{BirthDate.ToShortDateString()};{FiscalCode};{Gender}";
         }
 
-        public string GetPersonFiscalCode()
+        public virtual string GetPersonFiscalCode()
         {
            return FiscalCode;
         }

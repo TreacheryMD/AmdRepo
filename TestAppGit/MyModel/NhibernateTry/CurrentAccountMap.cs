@@ -18,9 +18,10 @@ namespace MyModel.NhibernateTry
             Map(x => x.Balance);
             Map(x => x.OpenDate);
             Map(x => x.Currency);
-            Map(x => x.Person.FiscalCode);
+           // Map(x => x.Test);
+            //Map(x => x.Person.FiscalCode);
             Map(x => x.Restricted);
-            References(x => x.Person);
+            References(x => x.Person).Nullable();
         }
     }
 }

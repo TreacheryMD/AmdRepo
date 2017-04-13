@@ -16,6 +16,7 @@ using System.IO;
 using MyModel.Helper;
 using System.Data.SqlClient;
 using System.Data.Common;
+using MyModel.NhibernateTry;
 
 namespace MyModel
 {
@@ -23,6 +24,7 @@ namespace MyModel
     {
         static void Main(string[] args)
         {
+            NHibernateProvider.GetSession();
             Person person1 = new Person("Ion", "Draganel", new DateTime(1991, 06, 10), "20050013346680", GenderType.Male);
             Person person2 = new Person();
 
@@ -48,9 +50,9 @@ namespace MyModel
             #endregion
 
             #region ADO.NET task
-            
+
             //SQL_Helper sqlHelper = new SQL_Helper();
-            
+
             ////T1-T2
             //string script = File.ReadAllText(@"CREATE_TEST_TABLES.sql");
             //sqlHelper.connStrName = "TestBankAccounts";
@@ -112,7 +114,7 @@ namespace MyModel
             //    anonimBalanceCred.Columns.Add("OpenDate", typeof(DateTime));
             //    anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
 
-   
+
             //}
 
 
@@ -120,7 +122,8 @@ namespace MyModel
 
 
             #endregion
-
+            
+             
 
             Console.ReadLine();
 
