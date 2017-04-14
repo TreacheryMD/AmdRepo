@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyModel.Clients;
+// ReSharper disable VirtualMemberCallInConstructor
 
 namespace MyModel.Accounts
 {
     class CreditAccount : BankAccount
     {
-        public DateTime Reimbursement { get; }
+        public virtual DateTime Reimbursement { get; }
 
         public CreditAccount(Person person,string accNum, decimal newCreditAmmout, DateTime openDate, CurrencyTypes currency, DateTime reimbursementDate) :
             base(person, newCreditAmmout, accNum + "CRED", openDate, currency)
@@ -23,6 +24,11 @@ namespace MyModel.Accounts
             var l = line.Split(';');
             Reimbursement = DateTime.Parse(l[5]);
         }
+        public CreditAccount()
+        {
+            AccNum += "CRED";
+        }
+
         public override void ShowAccountInfo()
         {
             base.ShowAccountInfo();

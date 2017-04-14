@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
-using IronPython.Modules;
 using MyModel.Accounts;
 
 namespace MyModel.NhibernateTry
 {
-    class CurrentAccountMap : ClassMap<CurrentAccount>
+    class DepositAccountMap : ClassMap<DepositAccount>
     {
-        CurrentAccountMap()
+        DepositAccountMap()
         {
-            Id(x=>x.Id);
+            Id(x => x.Id);
             Map(x => x.AccNum);
             Map(x => x.Balance);
             Map(x => x.OpenDate);
             Map(x => x.Currency);
-            Map(x => x.Restricted);
+            Map(x => x.DepIntRate);
             References(x => x.Person);
         }
     }

@@ -32,7 +32,8 @@ namespace MyModel.NhibernateTry
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(c => c.FromConnectionStringWithKey(ConnectionStringName)))
                 .Mappings(x => x.FluentMappings.AddFromAssembly(typeof(PersonMap).Assembly))
-                .ExposeConfiguration(CreateSchema);
+                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
+            //.ExposeConfiguration(CreateSchema);
 
             return configuration.BuildSessionFactory();
         }

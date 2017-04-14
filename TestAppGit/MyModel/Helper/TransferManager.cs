@@ -1,11 +1,9 @@
 ﻿using System;
-using System.CodeDom;
 using MyModel.Accounts;
-using MyModel.Helper;
 using MyModel.Interfaces;
 using Ninject;
 
-namespace MyModel
+namespace MyModel.Helper
 {
     public class TransferManager
     {

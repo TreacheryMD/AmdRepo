@@ -1,5 +1,4 @@
 ﻿using MyModel.Accounts;
-using MyModel.Extension;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -22,23 +21,40 @@ namespace MyModel
 {
     class Program
     {
+     
         static void Main(string[] args)
         {
-            NHibernateProvider.GetSession();
+            IoC.RegisterAll();
+
+            IBankAccountRepository BAccountsRepo = IoC.Resolve<IBankAccountRepository>();
+            IPersonRepository PersonRepo = IoC.Resolve<IPersonRepository>();
+
             Person person1 = new Person("Ion", "Draganel", new DateTime(1991, 06, 10), "20050013346680", GenderType.Male);
             Person person2 = new Person();
 
-            BankAccount acc1 = new CurrentAccount(person1,1100,"454654646545",DateTime.Now, CurrencyTypes.MDL);
-            BankAccount acc2 = new CreditAccount(person1, "454444454666",0,DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
-            BankAccount acc3 = new DepositAccount(person2, "3495782094785",40000,2.4,DateTime.Now, CurrencyTypes.MDL);
+            BankAccount acc1 = new CurrentAccount(person1, 1100, "454654646545", DateTime.Now, CurrencyTypes.MDL);
+            BankAccount acc2 = new CreditAccount(person1, "454444454666", 0, DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
+            BankAccount acc3 = new DepositAccount(person2, "3495782094785", 40000, 2.4, DateTime.Now, CurrencyTypes.MDL);
 
             IServiceLocator locator = new ServiceLocator();
             var myservice = locator.GetService<IRepository<Transaction>>();
 
             TransferManager transferHandler = new TransferManager(myservice);
-            transferHandler.ExecuteTransfer(acc1, acc3,1000);
+            transferHandler.ExecuteTransfer(acc1, acc3, 1000);
             Console.WriteLine(acc1);
             Console.WriteLine(acc3);
+
+
+            //PersonRepo.Add(person1);
+            //PersonRepo.Add(person2);
+
+
+            //BAccountsRepo.Add(acc1);
+            //BAccountsRepo.Add(acc2);
+            //BAccountsRepo.Add(acc3);
+
+            PersonRepo.Delete(person1);
+
 
             #region WriteReadTxt
 
@@ -122,8 +138,8 @@ namespace MyModel
 
 
             #endregion
-            
-             
+
+
 
             Console.ReadLine();
 
