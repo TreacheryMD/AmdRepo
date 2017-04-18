@@ -24,36 +24,36 @@ namespace MyModel
      
         static void Main(string[] args)
         {
-            IoC.RegisterAll();
+            //IoC.RegisterAll();
 
-            IBankAccountRepository BAccountsRepo = IoC.Resolve<IBankAccountRepository>();
-            IPersonRepository PersonRepo = IoC.Resolve<IPersonRepository>();
+            //IBankAccountRepository BAccountsRepo = IoC.Resolve<IBankAccountRepository>();
+            //IPersonRepository PersonRepo = IoC.Resolve<IPersonRepository>();
 
-            Person person1 = new Person("Ion", "Draganel", new DateTime(1991, 06, 10), "20050013346680", GenderType.Male);
-            Person person2 = new Person();
+            //Person person1 = new Person("Ion", "Draganel", new DateTime(1991, 06, 10), "20050013346680", GenderType.Male);
+            //Person person2 = new Person();
 
-            BankAccount acc1 = new CurrentAccount(person1, 1100, "454654646545", DateTime.Now, CurrencyTypes.MDL);
-            BankAccount acc2 = new CreditAccount(person1, "454444454666", 0, DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
-            BankAccount acc3 = new DepositAccount(person2, "3495782094785", 40000, 2.4, DateTime.Now, CurrencyTypes.MDL);
+            //BankAccount acc1 = new CurrentAccount(person1, 1100, "454654646545", DateTime.Now, CurrencyTypes.MDL);
+            //BankAccount acc2 = new CreditAccount(person1, "454444454666", 0, DateTime.Now, CurrencyTypes.MDL, new DateTime(2018, 01, 01));
+            //BankAccount acc3 = new DepositAccount(person2, "3495782094785", 40000, 2.4, DateTime.Now, CurrencyTypes.MDL);
 
-            IServiceLocator locator = new ServiceLocator();
-            var myservice = locator.GetService<IRepository<Transaction>>();
+            //IServiceLocator locator = new ServiceLocator();
+            //var myservice = locator.GetService<IRepository<Transaction>>();
 
-            TransferManager transferHandler = new TransferManager(myservice);
-            transferHandler.ExecuteTransfer(acc1, acc3, 1000);
-            Console.WriteLine(acc1);
-            Console.WriteLine(acc3);
-
-
-            //PersonRepo.Add(person1);
-            //PersonRepo.Add(person2);
+            //TransferManager transferHandler = new TransferManager(myservice);
+            //transferHandler.ExecuteTransfer(acc1, acc3, 1000);
+            //Console.WriteLine(acc1);
+            //Console.WriteLine(acc3);
 
 
-            //BAccountsRepo.Add(acc1);
-            //BAccountsRepo.Add(acc2);
-            //BAccountsRepo.Add(acc3);
+            ////PersonRepo.Add(person1);
+            ////PersonRepo.Add(person2);
 
-            PersonRepo.Delete(person1);
+
+            ////BAccountsRepo.Add(acc1);
+            ////BAccountsRepo.Add(acc2);
+            ////BAccountsRepo.Add(acc3);
+
+            //PersonRepo.Delete(person1);
 
 
             #region WriteReadTxt
@@ -67,71 +67,82 @@ namespace MyModel
 
             #region ADO.NET task
 
-            //SQL_Helper sqlHelper = new SQL_Helper();
+            SQL_Helper sqlHelper = new SQL_Helper();
 
-            ////T1-T2
-            //string script = File.ReadAllText(@"CREATE_TEST_TABLES.sql");
-            //sqlHelper.connStrName = "TestBankAccounts";
-            ////sqlHelper.CreateCommand(script);
-            ////T3
-            //DataSet dataSet = new DataSet();
-            //using (var conn = new SqlConnection(sqlHelper.ConnStr))
-            //{
-            //    conn.Open();
-            //    SqlDataAdapter adapter = new SqlDataAdapter();
+            //T1-T2
+            string script = File.ReadAllText(@"C:\Users\ion.draganel\Desktop\SQL\CREATE_TEST_TABLES.sql");
+            sqlHelper.connStrName = "TestBankAccounts";
+            //sqlHelper.CreateCommand(script);
+            //T3
+            DataSet dataSet = new DataSet();
+            using (var conn = new SqlConnection(sqlHelper.ConnStr))
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter();
 
-            //    // Create the SelectCommand.
-            //    SqlCommand command = new SqlCommand("SELECT * FROM [tblCreditAccounts] WHERE Balance > @Balance", conn);
-            //    command.Parameters.AddWithValue("@Balance", 30000);
-            //    adapter.SelectCommand = command;
+                // Create the SelectCommand.
+                SqlCommand command = new SqlCommand("SELECT * FROM [tblCreditAccounts] WHERE Balance > @Balance");
+                command.Parameters.AddWithValue("@Balance", 30000);
+                adapter.SelectCommand = command;
 
-            //    //adapter.Fill(dataSet);
+                //Create the InsertCommand.
 
-            //    //Create the InsertCommand.
+                command = new SqlCommand(
+                   "INSERT [dbo].[tblCreditAccounts] ( AccNum, Balance, OpenDate, Currency, FiscalCode, Reimbursement)" +
+                   "VALUES (@AccNum, @Balance, @OpenDate, @Currency, @FiscalCode, @Reimbursement)", conn);
 
-            //    command = new SqlCommand(
-            //       "INSERT [dbo].[tblCreditAccounts] ( AccNum, Balance, OpenDate, Currency, FiscalCode, Reimbursement)" +
-            //       "VALUES (@AccNum, @Balance, @OpenDate, @Currency, @FiscalCode, @Reimbursement)", conn);
+                // Add the parameters for the InsertCommand.
+                command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
+                command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 800000;
+                command.Parameters.Add("@OpenDate", SqlDbType.Date).Value = "2017-01-01";
+                command.Parameters.Add("@Currency", SqlDbType.Int).Value = 978;
+                command.Parameters.Add("@FiscalCode", SqlDbType.VarChar).Value = "3479853467985";
+                command.Parameters.Add("@Reimbursement", SqlDbType.Date).Value = "2017-02-02";
+                adapter.InsertCommand = command;
 
-            //    // Add the parameters for the InsertCommand.
-            //    command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
-            //    command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 800000;
-            //    command.Parameters.Add("@OpenDate", SqlDbType.Date).Value = "2017-01-01";
-            //    command.Parameters.Add("@Currency", SqlDbType.Int).Value = 978;
-            //    command.Parameters.Add("@FiscalCode", SqlDbType.VarChar).Value = "3479853467985";
-            //    command.Parameters.Add("@Reimbursement", SqlDbType.Date).Value = "2017-02-02";
-            //    adapter.InsertCommand = command;
+                //adapter.InsertCommand.ExecuteNonQuery();
 
-            //    //adapter.InsertCommand.ExecuteNonQuery();
+                adapter.Fill(dataSet);
 
+                //Create the UpdateCommand
+                command = new SqlCommand(
+                  "UPDATE [dbo].[tblCreditAccounts] SET Balance = Balance + 50000 WHERE Balance < @Balance", conn);
+                command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 60000;
+                adapter.UpdateCommand = command;
 
-            //    //Create the UpdateCommand
-            //    command = new SqlCommand(
-            //      "UPDATE [dbo].[tblCreditAccounts] SET Balance = 0 WHERE Balance < @Balance", conn);
-            //    command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 20000;
-            //    adapter.UpdateCommand = command;
+                //adapter.UpdateCommand.ExecuteNonQuery();
 
-            //    //adapter.UpdateCommand.ExecuteNonQuery();
+                //create the Delete Command 
+                command = new SqlCommand(
+                      "DELETE [dbo].[tblCreditAccounts] WHERE AccNum = @AccNum", conn);
+                command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
+                adapter.DeleteCommand = command;
 
-            //    //create the Delete Command 
-            //    command = new SqlCommand(
-            //          "DELETE [dbo].[tblCreditAccounts] AccNum = @AccNum", conn);
-            //    command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
-            //    adapter.DeleteCommand = command;
+                //adapter.DeleteCommand.ExecuteNonQuery();
 
-            //    //adapter.DeleteCommand.ExecuteNonQuery();
+                //adapter.DeleteCommand.ExecuteNonQuery();
+                //adapter.InsertCommand.ExecuteNonQuery();
+                //adapter.SelectCommand.ExecuteNonQuery();
+                //adapter.UpdateCommand.ExecuteNonQuery();
 
+                //adapter.SelectCommand.ExecuteNonQuery();
 
-            //    //T4
+                adapter.Update(dataSet);
+                dataSet.Clear();
 
-            //    DataTable anonimBalanceCred = new DataTable();
-            //    anonimBalanceCred.Columns.Add("Balance", typeof(decimal));
-            //    anonimBalanceCred.Columns.Add("Currency", typeof(Int16));
-            //    anonimBalanceCred.Columns.Add("OpenDate", typeof(DateTime));
-            //    anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
+                adapter.Fill(dataSet);
+
+                //T4
 
 
-            //}
+                DataTable anonimBalanceCred = new DataTable();
+                anonimBalanceCred.Columns.Add("Balance", typeof(decimal));
+                anonimBalanceCred.Columns.Add("Currency", typeof(Int16));
+                anonimBalanceCred.Columns.Add("OpenDate", typeof(DateTime));
+                anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
+
+
+            }
 
 
 

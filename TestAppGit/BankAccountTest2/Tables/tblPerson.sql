@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[tblPerson]
+(
+	ID INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	FirstName NVARCHAR(255) NOT NULL,
+	LastName NVARCHAR(255) NOT NULL,
+	BirthDate DATE NOT NULL,
+	FiscalCodes NVARCHAR(255) NOT NULL UNIQUE,
+	GenderID INT NOT NULL,
+	
+	 
+)
+
+
