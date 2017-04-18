@@ -78,7 +78,10 @@ namespace MyModel
             using (var conn = new SqlConnection(sqlHelper.ConnStr))
             {
                 conn.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter();
+            }
+
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
                 // Create the SelectCommand.
                 SqlCommand command = new SqlCommand("SELECT * FROM [tblCreditAccounts] WHERE Balance > @Balance");
@@ -142,7 +145,7 @@ namespace MyModel
                 anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
 
 
-            }
+            
 
 
 
