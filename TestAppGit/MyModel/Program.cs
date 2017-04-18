@@ -21,7 +21,7 @@ namespace MyModel
 {
     class Program
     {
-     
+
         static void Main(string[] args)
         {
             //IoC.RegisterAll();
@@ -68,87 +68,95 @@ namespace MyModel
             #region ADO.NET task
 
             SQL_Helper sqlHelper = new SQL_Helper();
+            sqlHelper.connStrName = "TestBankAccounts";
+
+            using (var connection = new SqlConnection(sqlHelper.ConnStr))
+            {
+                connection.Open();
+
+                SqlParameter[] parameters = { new SqlParameter("@Balance", SqlDbType.Decimal)};
+                parameters[0].Value = 80000;
+
+                DataTable result = sqlHelper.GetDataTableFromSP("GetAccountsCred", parameters);
+            }
 
             //T1-T2
-            string script = File.ReadAllText(@"C:\Users\ion.draganel\Desktop\SQL\CREATE_TEST_TABLES.sql");
+                string script = File.ReadAllText(@"C:\Users\ion.draganel\Desktop\SQL\CREATE_TEST_TABLES.sql");
             sqlHelper.connStrName = "TestBankAccounts";
             //sqlHelper.CreateCommand(script);
             //T3
             DataSet dataSet = new DataSet();
-            using (var conn = new SqlConnection(sqlHelper.ConnStr))
-            {
-                conn.Open();
-            }
+            var conn = new SqlConnection(sqlHelper.ConnStr);
+            // Create the SelectCommand.
+            SqlCommand selectCommand = new SqlCommand("GetAccountsCred @Balance", conn);
+            selectCommand.Parameters.AddWithValue("@Balance", 80000);
+            //adapter.SelectCommand = command;
 
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-                // Create the SelectCommand.
-                SqlCommand command = new SqlCommand("SELECT * FROM [tblCreditAccounts] WHERE Balance > @Balance");
-                command.Parameters.AddWithValue("@Balance", 30000);
-                adapter.SelectCommand = command;
-
-                //Create the InsertCommand.
-
-                command = new SqlCommand(
-                   "INSERT [dbo].[tblCreditAccounts] ( AccNum, Balance, OpenDate, Currency, FiscalCode, Reimbursement)" +
-                   "VALUES (@AccNum, @Balance, @OpenDate, @Currency, @FiscalCode, @Reimbursement)", conn);
-
-                // Add the parameters for the InsertCommand.
-                command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
-                command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 800000;
-                command.Parameters.Add("@OpenDate", SqlDbType.Date).Value = "2017-01-01";
-                command.Parameters.Add("@Currency", SqlDbType.Int).Value = 978;
-                command.Parameters.Add("@FiscalCode", SqlDbType.VarChar).Value = "3479853467985";
-                command.Parameters.Add("@Reimbursement", SqlDbType.Date).Value = "2017-02-02";
-                adapter.InsertCommand = command;
-
-                //adapter.InsertCommand.ExecuteNonQuery();
-
-                adapter.Fill(dataSet);
-
-                //Create the UpdateCommand
-                command = new SqlCommand(
-                  "UPDATE [dbo].[tblCreditAccounts] SET Balance = Balance + 50000 WHERE Balance < @Balance", conn);
-                command.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 60000;
-                adapter.UpdateCommand = command;
-
-                //adapter.UpdateCommand.ExecuteNonQuery();
-
-                //create the Delete Command 
-                command = new SqlCommand(
-                      "DELETE [dbo].[tblCreditAccounts] WHERE AccNum = @AccNum", conn);
-                command.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
-                adapter.DeleteCommand = command;
-
-                //adapter.DeleteCommand.ExecuteNonQuery();
-
-                //adapter.DeleteCommand.ExecuteNonQuery();
-                //adapter.InsertCommand.ExecuteNonQuery();
-                //adapter.SelectCommand.ExecuteNonQuery();
-                //adapter.UpdateCommand.ExecuteNonQuery();
-
-                //adapter.SelectCommand.ExecuteNonQuery();
-
-                adapter.Update(dataSet);
-                dataSet.Clear();
-
-                adapter.Fill(dataSet);
-
-                //T4
-
-
-                DataTable anonimBalanceCred = new DataTable();
-                anonimBalanceCred.Columns.Add("Balance", typeof(decimal));
-                anonimBalanceCred.Columns.Add("Currency", typeof(Int16));
-                anonimBalanceCred.Columns.Add("OpenDate", typeof(DateTime));
-                anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
-
-
+            SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
             
 
 
 
+            //Create the InsertCommand.
+
+            var insertCommand = new SqlCommand(
+               "INSERT [dbo].[tblCreditAccounts] ( AccNum, Balance, OpenDate, Currency, FiscalCode, Reimbursement)" +
+               "VALUES (@AccNum, @Balance, @OpenDate, @Currency, @FiscalCode, @Reimbursement)", conn);
+
+            // Add the parameters for the InsertCommand.
+            insertCommand.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
+            insertCommand.Parameters.Add("@Balance", SqlDbType.Decimal).Value = 800000;
+            insertCommand.Parameters.Add("@OpenDate", SqlDbType.Date).Value = "2017-01-01";
+            insertCommand.Parameters.Add("@Currency", SqlDbType.Int).Value = 978;
+            insertCommand.Parameters.Add("@FiscalCode", SqlDbType.VarChar).Value = "3479853467985";
+            insertCommand.Parameters.Add("@Reimbursement", SqlDbType.Date).Value = "2017-02-02";
+            adapter.InsertCommand = insertCommand;
+
+            //adapter.InsertCommand.ExecuteNonQuery()
+
+            //Create the UpdateCommand
+            var commandUpdate = new SqlCommand(
+              "UPDATE [dbo].[tblCreditAccounts] SET Balance =  @Balance where ID = @Id", conn);
+            commandUpdate.Parameters.Add("@Balance", SqlDbType.Decimal, 15, "Balance");
+            SqlParameter parm = commandUpdate.Parameters.Add("@Id", SqlDbType.Int, 4, "Id");
+            //commandUpdate.Parameters.Add(parm);
+            //parm.SourceVersion = DataRowVersion.Original;
+            parm.SourceVersion = DataRowVersion.Original;
+            adapter.UpdateCommand = commandUpdate;
+
+            //adapter.UpdateCommand.ExecuteNonQuery();
+
+            //create the Delete Command 
+            var deleteCommand = new SqlCommand(
+                  "DELETE [dbo].[tblCreditAccounts] WHERE AccNum = @AccNum", conn);
+            deleteCommand.Parameters.Add("@AccNum", SqlDbType.VarChar).Value = "9999999999CRED";
+            adapter.DeleteCommand = deleteCommand;
+
+            adapter.Fill(dataSet);
+
+            dataSet.Tables[0].Rows[0]["Balance"] = 140;
+
+            //adapter.DeleteCommand.ExecuteNonQuery();
+
+            adapter.DeleteCommand.ExecuteNonQuery();
+            //adapter.InsertCommand.ExecuteNonQuery();
+            //adapter.SelectCommand.ExecuteNonQuery();
+            //adapter.UpdateCommanddataSet);
+
+            //adapter.SelectCommand.ExecuteNonQuery();
+
+            adapter.Update(dataSet);
+
+            dataSet.Clear();
+
+            adapter.Fill(dataSet);
+            //T4
+
+            //DataTable anonimBalanceCred = new DataTable();
+            //anonimBalanceCred.Columns.Add("Balance", typeof(decimal));
+            //anonimBalanceCred.Columns.Add("Currency", typeof(Int16));
+            //anonimBalanceCred.Columns.Add("OpenDate", typeof(DateTime));
+            //anonimBalanceCred.Columns.Add("Reimbursement", typeof(DateTime));
 
 
             #endregion
