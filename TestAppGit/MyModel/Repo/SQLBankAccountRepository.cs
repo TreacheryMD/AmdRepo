@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IronPython.Modules;
 using MyModel.Accounts;
+using MyModel.Clients;
 using MyModel.Interfaces;
+using MyModel.NhibernateTry.QuerryOverExample;
 using NHibernate;
+using NHibernate.Criterion;
+using NHibernate.SqlCommand;
+using NHibernate.Transform;
 
 namespace MyModel.Repo
 {
-    class SqlBankAccountRepository : IBankAccountRepository
+    public class SqlBankAccountRepository : IBankAccountRepository
     {
 
         private readonly ISession _session;
@@ -46,5 +52,38 @@ namespace MyModel.Repo
         {
             return  _session.QueryOver<T>().List().ToList();
         }
+
+        public IList<QuerryOverExample1> RunQuerryOverExample2()
+        {
+            BankAccount bankAccount = null;
+
+            CurrentAccount currentAccount = null;
+            CreditAccount creditAccount = null;
+            Person person = null;
+
+            QuerryOverExample1 row = null;
+
+            return _session.QueryOver(() => bankAccount)
+                .JoinAlias(() => bankAccount.Person, () => person)
+                
+               // .Where(b => b is CurrentAccount)
+
+                .SelectList(list => list
+                    .Select(() => bankAccount.AccNum).WithAlias(() => row.CurrentAccount)
+                    .Select(() => bankAccount.OpenDate).WithAlias(() => row.CAOpenDate)
+                 
+                    .Select(() => person.FiscalCode).WithAlias(() => row.FiscalCode)
+                    .Select(() => person.FirstName).WithAlias(() => row.FirstName)
+                    .Select(() => person.LastName).WithAlias(() => row.LastName)
+                    )
+                .TransformUsing(Transformers.AliasToBean<QuerryOverExample1>())
+                .List<QuerryOverExample1>();
+
+        }
+
+
+
+
+
     }
 }

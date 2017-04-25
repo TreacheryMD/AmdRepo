@@ -12,6 +12,8 @@ namespace MyModel.NhibernateTry
     {
         DepositAccountMap()
         {
+            //Table("tblDepositAccounts");
+
             Id(x => x.Id);
             Map(x => x.AccNum);
             Map(x => x.Balance);
@@ -21,4 +23,6 @@ namespace MyModel.NhibernateTry
             References(x => x.Person);
         }
     }
+
+ 
 }

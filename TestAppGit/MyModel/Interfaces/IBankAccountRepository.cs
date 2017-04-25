@@ -1,4 +1,5 @@
 ﻿using MyModel.Accounts;
+using MyModel.NhibernateTry.QuerryOverExample;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace MyModel.Interfaces
         void Delete<T>(T entity) where T : BankAccount;
         T FindById<T>(int id) where T : BankAccount;
         List<T> GetAll<T>() where T : BankAccount;
+        IList<QuerryOverExample1> RunQuerryOverExample2();
     }
 }

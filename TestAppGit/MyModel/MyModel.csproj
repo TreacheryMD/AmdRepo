@@ -141,6 +141,7 @@
     <Compile Include="NhibernateTry\IoC.cs" />
     <Compile Include="NhibernateTry\NHibernateProvider.cs" />
     <Compile Include="NhibernateTry\PersonMap.cs" />
+    <Compile Include="NhibernateTry\QuerryOverExample\QuerryOverExample1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repo\ListRepository.cs" />

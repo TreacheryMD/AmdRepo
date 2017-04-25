@@ -13,6 +13,8 @@ namespace MyModel.NhibernateTry
     {
         PersonMap()
         {
+            //Table("tblPerson");
+
             Id(x => x.Id);
             Map(x => x.FirstName);
             Map(x => x.LastName);

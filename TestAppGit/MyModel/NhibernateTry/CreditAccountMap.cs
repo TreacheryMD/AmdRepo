@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentNHibernate.Conventions;
 using FluentNHibernate.Mapping;
 using MyModel.Accounts;
 
@@ -12,6 +13,9 @@ namespace MyModel.NhibernateTry
     {
         CreditAccountMap()
         {
+           // IClassConvention
+           // Table("tblCreditAccounts");
+
             Id(x => x.Id);
             Map(x => x.AccNum);
             Map(x => x.Balance);

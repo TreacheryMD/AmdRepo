@@ -11,8 +11,11 @@ namespace MyModel.NhibernateTry
 {
     class CurrentAccountMap : ClassMap<CurrentAccount>
     {
+
         CurrentAccountMap()
         {
+            //Table("tblCurentAccounts");
+
             Id(x=>x.Id);
             Map(x => x.AccNum);
             Map(x => x.Balance);
